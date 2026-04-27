@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pl" data-lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projekty — Star Media</title>
+<link rel="icon" type="image/png" href="assets/logo/logo.png">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/pages.css">
+<script src="assets/components.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script src="assets/page-scripts.js" defer></script>
+<!-- 3D stack — Three.js r128 + GLTFLoader (local) -->
+<script src="assets/vendor/three.min.js" defer></script>
+<script src="assets/vendor/GLTFLoader.js" defer></script>
+<script src="assets/hero3d.js" defer></script>
+</head>
+<body>
+
+<div id="nav-mount"></div>
+<div id="menu-mount"></div>
+
+<main>
+
+  <!-- HERO (DARK) -->
+  <section class="chapter chapter-dark hero-chapter">
+    <div class="hero-3d hero-3d--compact" data-glb="assets/3d/star.glb">
+      <div class="hero-3d-fallback" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <div class="hero-3d-progress">
+          <span class="hero-3d-progress-label" data-pl="Wczytywanie" data-en="Loading">Wczytywanie</span>
+          <span class="hero-3d-progress-value">0%</span>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-inner">
+      <div class="hero-top">
+        <div class="hero-eyebrow" data-pl="06 — Projekty" data-en="06 — Projects">06 — Projekty</div>
+        <div class="hero-meta">
+          <div>Portfolio</div>
+          <div>2018 — 2026</div>
+        </div>
+      </div>
+
+      <h1 class="hero-title" data-split-lines>
+        Selected<br>
+        <em class="g">works.</em>
+      </h1>
+
+      <div class="hero-sub">
+        <p class="hero-tagline fade-in"
+           data-pl="Kampanie, które przyniosły naszym klientom mierzalne wyniki — zasięgi, konwersje i rozpoznawalność marki."
+           data-en="Campaigns that brought clients measurable results — reach, conversions and brand recognition.">
+          Kampanie, które przyniosły naszym klientom mierzalne wyniki — zasięgi, konwersje i rozpoznawalność marki.
+        </p>
+        <div class="hero-scroll fade-in"><span data-pl="Zobacz" data-en="View">Zobacz</span><span>↓</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES GRID (LIGHT) -->
+  <section class="chapter chapter-light">
+    <div class="chapter-inner">
+      <div class="mono" style="margin-bottom: 2rem; opacity: 0.5;">— Wybrane projekty</div>
+      <h2 class="large words-reveal" style="max-width: 20ch;"
+          data-pl="Osiem kampanii, które <em>działały</em>"
+          data-en="Eight campaigns that <em>worked</em>">
+        Osiem kampanii, które <em>działały</em>
+      </h2>
+
+      <div class="cases-grid">
+        <article class="case-card">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <span class="card-tag" data-pl="Influencer Marketing" data-en="Influencer Marketing">Influencer Marketing</span>
+            <h3 class="card-title" data-pl="Beauty <em>×</em> Polska Press" data-en="Beauty <em>×</em> Polska Press">Beauty <em>×</em> Polska Press</h3>
+            <div class="card-meta">
+              <span>5M+ <span data-pl="zasięg" data-en="reach">zasięg</span></span>
+              <span>12% engagement</span>
+              <span>15 <span data-pl="publikacji" data-en="publications">publikacji</span></span>
+            </div>
+          </div>
+        </article>
+        <article class="case-card">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <span class="card-tag">Brand Collaboration</span>
+            <h3 class="card-title" data-pl="Launch <em>biżuterii</em>" data-en="Jewelry <em>launch</em>">Launch <em>biżuterii</em></h3>
+            <div class="card-meta">
+              <span>3M <span data-pl="wyświetleń" data-en="views">wyświetleń</span></span>
+              <span>8 <span data-pl="talentów" data-en="talents">talentów</span></span>
+            </div>
+          </div>
+        </article>
+        <article class="case-card">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <span class="card-tag">Event Marketing</span>
+            <h3 class="card-title" data-pl="Złota <em>Scena</em>" data-en="Golden <em>Stage</em>">Złota <em>Scena</em></h3>
+            <div class="card-meta">
+              <span>5000+ <span data-pl="gości" data-en="guests">gości</span></span>
+              <span>50+ <span data-pl="artystów" data-en="artists">artystów</span></span>
+            </div>
+          </div>
+        </article>
+        <article class="case-card">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <span class="card-tag">Podcast</span>
+            <h3 class="card-title" data-pl="Rozmowy <em>na płótnie</em>" data-en="Art <em>conversations</em>">Rozmowy <em>na płótnie</em></h3>
+            <div class="card-meta">
+              <span>1M <span data-pl="pobrań" data-en="downloads">pobrań</span></span>
+              <span>200+ <span data-pl="odcinków" data-en="episodes">odcinków</span></span>
+            </div>
+          </div>
+        </article>
+        <article class="case-card">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <span class="card-tag">TV Campaign</span>
+            <h3 class="card-title">Pan Lektor <em>×</em> TVN7</h3>
+            <div class="card-meta">
+              <span>Prime time</span>
+              <span>2M <span data-pl="widzów" data-en="viewers">widzów</span></span>
+            </div>
+          </div>
+        </article>
+        <article class="case-card">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <span class="card-tag">Social Media</span>
+            <h3 class="card-title">Fashion <em>Week</em></h3>
+            <div class="card-meta">
+              <span>4M <span data-pl="zasięg" data-en="reach">zasięg</span></span>
+              <span>20+ <span data-pl="marek" data-en="brands">marek</span></span>
+            </div>
+          </div>
+        </article>
+        <article class="case-card">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <span class="card-tag">Content Production</span>
+            <h3 class="card-title">Music <em>Video</em></h3>
+            <div class="card-meta">
+              <span>10M <span data-pl="wyświetleń" data-en="views">wyświetleń</span></span>
+              <span>#1 YouTube PL</span>
+            </div>
+          </div>
+        </article>
+        <article class="case-card">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <span class="card-tag">PR Campaign</span>
+            <h3 class="card-title" data-pl="Launch <em>produktu</em>" data-en="Product <em>launch</em>">Launch <em>produktu</em></h3>
+            <div class="card-meta">
+              <span>30+ <span data-pl="publikacji" data-en="publications">publikacji</span></span>
+              <span>8M <span data-pl="zasięg" data-en="reach">zasięg</span></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA (DARK) -->
+  <section class="chapter chapter-dark cta-chapter">
+    <div class="cta-inner">
+      <div class="mono" style="margin-bottom: 2rem; color: var(--white-muted);">— Twój projekt</div>
+      <h2 class="cta-title words-reveal"
+          data-pl="Kolejny <em>case study</em> może być Twój."
+          data-en="The next <em>case study</em> could be yours.">
+        Kolejny <em>case study</em> może być Twój.
+      </h2>
+      <p class="cta-lead lead fade-in"
+         data-pl="Wyślij brief. Odpowiadamy w 24h, ofertę przygotujemy w 48h."
+         data-en="Send a brief. We respond in 24h, proposal ready in 48h.">
+        Wyślij brief. Odpowiadamy w 24h, ofertę przygotujemy w 48h.
+      </p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn-gold">
+          <span data-pl="Porozmawiajmy" data-en="Let's talk">Porozmawiajmy</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="footer-mount"></div>
+</body>
+</html>

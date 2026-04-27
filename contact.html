@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pl" data-lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — Star Media</title>
+<link rel="icon" type="image/png" href="assets/logo/logo.png">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/pages.css">
+<script src="assets/components.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script src="assets/page-scripts.js" defer></script>
+<!-- 3D stack — Three.js r128 + GLTFLoader (local) -->
+<script src="assets/vendor/three.min.js" defer></script>
+<script src="assets/vendor/GLTFLoader.js" defer></script>
+<script src="assets/hero3d.js" defer></script>
+</head>
+<body>
+
+<div id="nav-mount"></div>
+<div id="menu-mount"></div>
+
+<main>
+
+  <!-- HERO (DARK) -->
+  <section class="chapter chapter-dark hero-chapter">
+    <div class="hero-3d hero-3d--compact" data-glb="assets/3d/star.glb">
+      <div class="hero-3d-fallback" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <div class="hero-3d-progress">
+          <span class="hero-3d-progress-label" data-pl="Wczytywanie" data-en="Loading">Wczytywanie</span>
+          <span class="hero-3d-progress-value">0%</span>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-inner">
+      <div class="hero-top">
+        <div class="hero-eyebrow" data-pl="07 — Kontakt" data-en="07 — Contact">07 — Kontakt</div>
+        <div class="hero-meta">
+          <div data-pl="Odpowiedź w 24h" data-en="Response in 24h">Odpowiedź w 24h</div>
+          <div>Warszawa · CET</div>
+        </div>
+      </div>
+
+      <h1 class="hero-title" data-split-lines>
+        Let&rsquo;s<br>
+        <em class="g">talk.</em>
+      </h1>
+
+      <div class="hero-sub">
+        <p class="hero-tagline fade-in"
+           data-pl="Niezależnie czy reprezentujesz markę, czy jesteś talentem — wybierz właściwy formularz i odezwij się."
+           data-en="Whether you represent a brand or you're a talent — pick the right form and reach out.">
+          Niezależnie czy reprezentujesz markę, czy jesteś talentem — wybierz właściwy formularz i odezwij się.
+        </p>
+        <div class="hero-scroll fade-in"><span data-pl="Formularz" data-en="Form">Formularz</span><span>↓</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (LIGHT) -->
+  <section class="chapter chapter-light contact-chapter">
+    <div class="chapter-inner">
+      <div class="mono" style="margin-bottom: 2rem; opacity: 0.5;">— Porozmawiajmy</div>
+
+      <div class="contact-cols">
+
+        <aside>
+          <dl class="contact-info">
+            <dt data-pl="Email" data-en="Email">Email</dt>
+            <dd><a href="mailto:hello@star-media.pl">hello@star-media.pl</a></dd>
+
+            <dt data-pl="Instagram" data-en="Instagram">Instagram</dt>
+            <dd><a href="https://instagram.com/star_media_pl" target="_blank" rel="noopener">@star_media_pl</a></dd>
+
+            <dt data-pl="Lokalizacja" data-en="Location">Lokalizacja</dt>
+            <dd>Warszawa, Polska</dd>
+
+            <dt data-pl="Odpowiadamy" data-en="We reply">Odpowiadamy</dt>
+            <dd data-pl="w 24 godziny" data-en="within 24 hours">w 24 godziny</dd>
+
+            <dt data-pl="Partner" data-en="Partner">Partner</dt>
+            <dd data-pl="Oficjalny partner Polska Press" data-en="Official Polska Press partner">Oficjalny partner Polska Press</dd>
+          </dl>
+        </aside>
+
+        <div>
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="brands" data-pl="Dla marki" data-en="For brands">Dla marki</button>
+            <button class="tab-btn" data-tab="talents" data-pl="Dla talentu" data-en="For talents">Dla talentu</button>
+          </div>
+
+          <form class="form active" id="form-brands">
+            <div class="form-row">
+              <div class="field">
+                <label data-pl="Imię i nazwisko" data-en="Full name">Imię i nazwisko</label>
+                <input type="text" required>
+              </div>
+              <div class="field">
+                <label data-pl="Firma" data-en="Company">Firma</label>
+                <input type="text" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label>Email</label>
+                <input type="email" required>
+              </div>
+              <div class="field">
+                <label data-pl="Telefon" data-en="Phone">Telefon</label>
+                <input type="tel">
+              </div>
+            </div>
+            <div class="field">
+              <label data-pl="Typ kampanii" data-en="Campaign type">Typ kampanii</label>
+              <select>
+                <option>Influencer Marketing</option>
+                <option>Brand Collaboration</option>
+                <option>Event Marketing</option>
+                <option>Content Production</option>
+                <option>PR & Media Relations</option>
+                <option data-pl="Inne" data-en="Other">Inne</option>
+              </select>
+            </div>
+            <div class="field">
+              <label data-pl="Opisz projekt" data-en="Project description">Opisz projekt</label>
+              <textarea></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold" style="align-self: flex-start;">
+              <span data-pl="Wyślij brief" data-en="Send brief">Wyślij brief</span>
+              <svg class="btn-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+            </button>
+          </form>
+
+          <form class="form" id="form-talents">
+            <div class="form-row">
+              <div class="field">
+                <label data-pl="Imię i nazwisko" data-en="Full name">Imię i nazwisko</label>
+                <input type="text" required>
+              </div>
+              <div class="field">
+                <label data-pl="Nick / Handle" data-en="Nick / Handle">Nick / Handle</label>
+                <input type="text">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label>Email</label>
+                <input type="email" required>
+              </div>
+              <div class="field">
+                <label>Instagram</label>
+                <input type="text" placeholder="@...">
+              </div>
+            </div>
+            <div class="field">
+              <label data-pl="Kategoria" data-en="Category">Kategoria</label>
+              <select>
+                <option data-pl="Dziennikarz / prezenter" data-en="Journalist / presenter">Dziennikarz / prezenter</option>
+                <option data-pl="Influencer social media" data-en="Social media influencer">Influencer social media</option>
+                <option>Podcaster</option>
+                <option data-pl="Twórca YouTube" data-en="YouTube creator">Twórca YouTube</option>
+                <option data-pl="Osobowość TV" data-en="TV personality">Osobowość TV</option>
+                <option data-pl="Marka" data-en="Brand">Marka</option>
+                <option data-pl="Inne" data-en="Other">Inne</option>
+              </select>
+            </div>
+            <div class="field">
+              <label data-pl="Opisz siebie i zasięgi" data-en="Describe yourself and reach">Opisz siebie i zasięgi</label>
+              <textarea></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold" style="align-self: flex-start;">
+              <span data-pl="Aplikuj" data-en="Apply">Aplikuj</span>
+              <svg class="btn-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+            </button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="footer-mount"></div>
+</body>
+</html>

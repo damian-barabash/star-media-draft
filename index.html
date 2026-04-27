@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pl" data-lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star Media — Boutique Talent Agency × Polska Press</title>
+<meta name="description" content="Star Media — butikowa agencja talentów i influencer marketing. Oficjalny partner Polska Press.">
+<link rel="icon" type="image/png" href="assets/logo/logo.png">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/pages.css">
+<script src="assets/components.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script src="assets/page-scripts.js" defer></script>
+<!-- 3D stack — Three.js r128 + GLTFLoader (served locally, no CDN) -->
+<script src="assets/vendor/three.min.js" defer></script>
+<script src="assets/vendor/GLTFLoader.js" defer></script>
+<script src="assets/hero3d.js" defer></script>
+</head>
+<body>
+
+<div id="nav-mount"></div>
+<div id="menu-mount"></div>
+
+<main>
+
+  <!-- ============ CHAPTER 1: HERO (DARK) ============ -->
+  <section class="chapter chapter-dark hero-chapter">
+    <div class="hero-3d" id="hero-3d" data-glb="assets/3d/star.glb">
+      <div class="hero-3d-fallback" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <div class="hero-3d-progress" id="hero-3d-progress">
+          <span class="hero-3d-progress-label" data-pl="Wczytywanie" data-en="Loading">Wczytywanie</span>
+          <span class="hero-3d-progress-value">0%</span>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-inner">
+
+      <div class="hero-top">
+        <div class="hero-eyebrow">
+          <span data-pl="01 — Star Media × Polska Press" data-en="01 — Star Media × Polska Press">01 — Star Media × Polska Press</span>
+        </div>
+        <div class="hero-meta">
+          <div data-pl="Butikowa agencja" data-en="Boutique agency">Butikowa agencja</div>
+          <div data-pl="Warszawa, 2026" data-en="Warsaw, 2026">Warszawa, 2026</div>
+        </div>
+      </div>
+
+      <h1 class="hero-title" data-split-lines>
+        Star<br>
+        <em class="g">media.</em>
+      </h1>
+
+      <div class="hero-sub">
+        <p class="hero-tagline fade-in"
+           data-pl="Butikowa agencja, która zarządza karierą najbardziej rozpoznawalnych twarzy polskich mediów. Jakość, nie ilość."
+           data-en="A boutique agency managing the careers of Poland's most recognizable media personalities. Quality, not quantity.">
+          Butikowa agencja, która zarządza karierą najbardziej rozpoznawalnych twarzy polskich mediów. Jakość, nie ilość.
+        </p>
+        <div class="hero-scroll fade-in">
+          <span data-pl="Zobacz showreel" data-en="Watch showreel">Zobacz showreel</span>
+          <span>↓</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 2: VIDEO PLACEHOLDER (LIGHT) ============ -->
+  <section class="chapter chapter-light" style="padding: 0; min-height: 100vh;">
+    <div style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+      <div class="ph" style="position: absolute; inset: 0;"></div>
+      <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; padding: var(--chapter-pad) var(--gutter) 6rem; pointer-events: none;">
+        <div style="display: flex; justify-content: space-between;">
+          <span class="mono" style="color: var(--black);" data-pl="Showreel 2026" data-en="Showreel 2026">Showreel 2026</span>
+          <span class="mono" style="color: var(--black);" data-pl="Tu filmik" data-en="Video here">Tu filmik</span>
+        </div>
+        <div style="text-align: center;">
+          <div class="big-statement" style="color: var(--black);">
+            <span class="line"><em class="g">Showreel</em></span>
+            <span class="line" data-pl="na żywo" data-en="playing soon">na żywo</span>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <span class="mono" style="color: var(--black);">00:00 / 02:30</span>
+          <span class="mono" style="color: var(--black);" data-pl="Placeholder" data-en="Placeholder">Placeholder</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 3: STATEMENT (DARK) ============ -->
+  <section class="chapter chapter-dark statement-chapter">
+    <div class="chapter-inner">
+      <div class="mono" style="margin-bottom: 3rem; color: var(--white-muted);">
+        <span data-pl="— Kim jesteśmy" data-en="— Who we are">— Kim jesteśmy</span>
+      </div>
+
+      <h2 class="statement-title words-reveal">
+        Łączymy <em>talenty</em> polskich mediów z markami, które chcą być zapamiętane.
+      </h2>
+
+      <p class="lead fade-in" style="margin-top: 3rem; max-width: 50ch;"
+         data-pl="Pracujemy butikowo. Mały roster, pełna uwaga, długofalowe kontrakty. Nie postujemy — budujemy narracje."
+         data-en="We work boutique. Small roster, full attention, long-term contracts. We don't post — we build narratives.">
+        Pracujemy butikowo. Mały roster, pełna uwaga, długofalowe kontrakty. Nie postujemy — budujemy narracje.
+      </p>
+
+      <div class="statement-grid fade-in">
+        <div>
+          <div class="statement-num"><span data-counter="15" data-suffix="+">15+</span></div>
+          <div class="statement-label" data-pl="Talentów" data-en="Talents">Talentów</div>
+        </div>
+        <div>
+          <div class="statement-num"><span data-counter="50" data-suffix="+">50+</span></div>
+          <div class="statement-label" data-pl="Marek" data-en="Brands">Marek</div>
+        </div>
+        <div>
+          <div class="statement-num"><span data-counter="2.5" data-suffix="M+" data-decimals="1">2.5M+</span></div>
+          <div class="statement-label" data-pl="Zasięg" data-en="Reach">Zasięg</div>
+        </div>
+        <div>
+          <div class="statement-num"><span data-counter="20" data-suffix="+">20+</span></div>
+          <div class="statement-label" data-pl="Tytułów PP" data-en="PP titles">Tytułów PP</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 4: MARQUEE STRIP (DARK) ============ -->
+  <div class="chapter-dark">
+    <div class="marquee">
+      <div class="marquee-track">
+        <span class="marquee-item">Talent Management</span>
+        <span class="marquee-item">influencer marketing</span>
+        <span class="marquee-item">Polska Press</span>
+        <span class="marquee-item">brand collaborations</span>
+        <span class="marquee-item">Content Production</span>
+        <span class="marquee-item">event marketing</span>
+        <span class="marquee-item">Talent Management</span>
+        <span class="marquee-item">influencer marketing</span>
+        <span class="marquee-item">Polska Press</span>
+        <span class="marquee-item">brand collaborations</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CHAPTER 5: TALENTS CAROUSEL (DARK) ============ -->
+  <section class="chapter chapter-dark carousel-chapter">
+    <div class="carousel-head">
+      <div class="mono" style="margin-bottom: 1.5rem; color: var(--white-muted);">
+        <span data-pl="— Nasi talenty" data-en="— Our talents">— Nasi talenty</span>
+      </div>
+      <h2 data-pl="Twarze, które <em>znasz</em>" data-en="Faces you <em>know</em>">Twarze, które <em>znasz</em></h2>
+      <p class="lead" data-pl="Przeciągnij, kliknij lub użyj strzałek." data-en="Drag, click or use arrows.">Przeciągnij, kliknij lub użyj strzałek.</p>
+    </div>
+
+    <div class="carousel-stage">
+      <div class="carousel-card" data-category="presenter">
+        <div class="card-img ph"></div>
+        <div class="card-body">
+          <div class="card-cat" data-pl="Dziennikarka · Polsat" data-en="Journalist · Polsat">Dziennikarka · Polsat</div>
+          <div class="card-name">Katarzyna<br>Zdanowicz</div>
+          <div class="card-handle">@katarzyna_zdanowicz</div>
+        </div>
+      </div>
+      <div class="carousel-card" data-category="influencer">
+        <div class="card-img ph"></div>
+        <div class="card-body">
+          <div class="card-cat" data-pl="Influencerka · YouTube" data-en="Influencer · YouTube">Influencerka · YouTube</div>
+          <div class="card-name">Aria<br>Martelle</div>
+          <div class="card-handle">@ariamartelle</div>
+        </div>
+      </div>
+      <div class="carousel-card" data-category="podcaster">
+        <div class="card-img ph"></div>
+        <div class="card-body">
+          <div class="card-cat" data-pl="Podcast · Lifestyle" data-en="Podcast · Lifestyle">Podcast · Lifestyle</div>
+          <div class="card-name">Przebudzenie<br>Joanny</div>
+          <div class="card-handle">@przebudzenie_joanny</div>
+        </div>
+      </div>
+      <div class="carousel-card" data-category="podcaster">
+        <div class="card-img ph"></div>
+        <div class="card-body">
+          <div class="card-cat" data-pl="Podcast · Sztuka" data-en="Podcast · Art">Podcast · Sztuka</div>
+          <div class="card-name">Rozmowy<br>na płótnie</div>
+          <div class="card-handle">@rozmowy_na_plotnie</div>
+        </div>
+      </div>
+      <div class="carousel-card" data-category="entertainer">
+        <div class="card-img ph"></div>
+        <div class="card-body">
+          <div class="card-cat" data-pl="TV · Hotel Paradise" data-en="TV · Hotel Paradise">TV · Hotel Paradise</div>
+          <div class="card-name">Pan<br>Lektor</div>
+          <div class="card-handle">@pan_lektor_hotelparadise</div>
+        </div>
+      </div>
+      <div class="carousel-card" data-category="influencer">
+        <div class="card-img ph"></div>
+        <div class="card-body">
+          <div class="card-cat" data-pl="Influencerka · Fashion" data-en="Influencer · Fashion">Influencerka · Fashion</div>
+          <div class="card-name">Majeczka</div>
+          <div class="card-handle">@majeczka</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-ctrl">
+      <button class="carousel-arrow" data-carousel-prev aria-label="Previous">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 6H1m0 0l5-5m-5 5l5 5"/></svg>
+      </button>
+      <span class="carousel-count"><em>01</em> / 06</span>
+      <div class="carousel-bar"></div>
+      <button class="carousel-arrow" data-carousel-next aria-label="Next">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 6h16m0 0l-5-5m5 5l-5 5"/></svg>
+      </button>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="talents.html" class="btn">
+        <span data-pl="Zobacz wszystkich" data-en="See all">Zobacz wszystkich</span>
+        <svg class="btn-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 6: POLSKA PRESS (LIGHT) ============ -->
+  <section class="chapter chapter-light">
+    <div class="chapter-inner pp-chapter-inner">
+      <div>
+        <div class="mono" style="margin-bottom: 1.5rem; opacity: 0.6;">
+          <span data-pl="— Ekskluzywne partnerstwo" data-en="— Exclusive partnership">— Ekskluzywne partnerstwo</span>
+        </div>
+
+        <div class="pp-lock">
+          <div class="pp-mark">
+            <span class="pp-mark-top">POLSKA</span>
+            <span class="pp-mark-bot">PRESS GRUPA</span>
+          </div>
+          <span class="x">×</span>
+          <img src="assets/logo/logo.png" alt="Star Media">
+        </div>
+
+        <h2 class="pp-title words-reveal">
+          15M+ <em>czytelników</em> w&nbsp;jednej kampanii.
+        </h2>
+
+        <p style="margin-bottom: 2rem; max-width: 45ch;"
+           data-pl="Star Media to jedyna agencja w Polsce z oficjalnym dostępem do 20+ tytułów regionalnych Polska Press. Twoja kampania wchodzi jednocześnie na social media i do prasy."
+           data-en="Star Media is the only agency in Poland with official access to 20+ Polska Press regional titles. Your campaign launches simultaneously on social and in print.">
+          Star Media to jedyna agencja w Polsce z oficjalnym dostępem do 20+ tytułów regionalnych Polska Press. Twoja kampania wchodzi jednocześnie na social media i do prasy.
+        </p>
+
+        <a href="influencer-marketing.html" class="btn">
+          <span data-pl="Dowiedz się więcej" data-en="Learn more">Dowiedz się więcej</span>
+          <svg class="btn-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </a>
+      </div>
+
+      <div class="pp-stats">
+        <div class="pp-stat">
+          <div class="pp-stat-num"><span data-counter="20" data-suffix="+">20+</span></div>
+          <div class="pp-stat-label" data-pl="Tytułów regionalnych" data-en="Regional titles">Tytułów regionalnych</div>
+        </div>
+        <div class="pp-stat">
+          <div class="pp-stat-num"><span data-counter="15" data-suffix="M+">15M+</span></div>
+          <div class="pp-stat-label" data-pl="Czytelników / mies." data-en="Monthly readers">Czytelników / mies.</div>
+        </div>
+        <div class="pp-stat">
+          <div class="pp-stat-num"><span data-counter="100" data-suffix="%">100%</span></div>
+          <div class="pp-stat-label" data-pl="Zasięg krajowy" data-en="National reach">Zasięg krajowy</div>
+        </div>
+        <div class="pp-stat">
+          <div class="pp-stat-num">360°</div>
+          <div class="pp-stat-label" data-pl="Multi-platform" data-en="Multi-platform">Multi-platform</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 7: SERVICES (DARK) ============ -->
+  <section class="chapter chapter-dark">
+    <div class="chapter-inner">
+      <div style="display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 2rem;">
+        <div>
+          <div class="mono" style="margin-bottom: 1.5rem; color: var(--white-muted);">
+            <span data-pl="— Co robimy" data-en="— What we do">— Co robimy</span>
+          </div>
+          <h2 class="large" data-pl="Pełen serwis<br>dla <em class='g'>marek</em> i <em class='g'>talentów</em>" data-en="Full service<br>for <em class='g'>brands</em> and <em class='g'>talents</em>">Pełen serwis<br>dla <em class="g">marek</em> i <em class="g">talentów</em></h2>
+        </div>
+        <a href="services.html" class="btn">
+          <span data-pl="Wszystkie usługi" data-en="All services">Wszystkie usługi</span>
+          <svg class="btn-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </a>
+      </div>
+
+      <div class="services-list">
+        <div class="service-row">
+          <span class="service-num">01</span>
+          <span class="service-title">Talent Management</span>
+          <span class="service-desc" data-pl="Zarządzanie karierą talentów — strategia, kontrakty, rozwój marki osobistej." data-en="Talent career management — strategy, contracts, personal brand development.">Zarządzanie karierą talentów — strategia, kontrakty, rozwój marki osobistej.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+        <div class="service-row">
+          <span class="service-num">02</span>
+          <span class="service-title">Influencer Marketing</span>
+          <span class="service-desc" data-pl="Kampanie oparte o partnerstwo z Polska Press — social + prasa regionalna." data-en="Campaigns powered by Polska Press — social + regional press.">Kampanie oparte o partnerstwo z Polska Press — social + prasa regionalna.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+        <div class="service-row">
+          <span class="service-num">03</span>
+          <span class="service-title">Brand Collaborations</span>
+          <span class="service-desc" data-pl="Długofalowe kontrakty ambasadorskie. Łączymy marki z idealnie dobranymi twarzami." data-en="Long-term ambassador contracts. We match brands with perfect faces.">Długofalowe kontrakty ambasadorskie. Łączymy marki z idealnie dobranymi twarzami.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+        <div class="service-row">
+          <span class="service-num">04</span>
+          <span class="service-title">Content Production</span>
+          <span class="service-desc" data-pl="Studio foto-video, reel, podcasty, reklamy — pełen cykl pod jednym dachem." data-en="Photo-video studio, reels, podcasts, ads — full cycle under one roof.">Studio foto-video, reel, podcasty, reklamy — pełen cykl pod jednym dachem.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 8: BIG STATEMENT (LIGHT) ============ -->
+  <section class="chapter chapter-light" style="text-align: center;">
+    <div class="chapter-inner" style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 80vh;">
+      <div class="mono" style="margin-bottom: 3rem; opacity: 0.5;">
+        <span data-pl="— Manifest" data-en="— Manifesto">— Manifest</span>
+      </div>
+      <div class="big-statement words-reveal">
+        <span data-pl="Jakość, nie ilość. <em>Zasięg</em> nie hałas. <em>Marka</em> nie post." data-en="Quality, not quantity. <em>Reach</em> not noise. <em>Brand</em> not post.">Jakość, nie ilość. <em>Zasięg</em> nie hałas. <em>Marka</em> nie post.</span>
+      </div>
+      <p class="big-statement-sub fade-in"
+         data-pl="Butikowa agencja, która rozumie różnicę."
+         data-en="A boutique agency that understands the difference.">
+        Butikowa agencja, która rozumie różnicę.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 9: CTA (DARK) ============ -->
+  <section class="chapter chapter-dark cta-chapter">
+    <div class="cta-inner">
+      <div class="mono" style="margin-bottom: 2rem; color: var(--white-muted);">
+        <span data-pl="— Współpraca" data-en="— Let's collaborate">— Współpraca</span>
+      </div>
+      <h2 class="cta-title words-reveal"
+          data-pl="Twoja marka <em>zasługuje</em> na gwiazdy."
+          data-en="Your brand <em>deserves</em> stars.">
+        Twoja marka <em>zasługuje</em> na gwiazdy.
+      </h2>
+      <p class="cta-lead lead fade-in"
+         data-pl="Niezależnie czy reprezentujesz markę, czy jesteś talentem — porozmawiajmy."
+         data-en="Whether you represent a brand or you're a talent — let's talk.">
+        Niezależnie czy reprezentujesz markę, czy jesteś talentem — porozmawiajmy.
+      </p>
+      <div class="cta-actions">
+        <a href="contact.html#brands" class="btn btn-gold">
+          <span data-pl="Jestem marką" data-en="I'm a brand">Jestem marką</span>
+        </a>
+        <a href="contact.html#talents" class="btn">
+          <span data-pl="Jestem talentem" data-en="I'm a talent">Jestem talentem</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="footer-mount"></div>
+
+</body>
+</html>

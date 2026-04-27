@@ -1,0 +1,770 @@
+/* ============================================
+   STAR MEDIA — v3 Boutique System
+   Slide-deck scroll, light/dark chapters
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+:root {
+  /* Brand */
+  --black: #0b0b0d;
+  --white: #f5f5f3;
+  --gold: #c6a75e;
+  --purple: #4b2e83;
+
+  /* Extended */
+  --black-95: #141416;
+  --white-95: #ecebe7;
+  --white-dim: rgba(245, 245, 243, 0.72);
+  --white-muted: rgba(245, 245, 243, 0.45);
+  --white-faint: rgba(245, 245, 243, 0.15);
+  --black-dim: rgba(11, 11, 13, 0.72);
+  --black-muted: rgba(11, 11, 13, 0.45);
+  --black-faint: rgba(11, 11, 13, 0.15);
+  --line-dark: rgba(245, 245, 243, 0.12);
+  --line-light: rgba(11, 11, 13, 0.12);
+
+  /* Typography */
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
+
+  /* Space */
+  --gutter: clamp(1.5rem, 4vw, 4rem);
+  --chapter-pad: clamp(4rem, 10vw, 10rem);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-slow: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.55;
+  font-weight: 300;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul, ol { list-style: none; }
+
+::selection { background: var(--gold); color: var(--black); }
+
+::-webkit-scrollbar { width: 0; display: none; }
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  font-weight: 600;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.huge, .large, .medium, .big-statement, .statement-title, .cta-title, .hero-title {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.huge {
+  font-size: clamp(3.5rem, 12vw, 12rem);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.large {
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.medium {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.05;
+  font-weight: 500;
+}
+
+p {
+  font-size: clamp(0.95rem, 1vw, 1.05rem);
+  line-height: 1.65;
+  color: inherit;
+  max-width: 60ch;
+}
+
+.lead {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.mono {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+em.g, .g {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+  font-family: var(--font-display);
+}
+
+.serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+/* ===== CHAPTERS (full-height slide sections) ===== */
+.chapter {
+  position: relative;
+  min-height: 100vh;
+  padding: var(--chapter-pad) var(--gutter);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chapter-dark {
+  background: var(--black);
+  color: var(--white);
+}
+
+.chapter-light {
+  background: var(--white);
+  color: var(--black);
+}
+
+.chapter-inner {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ===== SLIDE-DECK STACK SCROLL ===== */
+/* Each chapter "stacks" — next chapter slides up over current */
+.stack {
+  position: relative;
+}
+
+.stack > .chapter {
+  position: sticky;
+  top: 0;
+}
+
+/* ===== NAV (minimal) ===== */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem var(--gutter);
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+.nav-bar > * { pointer-events: auto; }
+
+.nav-mark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-mark-logo {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  flex-shrink: 0;
+  /* Inherits parent's mix-blend-mode: difference so logo automatically
+     contrasts on any background — matching the text "STAR MEDIA" beside it. */
+}
+
+.nav-mark-logo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.nav-menu-btn {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.4rem;
+}
+
+.nav-menu-btn-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 20px;
+}
+
+.nav-menu-btn-lines span {
+  height: 1.5px;
+  background: var(--white);
+  width: 100%;
+  transition: transform 0.4s var(--ease);
+}
+
+.nav-menu-btn:hover .nav-menu-btn-lines span:nth-child(1) { transform: translateX(-4px); }
+.nav-menu-btn:hover .nav-menu-btn-lines span:nth-child(2) { transform: translateX(4px); }
+
+/* Ticker bottom-left */
+.ticker {
+  position: fixed;
+  bottom: 1.5rem;
+  left: var(--gutter);
+  z-index: 45;
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--white-muted);
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+.ticker-time {
+  color: var(--white);
+  border: 1px solid var(--line-dark);
+  padding: 0.4rem 0.6rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.ticker-lang {
+  display: flex;
+  gap: 0.3rem;
+  pointer-events: auto;
+}
+
+.ticker-lang button {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: var(--white-muted);
+  padding: 0.2rem 0.4rem;
+  transition: color 0.3s;
+}
+
+.ticker-lang button.active {
+  color: var(--white);
+}
+
+/* Bottom-right scroll indicator */
+.scroll-hint {
+  position: fixed;
+  bottom: 1.5rem;
+  right: var(--gutter);
+  z-index: 45;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--white-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.scroll-hint.hidden { opacity: 0; }
+
+.scroll-hint::after {
+  content: '↓';
+  font-size: 1rem;
+  animation: bob 1.8s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* ===== FULLSCREEN MENU ===== */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--black);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.7s var(--ease);
+}
+
+.menu-overlay.open {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.menu-overlay-inner {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 2rem var(--gutter);
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-close {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.4rem;
+}
+
+.menu-close-x {
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.menu-close-x::before,
+.menu-close-x::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: var(--white);
+}
+
+.menu-close-x::before { transform: rotate(45deg); }
+.menu-close-x::after { transform: rotate(-45deg); }
+
+.menu-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.menu-link {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.8vw, 4.2rem);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--white);
+  display: block;
+  padding: 0.5rem 0;
+  transition: transform 0.6s var(--ease), color 0.4s;
+  transform: translateY(40px);
+  opacity: 0;
+  position: relative;
+  white-space: nowrap;
+}
+
+.menu-overlay.open .menu-link {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.menu-overlay.open .menu-link:nth-child(1) { transition-delay: 0.15s; }
+.menu-overlay.open .menu-link:nth-child(2) { transition-delay: 0.22s; }
+.menu-overlay.open .menu-link:nth-child(3) { transition-delay: 0.29s; }
+.menu-overlay.open .menu-link:nth-child(4) { transition-delay: 0.36s; }
+.menu-overlay.open .menu-link:nth-child(5) { transition-delay: 0.43s; }
+.menu-overlay.open .menu-link:nth-child(6) { transition-delay: 0.50s; }
+.menu-overlay.open .menu-link:nth-child(7) { transition-delay: 0.57s; }
+
+.menu-link:hover {
+  /* visual change handled by .ml-normal/.ml-italic stack in pages.css */
+}
+
+.menu-link-num {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--white-muted);
+  margin-right: 1.5rem;
+  vertical-align: super;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.menu-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-self: center;
+}
+
+.menu-aside-block .mono {
+  color: var(--white-muted);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.menu-aside-block p,
+.menu-aside-block a {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--white);
+  transition: color 0.3s;
+}
+
+.menu-aside-block a:hover { color: var(--gold); }
+
+.menu-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--white-muted);
+}
+
+/* ===== BUTTONS ===== */
+/*
+  Base: border and text same color as parent (currentColor)
+  Hover: background fills with currentColor, text+svg invert to opposite
+*/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.8rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
+  border: 1px solid currentColor;
+  color: inherit;
+  background: transparent;
+  transition: background 0.5s var(--ease), color 0.5s var(--ease), border-color 0.5s var(--ease);
+}
+
+.btn span { transition: color 0.4s; }
+.btn svg { transition: stroke 0.4s; stroke: currentColor; }
+
+.btn-arrow {
+  width: 14px;
+  height: 10px;
+  transition: transform 0.4s, stroke 0.4s;
+  flex-shrink: 0;
+  stroke: currentColor;
+}
+
+.btn:hover .btn-arrow { transform: translateX(4px); }
+
+/* Outline button hover behaviour per chapter */
+/* On DARK chapter: button is white (text/border). Hover → bg white, text/svg BLACK */
+.chapter-dark .btn:not(.btn-gold) {
+  color: var(--white);
+  border-color: var(--white);
+}
+.chapter-dark .btn:not(.btn-gold):hover {
+  background: var(--white);
+  color: var(--black);
+}
+.chapter-dark .btn:not(.btn-gold):hover svg,
+.chapter-dark .btn:not(.btn-gold):hover .btn-arrow { stroke: var(--black); }
+
+/* On LIGHT chapter: button is black (text/border). Hover → bg black, text/svg WHITE */
+.chapter-light .btn:not(.btn-gold) {
+  color: var(--black);
+  border-color: var(--black);
+}
+.chapter-light .btn:not(.btn-gold):hover {
+  background: var(--black);
+  color: var(--white);
+}
+.chapter-light .btn:not(.btn-gold):hover svg,
+.chapter-light .btn:not(.btn-gold):hover .btn-arrow { stroke: var(--white); }
+
+/* ===== GOLD BUTTON ===== */
+.btn-gold {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+}
+
+.btn-gold svg,
+.btn-gold .btn-arrow { stroke: var(--black); }
+
+/* On DARK chapter: gold → white on hover (black would disappear on black bg) */
+.chapter-dark .btn-gold:hover {
+  background: var(--white);
+  border-color: var(--white);
+  color: var(--black);
+}
+.chapter-dark .btn-gold:hover svg,
+.chapter-dark .btn-gold:hover .btn-arrow { stroke: var(--black); }
+
+/* On LIGHT chapter: gold → black on hover */
+.chapter-light .btn-gold:hover {
+  background: var(--black);
+  border-color: var(--black);
+  color: var(--white);
+}
+.chapter-light .btn-gold:hover svg,
+.chapter-light .btn-gold:hover .btn-arrow { stroke: var(--white); }
+
+/* ===== REVEAL (split text / lines) ===== */
+/* NO overflow: hidden — text never clipped. Animation via opacity + translateY only. */
+
+.line-mask {
+  display: block;
+  line-height: inherit;
+}
+
+.line-inner {
+  display: block;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: transform 1.2s var(--ease-slow), opacity 1s var(--ease);
+}
+
+.reveal.in-view .line-inner,
+.chapter.active .line-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* word-by-word reveal — NO overflow clipping */
+.words-reveal {
+  line-height: 1.15;
+}
+
+.words-reveal .word {
+  display: inline-block;
+  line-height: inherit;
+  vertical-align: baseline;
+}
+
+.words-reveal .word-inner {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: transform 1s var(--ease-slow), opacity 0.9s var(--ease);
+}
+
+.words-reveal.in-view .word-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
+}
+.fade-in.in-view { opacity: 1; transform: translateY(0); }
+
+/* ===== MARQUEE ===== */
+.marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 2.5rem 0;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: inherit;
+}
+
+.chapter-dark .marquee { border-color: var(--line-dark); }
+.chapter-light .marquee { border-color: var(--line-light); }
+
+.marquee-track {
+  display: flex;
+  gap: 3rem;
+  white-space: nowrap;
+  animation: m 60s linear infinite;
+  width: max-content;
+}
+
+.marquee-item {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.marquee-item::after {
+  content: '·';
+  opacity: 0.4;
+}
+
+.marquee-item:nth-child(even) {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  text-transform: lowercase;
+}
+
+@keyframes m {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ===== PLACEHOLDER for talent images ===== */
+/* Background lives on ::before so we can parallax it independently
+   of the .ph clipping frame. Overscan (-20%/+20%) gives travel room. */
+.ph {
+  position: relative;
+  overflow: hidden;
+  background-color: #e8e7e3;
+  isolation: isolate;
+}
+
+.ph::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -20%;
+  bottom: -20%;
+  background-image: url('ph/placeholder.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: translate3d(0, var(--ph-parallax, 0px), 0);
+  will-change: transform;
+  z-index: 0;
+}
+
+.ph > * {
+  position: relative;
+  z-index: 1;
+}
+
+.chapter-dark .ph {
+  background-color: #1a1a1d;
+}
+
+.chapter-dark .ph::before {
+  filter: invert(1) hue-rotate(180deg) opacity(0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ph::before {
+    transform: none;
+    will-change: auto;
+  }
+}
+
+/* ===== POLSKA PRESS MARK ===== */
+.pp-mark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.85rem 1.5rem;
+  border: 1.5px solid currentColor;
+  background: transparent;
+}
+
+.pp-mark-top {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.pp-mark-bot {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.55rem;
+  letter-spacing: 0.4em;
+  line-height: 1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1150px) {
+  .menu-body { grid-template-columns: 1fr; gap: 3rem; align-items: start; }
+  .menu-aside { flex-direction: row; flex-wrap: wrap; gap: 1.5rem 3rem; }
+  .menu-aside-block { min-width: 180px; }
+}
+
+@media (max-width: 900px) {
+  .menu-body { grid-template-columns: 1fr; gap: 2.5rem; }
+  .ticker { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .menu-link { font-size: clamp(2.2rem, 9vw, 4rem); }
+}
+
+@media (max-width: 600px) {
+  .ticker-time { display: none; }
+  .scroll-hint { display: none; }
+}

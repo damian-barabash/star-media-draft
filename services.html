@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pl" data-lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Usługi — Star Media</title>
+<link rel="icon" type="image/png" href="assets/logo/logo.png">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/pages.css">
+<script src="assets/components.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script src="assets/page-scripts.js" defer></script>
+<!-- 3D stack — Three.js r128 + GLTFLoader (local) -->
+<script src="assets/vendor/three.min.js" defer></script>
+<script src="assets/vendor/GLTFLoader.js" defer></script>
+<script src="assets/hero3d.js" defer></script>
+</head>
+<body>
+
+<div id="nav-mount"></div>
+<div id="menu-mount"></div>
+
+<main>
+
+  <!-- HERO (DARK) -->
+  <section class="chapter chapter-dark hero-chapter">
+    <div class="hero-3d hero-3d--compact" data-glb="assets/3d/star.glb">
+      <div class="hero-3d-fallback" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <div class="hero-3d-progress">
+          <span class="hero-3d-progress-label" data-pl="Wczytywanie" data-en="Loading">Wczytywanie</span>
+          <span class="hero-3d-progress-value">0%</span>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-inner">
+      <div class="hero-top">
+        <div class="hero-eyebrow" data-pl="04 — Co oferujemy" data-en="04 — What we offer">04 — Co oferujemy</div>
+        <div class="hero-meta">
+          <div data-pl="Pełen zakres" data-en="Full scope">Pełen zakres</div>
+          <div>360°</div>
+        </div>
+      </div>
+
+      <h1 class="hero-title" data-split-lines>
+        Full<br>
+        <em class="g">service.</em>
+      </h1>
+
+      <div class="hero-sub">
+        <p class="hero-tagline fade-in"
+           data-pl="Od zarządzania karierą talentu po realizację ogólnopolskich kampanii — obsługujemy każdy etap pracy z wizerunkiem."
+           data-en="From talent career management to nationwide campaigns — we handle every stage.">
+          Od zarządzania karierą talentu po realizację ogólnopolskich kampanii — obsługujemy każdy etap pracy z wizerunkiem.
+        </p>
+        <div class="hero-scroll fade-in"><span data-pl="Dalej" data-en="Next">Dalej</span><span>↓</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES LIST (LIGHT) -->
+  <section class="chapter chapter-light">
+    <div class="chapter-inner">
+      <div class="mono" style="margin-bottom: 2rem; opacity: 0.5;">— Siedem usług</div>
+      <h2 class="large words-reveal" style="max-width: 20ch;"
+          data-pl="Wszystko, czego <em>potrzebuje</em> Twoja marka"
+          data-en="Everything your <em>brand needs</em>">
+        Wszystko, czego <em>potrzebuje</em> Twoja marka
+      </h2>
+
+      <div class="services-list">
+        <div class="service-row">
+          <span class="service-num">01</span>
+          <span class="service-title">Talent Management</span>
+          <span class="service-desc" data-pl="Kompleksowe zarządzanie karierą — strategia, kontrakty, rozwój marki osobistej." data-en="Comprehensive career management — strategy, contracts, personal brand.">Kompleksowe zarządzanie karierą — strategia, kontrakty, rozwój marki osobistej.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+        <div class="service-row">
+          <span class="service-num">02</span>
+          <span class="service-title">Influencer Marketing</span>
+          <span class="service-desc" data-pl="Kampanie oparte o partnerstwo z Polska Press. Social + prasa regionalna." data-en="Campaigns powered by Polska Press. Social + regional press.">Kampanie oparte o partnerstwo z Polska Press. Social + prasa regionalna.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+        <div class="service-row">
+          <span class="service-num">03</span>
+          <span class="service-title">Social Media</span>
+          <span class="service-desc" data-pl="Strategia, content, prowadzenie profili, kampanie reklamowe — od zera." data-en="Strategy, content, account management, ad campaigns — from zero.">Strategia, content, prowadzenie profili, kampanie reklamowe — od zera.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+        <div class="service-row">
+          <span class="service-num">04</span>
+          <span class="service-title">Brand Collaborations</span>
+          <span class="service-desc" data-pl="Długofalowe kontrakty ambasadorskie. Łączymy marki z idealnie dobranymi twarzami." data-en="Long-term ambassador contracts.">Długofalowe kontrakty ambasadorskie. Łączymy marki z idealnie dobranymi twarzami.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+        <div class="service-row">
+          <span class="service-num">05</span>
+          <span class="service-title">Content Production</span>
+          <span class="service-desc" data-pl="Studio foto-video, reel, reklamy, podcasty — pełen cykl pod jednym dachem." data-en="Photo-video studio, reels, ads, podcasts — full cycle.">Studio foto-video, reel, reklamy, podcasty — pełen cykl pod jednym dachem.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+        <div class="service-row">
+          <span class="service-num">06</span>
+          <span class="service-title">Event Marketing</span>
+          <span class="service-desc" data-pl="Eventy marki, premiery produktów, spotkania prasowe." data-en="Brand events, product launches, press meetings.">Eventy marki, premiery produktów, spotkania prasowe.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+        <div class="service-row">
+          <span class="service-num">07</span>
+          <span class="service-title">PR & Media Relations</span>
+          <span class="service-desc" data-pl="Budowanie relacji z mediami, publikacje w prasie, wizerunek w kryzysie." data-en="Media relations, press publications, crisis management.">Budowanie relacji z mediami, publikacje w prasie, wizerunek w kryzysie.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS (DARK) -->
+  <section class="chapter chapter-dark process-chapter">
+    <div class="process-inner">
+      <div class="process-left">
+        <div class="mono" style="margin-bottom: 2rem; color: var(--white-muted);">— Jak pracujemy</div>
+        <h2 class="words-reveal"
+            data-pl="Cztery kroki od <em>briefu</em> do <em>raportu</em>"
+            data-en="Four steps from <em>brief</em> to <em>report</em>">
+          Cztery kroki od <em>briefu</em> do <em>raportu</em>
+        </h2>
+        <p class="lead fade-in" style="margin-top: 2rem;"
+           data-pl="Przejrzysty proces. 48 godzin od pierwszego kontaktu do pełnej strategii."
+           data-en="Transparent process. 48 hours from first contact to full strategy.">
+          Przejrzysty proces. 48 godzin od pierwszego kontaktu do pełnej strategii.
+        </p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="process-step-num">01</div>
+          <div>
+            <div class="process-step-title">Brief & Research</div>
+            <div class="process-step-desc" data-pl="Zaczynamy od głębokiego zrozumienia marki, celów i grupy docelowej." data-en="Deep understanding of brand, goals and audience.">Zaczynamy od głębokiego zrozumienia marki, celów i grupy docelowej.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">02</div>
+          <div>
+            <div class="process-step-title">Match & Strategy</div>
+            <div class="process-step-desc" data-pl="Dobieramy talentów, kanały, format i harmonogram kampanii." data-en="Matching talents, channels, format and schedule.">Dobieramy talentów, kanały, format i harmonogram kampanii.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">03</div>
+          <div>
+            <div class="process-step-title">Production</div>
+            <div class="process-step-desc" data-pl="Produkcja contentu — zdjęcia, video, pisanie tekstów, postprodukcja." data-en="Content production — photos, video, copy, post-production.">Produkcja contentu — zdjęcia, video, pisanie tekstów, postprodukcja.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">04</div>
+          <div>
+            <div class="process-step-title">Launch & Report</div>
+            <div class="process-step-desc" data-pl="Jednoczesna publikacja + szczegółowy raport wyników." data-en="Simultaneous launch + detailed results report.">Jednoczesna publikacja + szczegółowy raport wyników.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POLSKA PRESS (LIGHT) -->
+  <section class="chapter chapter-light">
+    <div class="chapter-inner pp-chapter-inner">
+      <div>
+        <div class="mono" style="margin-bottom: 1.5rem; opacity: 0.6;">— Wyróżnik Star Media</div>
+        <div class="pp-lock">
+          <div class="pp-mark">
+            <span class="pp-mark-top">POLSKA</span>
+            <span class="pp-mark-bot">PRESS GRUPA</span>
+          </div>
+        </div>
+        <h2 class="pp-title words-reveal"
+            data-pl="Jedyna agencja z dostępem do <em>prasy regionalnej</em>"
+            data-en="The only agency with <em>regional press</em> access">
+          Jedyna agencja z dostępem do <em>prasy regionalnej</em>
+        </h2>
+        <p style="margin-bottom: 2rem; max-width: 45ch;"
+           data-pl="Nasi klienci wchodzą z kampanią jednocześnie na social media i do 20+ tytułów Polska Press. Tego nie oferuje żadna inna agencja w Polsce."
+           data-en="Our clients launch simultaneously on social and in 20+ Polska Press titles. No other agency in Poland offers this.">
+          Nasi klienci wchodzą z kampanią jednocześnie na social media i do 20+ tytułów Polska Press. Tego nie oferuje żadna inna agencja w Polsce.
+        </p>
+      </div>
+
+      <div class="pp-stats">
+        <div class="pp-stat">
+          <div class="pp-stat-num"><span data-counter="20" data-suffix="+">20+</span></div>
+          <div class="pp-stat-label" data-pl="Tytułów" data-en="Titles">Tytułów</div>
+        </div>
+        <div class="pp-stat">
+          <div class="pp-stat-num"><span data-counter="15" data-suffix="M+">15M+</span></div>
+          <div class="pp-stat-label" data-pl="Czytelników" data-en="Readers">Czytelników</div>
+        </div>
+        <div class="pp-stat">
+          <div class="pp-stat-num"><span data-counter="100" data-suffix="%">100%</span></div>
+          <div class="pp-stat-label" data-pl="Pokrycie kraju" data-en="National coverage">Pokrycie kraju</div>
+        </div>
+        <div class="pp-stat">
+          <div class="pp-stat-num">360°</div>
+          <div class="pp-stat-label" data-pl="Multi-platform" data-en="Multi-platform">Multi-platform</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA (DARK) -->
+  <section class="chapter chapter-dark cta-chapter">
+    <div class="cta-inner">
+      <div class="mono" style="margin-bottom: 2rem; color: var(--white-muted);">— Zacznijmy</div>
+      <h2 class="cta-title words-reveal"
+          data-pl="Twoja marka, <em>nasze</em> zasięgi."
+          data-en="Your brand, <em>our</em> reach.">
+        Twoja marka, <em>nasze</em> zasięgi.
+      </h2>
+      <p class="cta-lead lead fade-in"
+         data-pl="Porozmawiajmy o Twoim projekcie. Odpowiadamy w 24 godziny."
+         data-en="Let's talk about your project. We respond in 24 hours.">
+        Porozmawiajmy o Twoim projekcie. Odpowiadamy w 24 godziny.
+      </p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn-gold">
+          <span data-pl="Wyślij brief" data-en="Send a brief">Wyślij brief</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="footer-mount"></div>
+</body>
+</html>

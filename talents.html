@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pl" data-lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talenty — Star Media</title>
+<link rel="icon" type="image/png" href="assets/logo/logo.png">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/pages.css">
+<script src="assets/components.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script src="assets/page-scripts.js" defer></script>
+<!-- 3D stack — Three.js r128 + GLTFLoader (local) -->
+<script src="assets/vendor/three.min.js" defer></script>
+<script src="assets/vendor/GLTFLoader.js" defer></script>
+<script src="assets/hero3d.js" defer></script>
+</head>
+<body>
+
+<div id="nav-mount"></div>
+<div id="menu-mount"></div>
+
+<main>
+
+  <!-- HERO (DARK) -->
+  <section class="chapter chapter-dark hero-chapter">
+    <div class="hero-3d hero-3d--compact" data-glb="assets/3d/star.glb">
+      <div class="hero-3d-fallback" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <div class="hero-3d-progress">
+          <span class="hero-3d-progress-label" data-pl="Wczytywanie" data-en="Loading">Wczytywanie</span>
+          <span class="hero-3d-progress-value">0%</span>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-inner">
+      <div class="hero-top">
+        <div class="hero-eyebrow" data-pl="03 — Nasi talenty" data-en="03 — Our talents">03 — Nasi talenty</div>
+        <div class="hero-meta">
+          <div>Roster 2026</div>
+          <div data-pl="15+ osobowości" data-en="15+ personalities">15+ osobowości</div>
+        </div>
+      </div>
+
+      <h1 class="hero-title" data-split-lines>
+        Faces<br>
+        <em class="g">you know.</em>
+      </h1>
+
+      <div class="hero-sub">
+        <p class="hero-tagline fade-in"
+           data-pl="Reprezentujemy dziennikarzy, twórców internetowych, prezenterów telewizyjnych i podcasterów — tych, którzy kształtują popkulturę."
+           data-en="We represent journalists, digital creators, TV presenters and podcasters — those shaping pop culture.">
+          Reprezentujemy dziennikarzy, twórców internetowych, prezenterów telewizyjnych i podcasterów — tych, którzy kształtują popkulturę.
+        </p>
+        <div class="hero-scroll fade-in"><span data-pl="Poznaj" data-en="Meet">Poznaj</span><span>↓</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D CAROUSEL (DARK) -->
+  <section class="chapter chapter-dark carousel-chapter">
+    <div class="carousel-head">
+      <div class="mono" style="margin-bottom: 1.5rem; color: var(--white-muted);">— Highlighted</div>
+      <h2 data-pl="Poznaj <em>bliżej</em>" data-en="Get to <em>know</em>">Poznaj <em>bliżej</em></h2>
+      <p class="lead" data-pl="Przeciągnij, kliknij lub użyj strzałek." data-en="Drag, click or use arrows.">Przeciągnij, kliknij lub użyj strzałek.</p>
+    </div>
+
+    <div class="carousel-stage">
+      <div class="carousel-card"><div class="card-img ph"></div><div class="card-body"><div class="card-cat" data-pl="Dziennikarka · Polsat" data-en="Journalist · Polsat">Dziennikarka · Polsat</div><div class="card-name">Katarzyna<br>Zdanowicz</div><div class="card-handle">@katarzyna_zdanowicz</div></div></div>
+      <div class="carousel-card"><div class="card-img ph"></div><div class="card-body"><div class="card-cat" data-pl="Influencerka · YouTube" data-en="Influencer · YouTube">Influencerka · YouTube</div><div class="card-name">Aria<br>Martelle</div><div class="card-handle">@ariamartelle</div></div></div>
+      <div class="carousel-card"><div class="card-img ph"></div><div class="card-body"><div class="card-cat" data-pl="Podcast · Lifestyle" data-en="Podcast · Lifestyle">Podcast · Lifestyle</div><div class="card-name">Przebudzenie<br>Joanny</div><div class="card-handle">@przebudzenie_joanny</div></div></div>
+      <div class="carousel-card"><div class="card-img ph"></div><div class="card-body"><div class="card-cat" data-pl="Podcast · Sztuka" data-en="Podcast · Art">Podcast · Sztuka</div><div class="card-name">Rozmowy<br>na płótnie</div><div class="card-handle">@rozmowy_na_plotnie</div></div></div>
+      <div class="carousel-card"><div class="card-img ph"></div><div class="card-body"><div class="card-cat" data-pl="TV · Hotel Paradise" data-en="TV · Hotel Paradise">TV · Hotel Paradise</div><div class="card-name">Pan<br>Lektor</div><div class="card-handle">@pan_lektor_hotelparadise</div></div></div>
+      <div class="carousel-card"><div class="card-img ph"></div><div class="card-body"><div class="card-cat" data-pl="Influencerka · Fashion" data-en="Influencer · Fashion">Influencerka · Fashion</div><div class="card-name">Majeczka</div><div class="card-handle">@majeczka</div></div></div>
+    </div>
+
+    <div class="carousel-ctrl">
+      <button class="carousel-arrow" data-carousel-prev><svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 6H1m0 0l5-5m-5 5l5 5"/></svg></button>
+      <span class="carousel-count"><em>01</em> / 06</span>
+      <div class="carousel-bar"></div>
+      <button class="carousel-arrow" data-carousel-next><svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 6h16m0 0l-5-5m5 5l-5 5"/></svg></button>
+    </div>
+  </section>
+
+  <!-- FULL ROSTER (LIGHT) -->
+  <section class="chapter chapter-light">
+    <div class="chapter-inner">
+      <div class="mono" style="margin-bottom: 1.5rem; opacity: 0.5;">— Pełny roster</div>
+      <h2 class="large words-reveal" style="max-width: 20ch;"
+          data-pl="Wszystkie <em>gwiazdy</em>, które reprezentujemy"
+          data-en="Every <em>star</em> we represent">
+        Wszystkie <em>gwiazdy</em>, które reprezentujemy
+      </h2>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all" data-pl="Wszyscy" data-en="All">Wszyscy</button>
+        <button class="filter-btn" data-filter="presenter" data-pl="Prezenterzy" data-en="Presenters">Prezenterzy</button>
+        <button class="filter-btn" data-filter="influencer" data-pl="Influencerzy" data-en="Influencers">Influencerzy</button>
+        <button class="filter-btn" data-filter="podcaster" data-pl="Podcasterzy" data-en="Podcasters">Podcasterzy</button>
+        <button class="filter-btn" data-filter="entertainer" data-pl="Entertainerzy" data-en="Entertainers">Entertainerzy</button>
+        <button class="filter-btn" data-filter="brand" data-pl="Marki" data-en="Brands">Marki</button>
+      </div>
+
+      <div class="talents-grid">
+        <article class="talent-card" data-category="presenter">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <div class="card-cat" data-pl="Dziennikarka · Polsat" data-en="Journalist · Polsat">Dziennikarka · Polsat</div>
+            <div class="card-name">Katarzyna<br>Zdanowicz</div>
+            <div class="card-handle">@katarzyna_zdanowicz</div>
+          </div>
+        </article>
+        <article class="talent-card" data-category="influencer">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <div class="card-cat" data-pl="Influencerka · YouTube" data-en="Influencer · YouTube">Influencerka · YouTube</div>
+            <div class="card-name">Aria<br>Martelle</div>
+            <div class="card-handle">@ariamartelle</div>
+          </div>
+        </article>
+        <article class="talent-card" data-category="podcaster">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <div class="card-cat" data-pl="Podcast · Lifestyle" data-en="Podcast · Lifestyle">Podcast · Lifestyle</div>
+            <div class="card-name">Przebudzenie<br>Joanny</div>
+            <div class="card-handle">@przebudzenie_joanny</div>
+          </div>
+        </article>
+        <article class="talent-card" data-category="podcaster">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <div class="card-cat" data-pl="Podcast · Sztuka" data-en="Podcast · Art">Podcast · Sztuka</div>
+            <div class="card-name">Rozmowy<br>na płótnie</div>
+            <div class="card-handle">@rozmowy_na_plotnie</div>
+          </div>
+        </article>
+        <article class="talent-card" data-category="entertainer">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <div class="card-cat" data-pl="TV · Hotel Paradise" data-en="TV · Hotel Paradise">TV · Hotel Paradise</div>
+            <div class="card-name">Pan<br>Lektor</div>
+            <div class="card-handle">@pan_lektor_hotelparadise</div>
+          </div>
+        </article>
+        <article class="talent-card" data-category="influencer">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <div class="card-cat" data-pl="Influencerka · Fashion" data-en="Influencer · Fashion">Influencerka · Fashion</div>
+            <div class="card-name">Majeczka</div>
+            <div class="card-handle">@majeczka</div>
+          </div>
+        </article>
+        <article class="talent-card" data-category="brand">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <div class="card-cat" data-pl="Marka · Biżuteria" data-en="Brand · Jewelry">Marka · Biżuteria</div>
+            <div class="card-name">Biżuteria<br>Colibra</div>
+            <div class="card-handle">@bizuteriacolibra</div>
+          </div>
+        </article>
+        <article class="talent-card" data-category="brand">
+          <div class="card-img ph"></div>
+          <div class="card-body">
+            <div class="card-cat" data-pl="Marka · Event" data-en="Brand · Events">Marka · Event</div>
+            <div class="card-name">Złota<br>Scena</div>
+            <div class="card-handle">@zlotascena.pl</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA (DARK) -->
+  <section class="chapter chapter-dark cta-chapter">
+    <div class="cta-inner">
+      <div class="mono" style="margin-bottom: 2rem; color: var(--white-muted);">— Jesteś talentem</div>
+      <h2 class="cta-title words-reveal" data-pl="Dołącz do <em>rosteru</em>." data-en="Join the <em>roster</em>.">Dołącz do <em>rosteru</em>.</h2>
+      <p class="cta-lead lead fade-in"
+         data-pl="Szukamy profesjonalistów, którzy chcą pracować jak zawodnicy premier league."
+         data-en="We're looking for professionals who work like premier league players.">
+        Szukamy profesjonalistów, którzy chcą pracować jak zawodnicy premier league.
+      </p>
+      <div class="cta-actions">
+        <a href="contact.html#talents" class="btn btn-gold"><span data-pl="Aplikuj" data-en="Apply">Aplikuj</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="footer-mount"></div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pl" data-lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O nas — Star Media</title>
+<link rel="icon" type="image/png" href="assets/logo/logo.png">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/pages.css">
+<script src="assets/components.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script src="assets/page-scripts.js" defer></script>
+<!-- 3D stack — Three.js r128 + GLTFLoader (local) -->
+<script src="assets/vendor/three.min.js" defer></script>
+<script src="assets/vendor/GLTFLoader.js" defer></script>
+<script src="assets/hero3d.js" defer></script>
+</head>
+<body>
+
+<div id="nav-mount"></div>
+<div id="menu-mount"></div>
+
+<main>
+
+  <!-- HERO (DARK) -->
+  <section class="chapter chapter-dark hero-chapter">
+    <div class="hero-3d hero-3d--compact" data-glb="assets/3d/star.glb">
+      <div class="hero-3d-fallback" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <div class="hero-3d-progress">
+          <span class="hero-3d-progress-label" data-pl="Wczytywanie" data-en="Loading">Wczytywanie</span>
+          <span class="hero-3d-progress-value">0%</span>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-inner">
+      <div class="hero-top">
+        <div class="hero-eyebrow" data-pl="02 — Kim jesteśmy" data-en="02 — Who we are">02 — Kim jesteśmy</div>
+        <div class="hero-meta">
+          <div data-pl="O agencji" data-en="About us">O agencji</div>
+          <div>Warszawa · 2026</div>
+        </div>
+      </div>
+
+      <h1 class="hero-title" data-split-lines>
+        Boutique<br>
+        <em class="g">for a reason.</em>
+      </h1>
+
+      <div class="hero-sub">
+        <p class="hero-tagline fade-in"
+           data-pl="Wybieramy jakość, nie ilość. Dlatego każdy nasz projekt ma twarz, nazwisko i historię."
+           data-en="We choose quality, not quantity. That's why every project has a face, a name, a story.">
+          Wybieramy jakość, nie ilość. Dlatego każdy nasz projekt ma twarz, nazwisko i historię.
+        </p>
+        <div class="hero-scroll fade-in"><span data-pl="Dalej" data-en="Next">Dalej</span><span>↓</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO SPLIT (LIGHT with image) -->
+  <section class="chapter chapter-light">
+    <div class="chapter-inner" style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;">
+      <div>
+        <div class="mono" style="margin-bottom: 2rem; opacity: 0.5;">— Nasza historia</div>
+        <h2 class="large words-reveal"
+            data-pl="Butikowa filozofia. <em>Masowy</em> zasięg."
+            data-en="Boutique philosophy. <em>Mass</em> reach.">
+          Butikowa filozofia. <em>Masowy</em> zasięg.
+        </h2>
+        <p style="margin-top: 2rem; max-width: 45ch;"
+           data-pl="Star Media powstała z przekonania, że najlepsze kampanie rodzą się z prawdziwych relacji. Jako jedyna agencja w Polsce łączymy świat influencerów z gigantem prasy regionalnej — Polska Press."
+           data-en="Star Media was born from the belief that the best campaigns come from real relationships. As the only agency in Poland, we combine influencers with regional press giant Polska Press.">
+          Star Media powstała z przekonania, że najlepsze kampanie rodzą się z prawdziwych relacji. Jako jedyna agencja w Polsce łączymy świat influencerów z gigantem prasy regionalnej — Polska Press.
+        </p>
+        <p style="margin-top: 1.5rem; max-width: 45ch;"
+           data-pl="Nie pracujemy z każdym. Wybieramy marki i talentów, którzy rozumieją wartość długofalowego budowania wizerunku."
+           data-en="We don't work with everyone. We choose brands and talents who understand long-term image building.">
+          Nie pracujemy z każdym. Wybieramy marki i talentów, którzy rozumieją wartość długofalowego budowania wizerunku.
+        </p>
+      </div>
+      <div class="ph" style="aspect-ratio: 4/5;"></div>
+    </div>
+  </section>
+
+  <!-- VALUES (DARK) -->
+  <section class="chapter chapter-dark">
+    <div class="chapter-inner">
+      <div class="mono" style="margin-bottom: 2rem; color: var(--white-muted);">— Wartości</div>
+      <h2 class="large words-reveal"
+          data-pl="Cztery filary, na których <em>budujemy</em>"
+          data-en="Four pillars <em>we build on</em>">
+        Cztery filary, na których <em>budujemy</em>
+      </h2>
+
+      <div class="values-grid">
+        <div class="value-item">
+          <div class="value-num">01</div>
+          <h3 data-pl="Autentyczność" data-en="Authenticity">Autentyczność</h3>
+          <p data-pl="Każda kampania musi być szczera. Pracujemy tylko z talentami, którzy wierzą w marki." data-en="Every campaign must be genuine. We only work with talents who believe in the brands.">Każda kampania musi być szczera. Pracujemy tylko z talentami, którzy wierzą w marki.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-num">02</div>
+          <h3 data-pl="Jakość" data-en="Quality">Jakość</h3>
+          <p data-pl="Mało, ale za to dobrze. Skromna lista oznacza pełną uwagę każdemu." data-en="Few, but exceptional. A curated list means full attention to each.">Mało, ale za to dobrze. Skromna lista oznacza pełną uwagę każdemu.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-num">03</div>
+          <h3 data-pl="Strategia" data-en="Strategy">Strategia</h3>
+          <p data-pl="Nie wrzucamy postów — budujemy długoterminową narrację." data-en="We don't post — we build long-term narratives.">Nie wrzucamy postów — budujemy długoterminową narrację.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-num">04</div>
+          <h3 data-pl="Zasięg" data-en="Reach">Zasięg</h3>
+          <p data-pl="Partnerstwo z Polska Press — 20+ tytułów i 15M+ czytelników." data-en="Polska Press partnership — 20+ titles and 15M+ readers.">Partnerstwo z Polska Press — 20+ tytułów i 15M+ czytelników.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE (LIGHT) -->
+  <section class="chapter chapter-light">
+    <div class="chapter-inner">
+      <div class="mono" style="margin-bottom: 2rem; opacity: 0.5;">— Kalendarium</div>
+      <h2 class="large words-reveal"
+          data-pl="Od <em>zera</em> do partnera <em>Polska Press</em>"
+          data-en="From <em>zero</em> to <em>Polska Press</em> partner">
+        Od <em>zera</em> do partnera <em>Polska Press</em>
+      </h2>
+
+      <div class="services-list" style="margin-top: 5rem;">
+        <div class="service-row">
+          <span class="service-num">2018</span>
+          <span class="service-title" data-pl="Start agencji" data-en="Launch">Start agencji</span>
+          <span class="service-desc" data-pl="Pierwszych 3 talentów, pierwszy kontrakt, pierwsza kampania. Warszawa." data-en="First 3 talents, first contract, first campaign. Warsaw.">Pierwszych 3 talentów, pierwszy kontrakt, pierwsza kampania. Warszawa.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+        <div class="service-row">
+          <span class="service-num">2020</span>
+          <span class="service-title" data-pl="Pierwsze gwiazdy" data-en="First stars">Pierwsze gwiazdy</span>
+          <span class="service-desc" data-pl="Rozpoznawalne twarze dołączają. Zasięg przekracza 5M odbiorców miesięcznie." data-en="Recognizable faces join. Reach exceeds 5M monthly.">Rozpoznawalne twarze dołączają. Zasięg przekracza 5M odbiorców miesięcznie.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+        <div class="service-row">
+          <span class="service-num">2023</span>
+          <span class="service-title">Polska Press</span>
+          <span class="service-desc" data-pl="Ekskluzywna umowa. Influencer marketing wchodzi do mediów tradycyjnych." data-en="Exclusive agreement. Influencer marketing enters traditional media.">Ekskluzywna umowa. Influencer marketing wchodzi do mediów tradycyjnych.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+        <div class="service-row">
+          <span class="service-num">2026</span>
+          <span class="service-title" data-pl="Nowa era" data-en="New era">Nowa era</span>
+          <span class="service-desc" data-pl="15+ talentów, 50+ marek, 15M+ zasięg. Butikowa agencja z zasięgiem giganta." data-en="15+ talents, 50+ brands, 15M+ reach. Boutique with giant's reach.">15+ talentów, 50+ marek, 15M+ zasięg. Butikowa agencja z zasięgiem giganta.</span>
+          <svg class="service-arrow" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h12m0 0l-4-4m4 4l-4 4"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA (DARK) -->
+  <section class="chapter chapter-dark cta-chapter">
+    <div class="cta-inner">
+      <div class="mono" style="margin-bottom: 2rem; color: var(--white-muted);">— Porozmawiajmy</div>
+      <h2 class="cta-title words-reveal"
+          data-pl="Dołącz do <em>historii</em>."
+          data-en="Join the <em>story</em>.">
+        Dołącz do <em>historii</em>.
+      </h2>
+      <p class="cta-lead lead fade-in"
+         data-pl="Czy jesteś marką szukającą kampanii, czy talentem szukającym wsparcia — znajdziesz tu swoje miejsce."
+         data-en="Whether a brand seeking a campaign or a talent seeking support — your place is here.">
+        Czy jesteś marką szukającą kampanii, czy talentem szukającym wsparcia — znajdziesz tu swoje miejsce.
+      </p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn-gold">
+          <span data-pl="Skontaktuj się" data-en="Get in touch">Skontaktuj się</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="footer-mount"></div>
+
+</body>
+</html>
