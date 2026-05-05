@@ -768,3 +768,212 @@ em.g, .g {
   .ticker-time { display: none; }
   .scroll-hint { display: none; }
 }
+
+/* =========================================================
+   PREMIUM REFINEMENTS — 2026-05-05
+   Subtle polish layer. No structural / layout changes.
+   ========================================================= */
+
+/* Typography polish — kerning, ligatures, optical legibility */
+html {
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+h1, h2, h3, h4,
+.huge, .large, .medium,
+.hero-title, .cta-title, .statement-title, .big-statement,
+.menu-link, .marquee-item, .pp-title, .nav-mark {
+  font-feature-settings: "kern" 1, "liga" 1, "ss01" 1;
+  text-rendering: geometricPrecision;
+}
+
+/* Tabular numerals everywhere numbers are data */
+.ticker-time, .carousel-count, .pp-stat-num,
+.statement-num, .value-num, .service-num,
+.process-step-num, [data-counter] {
+  font-feature-settings: "tnum" 1, "kern" 1;
+}
+
+/* Italic gold accents — subtle gold halo for premium feel */
+em.g, .g,
+.statement-title em, .cta-title em,
+.pp-title em, .process-left h2 em,
+.case-card .card-title em, .big-statement em,
+.carousel-head h2 em {
+  text-shadow: 0 0 28px rgba(198, 167, 94, 0.22);
+}
+
+/* Premium focus ring — gold, refined */
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 1.5px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Subtle film grain overlay — tactile depth, no structural impact.
+   Fixed full-viewport SVG noise + overlay blend mode = works on both
+   chapter-dark and chapter-light without two layers. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 320 320' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after { opacity: 0.025; }
+}
+
+/* Hero ambient halo — gold/purple radial behind the 3D star.
+   z-index: 0 sits below .hero-3d (z-1) and .chapter-inner (z-2). */
+.hero-chapter::before {
+  content: '';
+  position: absolute;
+  top: 5%;
+  right: 0;
+  width: 75vw;
+  height: 75vw;
+  max-width: 1200px;
+  max-height: 1200px;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 60% 40%, rgba(198, 167, 94, 0.12) 0%, transparent 55%),
+    radial-gradient(circle at 30% 70%, rgba(75, 46, 131, 0.08) 0%, transparent 55%);
+  filter: blur(40px);
+  animation: heroHaloDrift 22s ease-in-out infinite alternate;
+}
+
+@keyframes heroHaloDrift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-3%, 2%) scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-chapter::before { animation: none; }
+}
+
+/* Marquee — soft fade at left/right edges */
+.marquee {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+
+/* Buttons — soft lift on hover (composes with existing transitions) */
+.btn { will-change: transform; }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+/* Gold button — refined gradient + light sheen sweep on hover */
+.btn-gold {
+  background: linear-gradient(180deg, #d4b56a 0%, #c6a75e 55%, #b89549 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 -130%;
+  width: 60%;
+  background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.32) 50%, transparent 100%);
+  transition: left 0.95s var(--ease);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn-gold:hover::before { left: 130%; }
+
+/* Keep label/svg above the sheen layer */
+.btn-gold > * { position: relative; z-index: 2; }
+
+/* Service rows — gold accent dash that grows from the left on hover */
+.service-row::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: translateY(-50%);
+  transition: width 0.6s var(--ease);
+  pointer-events: none;
+}
+
+.service-row:hover::before { width: 14px; }
+
+/* Talent cards — premium hover shadow with hint of gold */
+.talent-card {
+  box-shadow: 0 0 0 transparent;
+  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
+}
+
+.chapter-dark .talent-card:hover {
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(198, 167, 94, 0.25);
+}
+
+.chapter-light .talent-card:hover {
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(198, 167, 94, 0.4);
+}
+
+/* Carousel — gold accent line on the active card */
+.carousel-card.active {
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.45),
+    inset 0 -2px 0 var(--gold);
+}
+
+.chapter-light .carousel-card.active {
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.18),
+    inset 0 -2px 0 var(--gold);
+}
+
+/* Filter buttons — softer interaction */
+.filter-btn { transition: color 0.3s, border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s; }
+.filter-btn:hover { transform: translateY(-1px); }
+.filter-btn.active { box-shadow: 0 6px 18px rgba(198, 167, 94, 0.32); }
+
+/* Footer links — animated gold underline */
+.footer-col a { position: relative; display: inline-block; }
+.footer-col a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.45s var(--ease);
+}
+.footer-col a:hover { padding-left: 0; }   /* override the existing padding shift — underline replaces it */
+.footer-col a:hover::after { width: 100%; }
+
+/* Menu overlay — atmospheric corner tints (gold + purple) under the black */
+.menu-overlay {
+  background:
+    radial-gradient(circle at 25% 18%, rgba(198, 167, 94, 0.08) 0%, transparent 55%),
+    radial-gradient(circle at 80% 85%, rgba(75, 46, 131, 0.10) 0%, transparent 55%),
+    var(--black);
+}
+
+/* Stat numbers — subtle gold halo to match italic accents */
+.pp-stat-num,
+.value-num,
+.process-step-num {
+  text-shadow: 0 0 32px rgba(198, 167, 94, 0.18);
+}
+
+/* Ticker time — barely-there glass plate */
+.ticker-time {
+  background: rgba(255, 255, 255, 0.025);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+}

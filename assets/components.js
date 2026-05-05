@@ -132,12 +132,15 @@ const footerHTML = `
 </footer>
 `;
 
-// Inject
-document.addEventListener('DOMContentLoaded', () => {
-  const navMount = document.getElementById('nav-mount');
-  const menuMount = document.getElementById('menu-mount');
-  const footerMount = document.getElementById('footer-mount');
-  if (navMount) navMount.innerHTML = navHTML;
-  if (menuMount) menuMount.innerHTML = menuHTML;
-  if (footerMount) footerMount.innerHTML = footerHTML;
-});
+// Inject synchronously. The script tag uses `defer`, so the DOM is fully
+// parsed (mount points exist) by the time this runs, AND main.js — which
+// is also defer and depends on these elements — runs strictly after this.
+// Wrapping in DOMContentLoaded would queue a task that can lose the race
+// against main.js's setTimeout(0), leaving .ticker-time and .nav-menu-btn
+// missing when initMain queries the DOM.
+const navMount = document.getElementById('nav-mount');
+const menuMount = document.getElementById('menu-mount');
+const footerMount = document.getElementById('footer-mount');
+if (navMount) navMount.innerHTML = navHTML;
+if (menuMount) menuMount.innerHTML = menuHTML;
+if (footerMount) footerMount.innerHTML = footerHTML;
