@@ -139,7 +139,7 @@ export async function mountStarScene(host: HTMLElement, opts: { compact: boolean
     const base = await loadModel()
     if (disposed) return { dispose: () => undefined }
     model = base.clone(true)
-    model.scale.multiplyScalar(opts.compact ? 1.4 : 2.0)
+    model.scale.multiplyScalar(opts.compact ? 1.5 : 1.85)
     scene.add(model)
     host.classList.add('ready')
   } catch (err) {
