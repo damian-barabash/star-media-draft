@@ -24,7 +24,7 @@ export const PROJECT_FILTERS: { key: 'all' | ProjectCategory; label: L }[] = [
   { key: 'creative', label: l('Creative', 'Creative', 'Creative') },
 ]
 
-const yt = (id: string) => ({ image: `https://img.youtube.com/vi/${id}/maxresdefault.jpg`, video: `https://www.youtube.com/watch?v=${id}` })
+const yt = (id: string, shorts = false) => ({ image: `https://img.youtube.com/vi/${id}/maxresdefault.jpg`, video: shorts ? `https://www.youtube.com/shorts/${id}` : `https://www.youtube.com/watch?v=${id}` })
 
 /**
  * Static fallback portfolio (Supabase `projects` table overrides when available).
@@ -37,7 +37,9 @@ export const PROJECTS: Project[] = [
   { slug: 'aria-martelle-lewa-prawa', title: 'Aria Martelle — Lewa Prawa', category: 'video', kind: l('Teledysk', 'Music video', 'Videoclip'), ...yt('-kyeBeWX5os') },
   { slug: 'aria-martelle-alarm', title: 'Aria Martelle — Alarm', category: 'video', kind: l('Teledysk', 'Music video', 'Videoclip'), ...yt('mkiLlrsZXOY') },
   { slug: 'legendy-showbiznesu-katarzyna-zak', title: 'Legendy Showbiznesu — Katarzyna Żak', category: 'podcasty', kind: l('Podcast / Złota Scena', 'Podcast / Złota Scena', 'Podcast / Złota Scena'), featured: true, ...yt('fuy62dsW8LU') },
-  { slug: 'anna-puslecka-podcast-bernatowicz', title: 'Anna Puślecka Podcast — Robert Bernatowicz', category: 'podcasty', kind: l('Podcast', 'Podcast', 'Podcast'), ...yt('Ai4IyBXZT54') },
+  { slug: 'rozmowy-na-plotnie-marzena-rogalska', title: 'Rozmowy na płótnie — Marzena Rogalska', category: 'podcasty', kind: l('Podcast', 'Podcast', 'Podcast'), featured: true, ...yt('m7xa0BZkQnA') },
+  { slug: 'anna-puslecka-podcast-adam-ferency', title: 'Anna Puślecka Podcast — Adam Ferency', category: 'podcasty', kind: l('Rolka / Podcast', 'Reel / Podcast', 'Reel / Podcast'), ...yt('E0DAIhiHDF0', true) },
+  { slug: 'anna-puslecka-podcast-dzieci', title: 'Anna Puślecka Podcast — Nie będę mogła mieć dzieci', category: 'podcasty', kind: l('Rolka / Podcast', 'Reel / Podcast', 'Reel / Podcast'), ...yt('0PBhRGidvRA', true) },
   { slug: 'face-off-2-randka-w-ciemno', title: 'Face Off 2 — Randka w ciemno', category: 'youtube', kind: l('Produkcja YouTube / Oliwia Puchacz', 'YouTube production / Oliwia Puchacz', 'Producción de YouTube / Oliwia Puchacz'), featured: true, ...yt('5F2Vwkzobq4') },
   { slug: 'swiat-gosi-daj-sie-wyczaic', title: 'Świat Gosi — Daj się wyczaić', category: 'youtube', kind: l('Produkcja YouTube', 'YouTube production', 'Producción de YouTube'), ...yt('oxgrf_u2O4Y') },
   { slug: 'gosia-w-warszawie', title: 'Gosia w Warszawie', category: 'youtube', kind: l('Produkcja YouTube / Świat Gosi', 'YouTube production / Świat Gosi', 'Producción de YouTube / Świat Gosi'), ...yt('s92xjCalMEQ') },
