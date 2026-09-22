@@ -1,0 +1,71 @@
+import { l } from '../i18n/types'
+
+export const CONTACT = {
+  eyebrow: l('07 / Kontakt', '07 / Contact', '07 / Contacto'),
+  meta: [l('Warszawa / Polska', 'Warsaw / Poland', 'Varsovia / Polonia')],
+  title: l("Let's\n*talk.*", "Let's\n*talk.*", "Let's\n*talk.*"),
+  tagline: l(
+    'Masz markę, projekt albo pomysł?\nPorozmawiajmy o tym, co możemy zrobić razem.',
+    'Got a brand, a project or an idea?\nLet\'s talk about what we can do together.',
+    '¿Tienes una marca, un proyecto o una idea?\nHablemos de lo que podemos hacer juntos.',
+  ),
+  scroll: l('Formularz', 'Form', 'Formulario'),
+
+  info: {
+    eyebrow: l('Porozmawiajmy', "Let's talk", 'Hablemos'),
+    email: l('Email', 'Email', 'Email'),
+    instagram: 'Instagram',
+    location: l('Lokalizacja', 'Location', 'Ubicación'),
+    partner: l('Partner', 'Partner', 'Socio'),
+  },
+
+  form: {
+    name: l('Imię i nazwisko', 'Full name', 'Nombre y apellidos'),
+    company: l('Firma / marka', 'Company / brand', 'Empresa / marca'),
+    email: 'Email',
+    phone: l('Telefon', 'Phone', 'Teléfono'),
+    optional: l('opcjonalnie', 'optional', 'opcional'),
+    service: l('W czym możemy pomóc?', 'How can we help?', '¿En qué podemos ayudar?'),
+    choose: l('Wybierz', 'Choose', 'Elige'),
+    services: [
+      { value: 'management', label: 'Management' },
+      { value: 'influencer-marketing', label: 'Influencer Marketing' },
+      { value: 'strategia-creative', label: 'Strategia & Creative' },
+      { value: 'social-media', label: 'Social Media' },
+      { value: 'video-production', label: 'Video Production' },
+      { value: 'photo-production', label: 'Photo Production' },
+      { value: 'events', label: 'Events' },
+      { value: 'pr-media', label: 'PR & Media' },
+      { value: 'web-digital', label: 'Web & Digital' },
+      { value: 'ai-automation', label: 'AI & Automation' },
+      { value: 'branding-design', label: 'Branding & Design' },
+      { value: 'inne', label: l('Inne', 'Other', 'Otro') },
+    ],
+    about: l('O projekcie', 'About the project', 'Sobre el proyecto'),
+    aboutPlaceholder: l('Opowiedz nam krótko, czego potrzebujesz.', 'Tell us briefly what you need.', 'Cuéntanos brevemente qué necesitas.'),
+    budget: l('Budżet', 'Budget', 'Presupuesto'),
+    budgets: [
+      { value: 'do-10k', label: l('Do 10 000 PLN', 'Up to 10,000 PLN', 'Hasta 10 000 PLN') },
+      { value: '10k-30k', label: '10 000–30 000 PLN' },
+      { value: '30k-100k', label: '30 000–100 000 PLN' },
+      { value: '100k-300k', label: '100 000–300 000 PLN' },
+      { value: '300k-plus', label: '300 000+ PLN' },
+      { value: 'do-ustalenia', label: l('Do ustalenia', 'To be discussed', 'A convenir') },
+    ],
+    submit: l('Porozmawiajmy', "Let's talk", 'Hablemos'),
+    sending: l('Wysyłanie…', 'Sending…', 'Enviando…'),
+    consent: l(
+      'Wysyłając formularz, zgadzasz się na kontakt w sprawie Twojego zapytania.',
+      'By sending the form you agree to be contacted about your enquiry.',
+      'Al enviar el formulario aceptas que te contactemos sobre tu consulta.',
+    ),
+    successTitle: l('Dziękujemy.\nOdezwiemy się.', "Thank you.\nWe'll be in touch.", 'Gracias.\nNos pondremos en contacto.'),
+    successText: l('Twoja wiadomość dotarła do nas.', 'Your message has reached us.', 'Tu mensaje nos ha llegado.'),
+    errors: {
+      required: l('Uzupełnij wymagane pola.', 'Please fill in the required fields.', 'Completa los campos obligatorios.'),
+      email: l('Sprawdź adres e-mail.', 'Please check the e-mail address.', 'Revisa la dirección de correo.'),
+      flood: l('Zbyt wiele wiadomości z tego adresu. Spróbuj później.', 'Too many messages from this address. Please try later.', 'Demasiados mensajes desde esta dirección. Inténtalo más tarde.'),
+      network: l('Nie udało się wysłać. Napisz do nas bezpośrednio:', "Couldn't send. Write to us directly:", 'No se pudo enviar. Escríbenos directamente:'),
+    },
+  },
+}

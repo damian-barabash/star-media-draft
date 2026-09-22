@@ -1,0 +1,20 @@
+{
+  "siteUrl": "https://star-media-draft.barabashflow.pl",
+  "serviceSlugs": [
+    "management-talentow",
+    "influencer-marketing",
+    "digital-social-media",
+    "produkcja-video-foto-creative",
+    "formaty-i-zasieg-organiczny",
+    "pr-i-media",
+    "eventy-i-wydarzenia-specjalne",
+    "koncerty-i-live-entertainment",
+    "merch-i-produkty",
+    "budowa-marek-i-projekty-specjalne",
+    "www-e-commerce-i-aplikacje",
+    "ai-i-automatyzacje",
+    "branding-design-i-identyfikacja",
+    "strategia-i-kreacja"
+  ],
+  "pages": ["/", "/o-nas", "/talenty", "/uslugi", "/influencer-marketing", "/projekty", "/kontakt"]
+}

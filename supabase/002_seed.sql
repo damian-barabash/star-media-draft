@@ -1,0 +1,35 @@
+insert into public.projects (slug,title,category,kind_label,image_url,video_url,featured,sort) values
+('aria-martelle-zabawa-z-ogniem','Aria Martelle — Zabawa z Ogniem','video','Teledysk','https://img.youtube.com/vi/j9vdDPhEMUI/maxresdefault.jpg','https://www.youtube.com/watch?v=j9vdDPhEMUI',true,10),
+('aria-martelle-rollercoaster','Aria Martelle — Rollercoaster','video','Teledysk','https://img.youtube.com/vi/qxRerk_nlbU/maxresdefault.jpg','https://www.youtube.com/watch?v=qxRerk_nlbU',true,20),
+('aria-martelle-lewa-prawa','Aria Martelle — Lewa Prawa','video','Teledysk','https://img.youtube.com/vi/-kyeBeWX5os/maxresdefault.jpg','https://www.youtube.com/watch?v=-kyeBeWX5os',false,30),
+('aria-martelle-alarm','Aria Martelle — Alarm','video','Teledysk','https://img.youtube.com/vi/mkiLlrsZXOY/maxresdefault.jpg','https://www.youtube.com/watch?v=mkiLlrsZXOY',false,40),
+('legendy-showbiznesu-katarzyna-zak','Legendy Showbiznesu — Katarzyna Żak','podcasty','Podcast / Złota Scena','https://img.youtube.com/vi/fuy62dsW8LU/maxresdefault.jpg','https://www.youtube.com/watch?v=fuy62dsW8LU',true,50),
+('anna-puslecka-podcast-bernatowicz','Anna Puślecka Podcast — Robert Bernatowicz','podcasty','Podcast','https://img.youtube.com/vi/Ai4IyBXZT54/maxresdefault.jpg','https://www.youtube.com/watch?v=Ai4IyBXZT54',false,60),
+('face-off-2-randka-w-ciemno','Face Off 2 — Randka w ciemno','youtube','Produkcja YouTube / Oliwia Puchacz','https://img.youtube.com/vi/5F2Vwkzobq4/maxresdefault.jpg','https://www.youtube.com/watch?v=5F2Vwkzobq4',true,70),
+('swiat-gosi-daj-sie-wyczaic','Świat Gosi — Daj się wyczaić','youtube','Produkcja YouTube','https://img.youtube.com/vi/oxgrf_u2O4Y/maxresdefault.jpg','https://www.youtube.com/watch?v=oxgrf_u2O4Y',false,80),
+('gosia-w-warszawie','Gosia w Warszawie','youtube','Produkcja YouTube / Świat Gosi','https://img.youtube.com/vi/s92xjCalMEQ/maxresdefault.jpg','https://www.youtube.com/watch?v=s92xjCalMEQ',false,90),
+('vlogmas-swiateczne-grzanie','Vlogmas — Świąteczne grzanie','youtube','Produkcja YouTube / Oliwia Puchacz','https://img.youtube.com/vi/c5G9bB4sres/maxresdefault.jpg','https://www.youtube.com/watch?v=c5G9bB4sres',false,100),
+('metamorfozy-przyszlosci-helena-deeds','Metamorfozy Przyszłości — Helena Deeds','youtube','Program / SHOWNEWSPL','https://img.youtube.com/vi/Ofu7MDWxnBA/maxresdefault.jpg','https://www.youtube.com/watch?v=Ofu7MDWxnBA',true,110),
+('majka-jezowska-vlog-kuba-wojewodzki','Majka Jeżowska Vlog — Kuba Wojewódzki','youtube','Vlog / YouTube','https://img.youtube.com/vi/D6eYgPmuCRU/maxresdefault.jpg','https://www.youtube.com/watch?v=D6eYgPmuCRU',true,120),
+('reel-c0egrdgoktv','Reels · Star Media','social','Reels / Social',null,'https://www.instagram.com/reel/C0EGRdGokTV/',false,130),
+('reel-dux5rogjblj','Reels · Star Media','social','Reels / Social',null,'https://www.instagram.com/reel/DUX5roGjBLJ/',false,140),
+('reel-ddj6vegogwf','Reels · Star Media','social','Reels / Social',null,'https://www.instagram.com/reel/DDJ6veGogWf/',false,150),
+('reel-dk9yrwtn5jd','Reels · Star Media','social','Reels / Social',null,'https://www.instagram.com/reel/DK9yRWTN5jd/',false,160),
+('reel-c5gncq5mtdn','Reels · Star Media','social','Reels / Social',null,'https://www.instagram.com/reel/C5GNcq5MTDn/',false,170),
+('reel-c4nryuev9m','Reels · Star Media','social','Reels / Social',null,'https://www.instagram.com/reel/C4NRyuev9M_/',false,180),
+('reel-dvqubOycb7q','Reels · Star Media','social','Reels / Social',null,'https://www.instagram.com/reel/DVqubOYCB7q/',false,190),
+('reel-c-nc1izoclz','Reels · Star Media','social','Reels / Social',null,'https://www.instagram.com/reel/C_nC1IzocLz/',false,200),
+('reel-c7gqs9ondgb','Reels · Star Media','social','Reels / Social',null,'https://www.instagram.com/reel/C7GqS9oNDgb/',false,210),
+('reel-csvt-qwioi','Reels · Star Media','social','Reels / Social',null,'https://www.instagram.com/reel/CsVt-QwIOI_/',false,220),
+('black-and-gold','Black & Gold','eventy','Event / Fashion / Special Project',null,null,false,230),
+('sesja-kampanijna','Sesja kampanijna','foto','Foto / Kampania',null,null,false,240),
+('key-visual','Key visual','creative','Creative / Key visual',null,null,false,250)
+on conflict (slug) do update set title=excluded.title, category=excluded.category, kind_label=excluded.kind_label, image_url=excluded.image_url, video_url=excluded.video_url, featured=excluded.featured, sort=excluded.sort;
+insert into public.talents (slug,name,role_pl,role_en,role_es,handle,featured,sort) values
+('katarzyna-zdanowicz','Katarzyna Zdanowicz','Dziennikarka / Prezenterka','Journalist / Presenter','Periodista / Presentadora','@katarzyna_zdanowicz',true,10),
+('aria-martelle','Aria Martelle','Artystka / Creator','Artist / Creator','Artista / Creadora','@ariamartelle',true,20),
+('przebudzenie-joanny','Przebudzenie Joanny','Podcast · Lifestyle','Podcast · Lifestyle','Podcast · Lifestyle','@przebudzenie_joanny',false,30),
+('rozmowy-na-plotnie','Rozmowy na płótnie','Podcast · Sztuka','Podcast · Art','Podcast · Arte','@rozmowy_na_plotnie',false,40),
+('pan-lektor','Pan Lektor','Creator / Entertainment','Creator / Entertainment','Creador / Entretenimiento','@pan_lektor_hotelparadise',true,50),
+('majeczka','Majeczka','Influencerka · Fashion','Influencer · Fashion','Influencer · Moda','@majeczka',false,60)
+on conflict (slug) do update set name=excluded.name, role_pl=excluded.role_pl, role_en=excluded.role_en, role_es=excluded.role_es, handle=excluded.handle, featured=excluded.featured, sort=excluded.sort;
