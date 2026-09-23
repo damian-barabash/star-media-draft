@@ -7,6 +7,7 @@ import { CTAChapter, PPLockup } from '../components/sections'
 import { useLang } from '../i18n/LangContext'
 import { useProjects, useTalents } from '../hooks/useData'
 import { ProjectCard } from './Projects'
+import { PRICING, PRICING_UI } from '../content/pricing'
 
 const PORTFOLIO_CATEGORIES: Record<string, string[]> = {
   video: ['video', 'youtube', 'podcasty', 'social'],
@@ -163,10 +164,44 @@ export default function ServiceDetail() {
       {/* PORTFOLIO */}
       {service.portfolio && <Portfolio service={service} />}
 
+      {/* PRICING (only services with an offer) */}
+      {PRICING[service.slug] && (
+        <Chapter dark={false} id="cennik">
+          <div className="chapter-inner">
+            <Eyebrow text={PRICING_UI.eyebrow} dark={false} />
+            <WordsReveal text={PRICING_UI.title} className="svc-section-title" />
+            <p className="lead fade-in" style={{ marginTop: '1.5rem', maxWidth: '48ch' }}>
+              <T text={PRICING_UI.lead} />
+            </p>
+            <div className="pricing-groups">
+              {PRICING[service.slug].groups.map((g, gi) => (
+                <FadeIn className="price-group" key={gi} delay={gi * 80}>
+                  <h3>{t(g.title)}</h3>
+                  {g.items.map((it, ii) => (
+                    <div className="price-row" key={ii}>
+                      <span className="name">{t(it.name)}</span>
+                      <span className="dots" aria-hidden="true" />
+                      <span className="val">{t(it.price)}</span>
+                    </div>
+                  ))}
+                </FadeIn>
+              ))}
+            </div>
+            <p className="pricing-note fade-in">{t(PRICING[service.slug].note)}</p>
+            {PRICING[service.slug].extra && <p className="pricing-note fade-in">{t(PRICING[service.slug].extra)}</p>}
+            <div className="fade-in" style={{ marginTop: '2rem' }}>
+              <Btn to={CTA_CONTACT_PATH} gold>
+                <T text={PRICING_UI.ask} />
+              </Btn>
+            </div>
+          </div>
+        </Chapter>
+      )}
+
       {/* PROCESS */}
-      <Chapter dark={service.sections.length % 2 === 0 && !service.portfolio}>
+      <Chapter dark={!!PRICING[service.slug] || (service.sections.length % 2 === 0 && !service.portfolio)}>
         <div className="chapter-inner">
-          <Eyebrow text={SERVICES_PAGE.processEyebrowSub} dark={service.sections.length % 2 === 0 && !service.portfolio} />
+          <Eyebrow text={SERVICES_PAGE.processEyebrowSub} dark={!!PRICING[service.slug] || (service.sections.length % 2 === 0 && !service.portfolio)} />
           <WordsReveal text={service.process.title} className="svc-section-title" />
           <ProcessStrip steps={service.process.steps.map((s) => t(s))} />
           <p className="fade-in" style={{ marginTop: '2.5rem', maxWidth: '56ch' }}>

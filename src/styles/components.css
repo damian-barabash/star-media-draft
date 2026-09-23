@@ -443,6 +443,8 @@
 .pp-lock { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
 .pp-lock .x { font-family: var(--font-display); font-style: italic; font-weight: 200; font-size: 2.5rem; color: var(--gold); }
 .pp-lock img { width: 56px; height: 56px; object-fit: contain; }
+/* logo.png is white — on light chapters render it black (client: „star media (czarne)”) */
+.chapter-light .pp-lock img { filter: invert(1); }
 .pp-lock .pp-brand { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; letter-spacing: 0.15em; text-transform: uppercase; display: flex; align-items: center; gap: 0.6rem; }
 .pp-title { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 4.2vw, 3.8rem); line-height: 1; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 2rem; }
 .pp-stats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line-light); border-left: 1px solid var(--line-light); }
@@ -612,3 +614,16 @@
 
 /* ===== NOT FOUND ===== */
 .nf { min-height: 100svh; display: grid; place-items: center; text-align: center; }
+
+/* ===== PRICING (service subpages) ===== */
+.pricing-groups { margin-top: 3rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem 4rem; }
+.price-group h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1rem; color: var(--gold); }
+.price-row { display: flex; align-items: baseline; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid var(--line-light); font-size: 0.92rem; }
+.chapter-dark .price-row { border-color: var(--line-dark); }
+.price-row .name { flex: 1 1 auto; min-width: 0; }
+.price-row .dots { flex: 1 1 auto; border-bottom: 1px dotted currentColor; opacity: 0.25; transform: translateY(-0.35em); min-width: 1.5rem; }
+.price-row .val { flex: 0 0 auto; font-family: var(--font-display); font-weight: 500; font-size: 1rem; letter-spacing: 0.02em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pricing-note { margin-top: 2.5rem; font-size: 0.78rem; opacity: 0.6; max-width: none; }
+.pricing-note + .pricing-note { margin-top: 0.5rem; }
+@media (max-width: 968px) { .pricing-groups { grid-template-columns: 1fr; gap: 2.5rem; } }
+@media (max-width: 600px) { .price-row { flex-wrap: wrap; } .price-row .dots { display: none; } .price-row .val { width: 100%; color: var(--gold); } }
