@@ -12,7 +12,7 @@ const LOGO = '/logo/logo.png'
 
 function Mark({ onClick }: { onClick?: () => void }) {
   return (
-    <Link to="/" className="nav-mark" onClick={onClick} aria-label="Star Media — home">
+    <Link to="/" className="nav-mark" onClick={onClick} aria-label="Star Media">
       <span className="nav-mark-logo">
         <img src={LOGO} alt="" width="32" height="32" />
       </span>

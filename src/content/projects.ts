@@ -28,25 +28,25 @@ const yt = (id: string, shorts = false) => ({ image: `https://img.youtube.com/vi
 
 /**
  * Static fallback portfolio (Supabase `projects` table overrides when available).
- * Built from the YouTube links the client sent in "Co i jak 3" — thumbnails come from YouTube,
+ * Built from the YouTube links the client sent in "Co i jak 3" · thumbnails come from YouTube,
  * so the grid is visual without hosting any images yet. Instagram reels need photos from the client.
  */
 export const PROJECTS: Project[] = [
-  { slug: 'aria-martelle-zabawa-z-ogniem', title: 'Aria Martelle — Zabawa z Ogniem', category: 'video', kind: l('Teledysk', 'Music video', 'Videoclip'), featured: true, ...yt('j9vdDPhEMUI') },
-  { slug: 'aria-martelle-rollercoaster', title: 'Aria Martelle — Rollercoaster', category: 'video', kind: l('Teledysk', 'Music video', 'Videoclip'), featured: true, ...yt('qxRerk_nlbU') },
-  { slug: 'aria-martelle-lewa-prawa', title: 'Aria Martelle — Lewa Prawa', category: 'video', kind: l('Teledysk', 'Music video', 'Videoclip'), ...yt('-kyeBeWX5os') },
-  { slug: 'aria-martelle-alarm', title: 'Aria Martelle — Alarm', category: 'video', kind: l('Teledysk', 'Music video', 'Videoclip'), ...yt('mkiLlrsZXOY') },
-  { slug: 'legendy-showbiznesu-katarzyna-zak', title: 'Legendy Showbiznesu — Katarzyna Żak', category: 'podcasty', kind: l('Podcast / Złota Scena', 'Podcast / Złota Scena', 'Podcast / Złota Scena'), featured: true, ...yt('fuy62dsW8LU') },
-  { slug: 'rozmowy-na-plotnie-marzena-rogalska', title: 'Rozmowy na płótnie — Marzena Rogalska', category: 'podcasty', kind: l('Podcast', 'Podcast', 'Podcast'), featured: true, ...yt('m7xa0BZkQnA') },
-  { slug: 'anna-puslecka-podcast-adam-ferency', title: 'Anna Puślecka Podcast — Adam Ferency', category: 'podcasty', kind: l('Rolka / Podcast', 'Reel / Podcast', 'Reel / Podcast'), ...yt('E0DAIhiHDF0', true) },
-  { slug: 'anna-puslecka-podcast-dzieci', title: 'Anna Puślecka Podcast — Nie będę mogła mieć dzieci', category: 'podcasty', kind: l('Rolka / Podcast', 'Reel / Podcast', 'Reel / Podcast'), ...yt('0PBhRGidvRA', true) },
-  { slug: 'face-off-2-randka-w-ciemno', title: 'Face Off 2 — Randka w ciemno', category: 'youtube', kind: l('Produkcja YouTube / Oliwia Puchacz', 'YouTube production / Oliwia Puchacz', 'Producción de YouTube / Oliwia Puchacz'), featured: true, ...yt('5F2Vwkzobq4') },
-  { slug: 'swiat-gosi-daj-sie-wyczaic', title: 'Świat Gosi — Daj się wyczaić', category: 'youtube', kind: l('Produkcja YouTube', 'YouTube production', 'Producción de YouTube'), ...yt('oxgrf_u2O4Y') },
+  { slug: 'aria-martelle-zabawa-z-ogniem', title: 'Aria Martelle · Zabawa z Ogniem', category: 'video', kind: l('Teledysk', 'Music video', 'Videoclip'), featured: true, ...yt('j9vdDPhEMUI') },
+  { slug: 'aria-martelle-rollercoaster', title: 'Aria Martelle · Rollercoaster', category: 'video', kind: l('Teledysk', 'Music video', 'Videoclip'), featured: true, ...yt('qxRerk_nlbU') },
+  { slug: 'aria-martelle-lewa-prawa', title: 'Aria Martelle · Lewa Prawa', category: 'video', kind: l('Teledysk', 'Music video', 'Videoclip'), ...yt('-kyeBeWX5os') },
+  { slug: 'aria-martelle-alarm', title: 'Aria Martelle · Alarm', category: 'video', kind: l('Teledysk', 'Music video', 'Videoclip'), ...yt('mkiLlrsZXOY') },
+  { slug: 'legendy-showbiznesu-katarzyna-zak', title: 'Legendy Showbiznesu · Katarzyna Żak', category: 'podcasty', kind: l('Podcast / Złota Scena', 'Podcast / Złota Scena', 'Podcast / Złota Scena'), featured: true, ...yt('fuy62dsW8LU') },
+  { slug: 'rozmowy-na-plotnie-marzena-rogalska', title: 'Rozmowy na płótnie · Marzena Rogalska', category: 'podcasty', kind: l('Podcast', 'Podcast', 'Podcast'), featured: true, ...yt('m7xa0BZkQnA') },
+  { slug: 'anna-puslecka-podcast-adam-ferency', title: 'Anna Puślecka Podcast · Adam Ferency', category: 'podcasty', kind: l('Rolka / Podcast', 'Reel / Podcast', 'Reel / Podcast'), ...yt('E0DAIhiHDF0', true) },
+  { slug: 'anna-puslecka-podcast-dzieci', title: 'Anna Puślecka Podcast · Nie będę mogła mieć dzieci', category: 'podcasty', kind: l('Rolka / Podcast', 'Reel / Podcast', 'Reel / Podcast'), ...yt('0PBhRGidvRA', true) },
+  { slug: 'face-off-2-randka-w-ciemno', title: 'Face Off 2 · Randka w ciemno', category: 'youtube', kind: l('Produkcja YouTube / Oliwia Puchacz', 'YouTube production / Oliwia Puchacz', 'Producción de YouTube / Oliwia Puchacz'), featured: true, ...yt('5F2Vwkzobq4') },
+  { slug: 'swiat-gosi-daj-sie-wyczaic', title: 'Świat Gosi · Daj się wyczaić', category: 'youtube', kind: l('Produkcja YouTube', 'YouTube production', 'Producción de YouTube'), ...yt('oxgrf_u2O4Y') },
   { slug: 'gosia-w-warszawie', title: 'Gosia w Warszawie', category: 'youtube', kind: l('Produkcja YouTube / Świat Gosi', 'YouTube production / Świat Gosi', 'Producción de YouTube / Świat Gosi'), ...yt('s92xjCalMEQ') },
-  { slug: 'vlogmas-swiateczne-grzanie', title: 'Vlogmas — Świąteczne grzanie', category: 'youtube', kind: l('Produkcja YouTube / Oliwia Puchacz', 'YouTube production / Oliwia Puchacz', 'Producción de YouTube / Oliwia Puchacz'), ...yt('c5G9bB4sres') },
-  { slug: 'metamorfozy-przyszlosci-helena-deeds', title: 'Metamorfozy Przyszłości — Helena Deeds', category: 'youtube', kind: l('Program / SHOWNEWSPL', 'Show / SHOWNEWSPL', 'Programa / SHOWNEWSPL'), featured: true, ...yt('Ofu7MDWxnBA') },
-  { slug: 'majka-jezowska-vlog-kuba-wojewodzki', title: 'Majka Jeżowska Vlog — Kuba Wojewódzki', category: 'youtube', kind: l('Vlog / YouTube', 'Vlog / YouTube', 'Vlog / YouTube'), featured: true, ...yt('D6eYgPmuCRU') },
-  /* Instagram reels sent by the client — need stills from the client (no public thumbnail API) */
+  { slug: 'vlogmas-swiateczne-grzanie', title: 'Vlogmas · Świąteczne grzanie', category: 'youtube', kind: l('Produkcja YouTube / Oliwia Puchacz', 'YouTube production / Oliwia Puchacz', 'Producción de YouTube / Oliwia Puchacz'), ...yt('c5G9bB4sres') },
+  { slug: 'metamorfozy-przyszlosci-helena-deeds', title: 'Metamorfozy Przyszłości · Helena Deeds', category: 'youtube', kind: l('Program / SHOWNEWSPL', 'Show / SHOWNEWSPL', 'Programa / SHOWNEWSPL'), featured: true, ...yt('Ofu7MDWxnBA') },
+  { slug: 'majka-jezowska-vlog-kuba-wojewodzki', title: 'Majka Jeżowska Vlog · Kuba Wojewódzki', category: 'youtube', kind: l('Vlog / YouTube', 'Vlog / YouTube', 'Vlog / YouTube'), featured: true, ...yt('D6eYgPmuCRU') },
+  /* Instagram reels sent by the client · need stills from the client (no public thumbnail API) */
   { slug: 'reel-c0egrdgoktv', title: 'Reels · Star Media', category: 'social', kind: l('Reels / Social', 'Reels / Social', 'Reels / Social'), video: 'https://www.instagram.com/reel/C0EGRdGokTV/' },
   { slug: 'reel-dux5rogjblj', title: 'Reels · Star Media', category: 'social', kind: l('Reels / Social', 'Reels / Social', 'Reels / Social'), video: 'https://www.instagram.com/reel/DUX5roGjBLJ/' },
   { slug: 'reel-ddj6vegogwf', title: 'Reels · Star Media', category: 'social', kind: l('Reels / Social', 'Reels / Social', 'Reels / Social'), video: 'https://www.instagram.com/reel/DDJ6veGogWf/' },

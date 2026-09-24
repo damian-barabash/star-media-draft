@@ -18,7 +18,7 @@ export type Service = {
   final: { title: L; text: L; button: L; to?: string }
 }
 
-/** Home page list — 9 areas (client copy, "Co i jak 3", section 4). */
+/** Home page list, 9 areas (client copy, "Co i jak 3", section 4). */
 export const HOME_SERVICES: { num: string; title: string; desc: L; to: string }[] = [
   { num: '01', title: 'Talent & Artist Management', desc: l('Prowadzimy kariery, budujemy marki i rozwijamy talenty.', 'We run careers, build brands and grow talents.', 'Dirigimos carreras, construimos marcas y desarrollamos talentos.'), to: '/uslugi/management-talentow' },
   { num: '02', title: 'Content & Video Production', desc: l('Programy, teledyski, reklamy i content od pomysłu po realizację.', 'Shows, music videos, ads and content from idea to delivery.', 'Programas, videoclips, anuncios y contenido de la idea a la realización.'), to: '/uslugi/produkcja-video-foto-creative' },
@@ -931,9 +931,9 @@ export const SERVICES: Service[] = [
       title: l('Wybrane *realizacje.*', 'Selected *work.*', 'Trabajos *seleccionados.*'),
       kind: 'tech',
       note: l(
-        'Strony, sklepy, aplikacje webowe i mobilne oraz systemy — duże mockupy urządzeń i screeny produktów.',
-        'Websites, shops, web and mobile apps and systems — large device mockups and product screens.',
-        'Webs, tiendas, aplicaciones web y móviles y sistemas — grandes mockups de dispositivos y pantallas de producto.',
+        'Strony, sklepy, aplikacje webowe i mobilne oraz systemy, duże mockupy urządzeń i screeny produktów.',
+        'Websites, shops, web and mobile apps and systems, large device mockups and product screens.',
+        'Webs, tiendas, aplicaciones web y móviles y sistemas, grandes mockups de dispositivos y pantallas de producto.',
       ),
       caption: l('WWW / E-commerce / Web app / Mobile app / SaaS', 'Web / E-commerce / Web app / Mobile app / SaaS', 'Web / E-commerce / Web app / Mobile app / SaaS'),
     },
@@ -1110,9 +1110,9 @@ export const SERVICES: Service[] = [
       title: l('To, co *widać.*', 'What you *see.*', 'Lo que *se ve.*'),
       kind: 'design',
       note: l(
-        'Identyfikacje, logo, key visuale, opakowania, digital, social media design, materiały reklamowe i UI/UX — duże realizacje, mockupy, detale i animacje.',
-        'Identities, logos, key visuals, packaging, digital, social media design, advertising materials and UI/UX — big pieces, mockups, details and animations.',
-        'Identidades, logos, key visuals, packaging, digital, diseño para redes, materiales publicitarios y UI/UX — grandes piezas, mockups, detalles y animaciones.',
+        'Identyfikacje, logo, key visuale, opakowania, digital, social media design, materiały reklamowe i UI/UX, duże realizacje, mockupy, detale i animacje.',
+        'Identities, logos, key visuals, packaging, digital, social media design, advertising materials and UI/UX, big pieces, mockups, details and animations.',
+        'Identidades, logos, key visuals, packaging, digital, diseño para redes, materiales publicitarios y UI/UX, grandes piezas, mockups, detalles y animaciones.',
       ),
       caption: l('Branding / Identity / Design / UI/UX / Key visual', 'Branding / Identity / Design / UI/UX / Key visual', 'Branding / Identity / Design / UI/UX / Key visual'),
     },
@@ -1218,7 +1218,7 @@ export const SERVICES: Service[] = [
 export const CTA_CONTACT_PATH = CTA_CONTACT
 
 export const SERVICES_PAGE = {
-  eyebrow: l('04 — Co robimy', '04 — What we do', '04 — Qué hacemos'),
+  eyebrow: l('04 / Co robimy', '04 / What we do', '04 / Qué hacemos'),
   meta: [l('Full service', 'Full service', 'Full service'), '360°'],
   title: l('Od pomysłu\n*do efektu.*', 'From idea\n*to effect.*', 'De la idea\n*al efecto.*'),
   tagline: l(

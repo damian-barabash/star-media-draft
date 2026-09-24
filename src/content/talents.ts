@@ -16,7 +16,7 @@ export const TALENTS: Talent[] = [
 export const FEATURED_TALENT_SLUGS = ['aria-martelle', 'katarzyna-zdanowicz', 'pan-lektor']
 
 export const TALENTS_PAGE = {
-  eyebrow: l('03 — Talenty', '03 — Talents', '03 — Talentos'),
+  eyebrow: l('03 / Talenty', '03 / Talents', '03 / Talentos'),
   meta: ['Roster 2026', l('Selected talents', 'Selected talents', 'Selected talents')],
   title: l('Talent is just\n*the beginning.*', 'Talent is just\n*the beginning.*', 'Talent is just\n*the beginning.*'),
   tagline: l(

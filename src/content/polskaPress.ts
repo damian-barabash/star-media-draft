@@ -1,6 +1,6 @@
 import { l } from '../i18n/types'
 
-/** Polska Press partnership numbers — source: Polska Press Grupa, Gemius Prism, sierpień 2026. */
+/** Polska Press partnership numbers, source: Polska Press Grupa, Gemius Prism, sierpień 2026. */
 export const PP = {
   eyebrow: l('Wyróżnik Star Media', 'What sets Star Media apart', 'El diferencial de Star Media'),
   title: l('Influencer marketing spotyka *media.*', 'Influencer marketing meets *media.*', 'El influencer marketing se encuentra con los *medios.*'),

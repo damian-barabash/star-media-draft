@@ -127,7 +127,7 @@ export default function ServiceDetail() {
       {/* 02 — SCOPE */}
       <Chapter dark={false} id="zakres">
         <div className="chapter-inner">
-          <Eyebrow text={`02 — ${t(SERVICES_PAGE.scopeEyebrow)}`} dark={false} />
+          <Eyebrow text={`02 / ${t(SERVICES_PAGE.scopeEyebrow)}`} dark={false} />
           <WordsReveal text={service.scope.title} className="svc-section-title" />
           <div className="scope-grid">
             {service.scope.items.map((item, i) => (

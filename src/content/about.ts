@@ -1,7 +1,7 @@
 import { l } from '../i18n/types'
 
 export const ABOUT = {
-  eyebrow: l('02 — Kim jesteśmy', '02 — Who we are', '02 — Quiénes somos'),
+  eyebrow: l('02 / Kim jesteśmy', '02 / Who we are', '02 / Quiénes somos'),
   meta: [l('O agencji', 'About us', 'Sobre la agencia'), l('Warszawa · 2026', 'Warsaw · 2026', 'Varsovia · 2026')],
   title: l('We know\n*the business.*', 'We know\n*the business.*', 'We know\n*the business.*'),
   tagline: l(

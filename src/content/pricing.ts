@@ -2,7 +2,7 @@ import { l, type L } from '../i18n/types'
 
 /**
  * Orientation prices shown on selected service subpages.
- * Source: "Oferta — zakres usług i wycena" (2026-09). Net prices, "od" = starting from.
+ * Source: "Oferta: zakres usług i wycena" (2026-09). Net prices, "od" = starting from.
  */
 export type PriceItem = { name: L; price: L }
 export type PriceGroup = { title: L; items: PriceItem[] }
@@ -35,12 +35,12 @@ const NOTE = l(
 const COOPERATION: PriceGroup = {
   title: l('Modele współpracy', 'Cooperation models', 'Modelos de colaboración'),
   items: [
-    p('Projekt pod klucz — ustalony zakres, termin i budżet', 'Turnkey project — fixed scope, deadline and budget', 'Proyecto llave en mano — alcance, plazo y presupuesto fijos', l('wycena stała', 'fixed quote', 'presupuesto fijo')),
-    p('Sprint MVP — 4–8 tygodni na działającą wersję', 'MVP sprint — 4–8 weeks to a working version', 'Sprint MVP — 4–8 semanas hasta una versión funcional', 'od 25 000 zł'),
-    p('Abonament / retainer — stały zespół i strumień zadań', 'Subscription / retainer — a standing team and task stream', 'Suscripción / retainer — equipo fijo y flujo de tareas', 'od 6 000 zł / mies.'),
-    p('Outstaffing — specjalista w Waszym zespole', 'Outstaffing — a specialist inside your team', 'Outstaffing — un especialista dentro de tu equipo', 'od 12 000 zł / mies.'),
+    p('Projekt pod klucz: ustalony zakres, termin i budżet', 'Turnkey project: fixed scope, deadline and budget', 'Proyecto llave en mano: alcance, plazo y presupuesto fijos', l('wycena stała', 'fixed quote', 'presupuesto fijo')),
+    p('Sprint MVP: 4–8 tygodni na działającą wersję', 'MVP sprint: 4–8 weeks to a working version', 'Sprint MVP: 4–8 semanas hasta una versión funcional', 'od 25 000 zł'),
+    p('Abonament / retainer: stały zespół i strumień zadań', 'Subscription / retainer: a standing team and task stream', 'Suscripción / retainer: equipo fijo y flujo de tareas', 'od 6 000 zł / mies.'),
+    p('Outstaffing: specjalista w Waszym zespole', 'Outstaffing: a specialist inside your team', 'Outstaffing: un especialista dentro de tu equipo', 'od 12 000 zł / mies.'),
     p('Konsultacje i audyt', 'Consulting and audit', 'Consultoría y auditoría', l('250 zł / h, audyt od 4 000 zł', '250 PLN / h, audit from 4 000 PLN', '250 PLN / h, auditoría desde 4 000 PLN')),
-    p('Opieka i rozwój — monitoring, aktualizacje, kopie zapasowe', 'Care and growth — monitoring, updates, backups', 'Mantenimiento y desarrollo — monitorización, actualizaciones, copias', 'od 500 zł / mies.'),
+    p('Opieka i rozwój: monitoring, aktualizacje, kopie zapasowe', 'Care and growth: monitoring, updates, backups', 'Mantenimiento y desarrollo: monitorización, actualizaciones, copias', 'od 500 zł / mies.'),
   ],
 }
 
@@ -51,7 +51,7 @@ const PAYMENT = l(
 )
 
 export const PRICING: Record<string, Pricing> = {
-  /* ===== 11 — WWW, e-commerce i aplikacje ===== */
+  /* ===== 11 / WWW, e-commerce i aplikacje ===== */
   'www-e-commerce-i-aplikacje': {
     note: NOTE,
     extra: PAYMENT,
@@ -60,9 +60,9 @@ export const PRICING: Record<string, Pricing> = {
         title: l('Strony internetowe i sklepy', 'Websites and shops', 'Sitios web y tiendas'),
         items: [
           p('Landing page', 'Landing page', 'Landing page', 'od 3 000 zł'),
-          p('Strona wizytówka — do 5 podstron', 'Brochure site — up to 5 pages', 'Web de presentación — hasta 5 páginas', 'od 6 000 zł'),
+          p('Strona wizytówka: do 5 podstron', 'Brochure site: up to 5 pages', 'Web de presentación: hasta 5 páginas', 'od 6 000 zł'),
           p('Strona firmowa premium', 'Premium corporate site', 'Web corporativa premium', 'od 12 000 zł'),
-          p('Strona butikowa — 3D i animacje', 'Boutique site — 3D and animation', 'Web boutique — 3D y animaciones', 'od 20 000 zł'),
+          p('Strona butikowa: 3D i animacje', 'Boutique site: 3D and animation', 'Web boutique: 3D y animaciones', 'od 20 000 zł'),
           p('Sklep internetowy', 'Online shop', 'Tienda online', 'od 15 000 zł'),
           p('Dodatkowa wersja językowa', 'Additional language version', 'Versión de idioma adicional', 'od 1 500 zł'),
           p('Panel CMS / edycja treści', 'CMS panel / content editing', 'Panel CMS / edición de contenido', 'od 3 000 zł'),
@@ -84,7 +84,7 @@ export const PRICING: Record<string, Pricing> = {
       {
         title: l('Aplikacje mobilne i desktopowe', 'Mobile and desktop apps', 'Aplicaciones móviles y de escritorio'),
         items: [
-          p('Aplikacja cross-platform — MVP', 'Cross-platform app — MVP', 'App multiplataforma — MVP', 'od 30 000 zł'),
+          p('Aplikacja cross-platform: MVP', 'Cross-platform app: MVP', 'App multiplataforma: MVP', 'od 30 000 zł'),
           p('Aplikacja natywna iOS albo Android', 'Native iOS or Android app', 'App nativa iOS o Android', 'od 45 000 zł'),
           p('iOS + Android natywnie', 'iOS + Android natively', 'iOS + Android nativo', 'od 80 000 zł'),
           p('Aplikacja desktopowa', 'Desktop application', 'Aplicación de escritorio', 'od 25 000 zł'),
@@ -120,10 +120,10 @@ export const PRICING: Record<string, Pricing> = {
     ],
   },
 
-  /* ===== 12 — AI i automatyzacje ===== */
+  /* ===== 12 / AI i automatyzacje ===== */
   'ai-i-automatyzacje': {
     note: l(
-      'Wszystkie ceny netto, orientacyjne. Ostateczna wycena po ustaleniu zakresu. Do utrzymania AI dochodzą koszty API modeli — rozliczane według zużycia.',
+      'Wszystkie ceny netto, orientacyjne. Ostateczna wycena po ustaleniu zakresu. Do utrzymania AI dochodzą koszty API modeli: rozliczane według zużycia.',
       'All prices net and indicative. Final quote after the scope is agreed. AI maintenance excludes model API costs, billed by usage.',
       'Todos los precios son netos y orientativos. Presupuesto final tras definir el alcance. El mantenimiento de IA no incluye los costes de API de los modelos, facturados por uso.',
     ),
@@ -132,7 +132,7 @@ export const PRICING: Record<string, Pricing> = {
       {
         title: l('Agenci, asystenci, chatboty', 'Agents, assistants, chatbots', 'Agentes, asistentes, chatbots'),
         items: [
-          p('Chatbot AI na stronę — RAG', 'AI chatbot for a website — RAG', 'Chatbot IA para la web — RAG', 'od 6 000 zł'),
+          p('Chatbot AI na stronę: RAG', 'AI chatbot for a website: RAG', 'Chatbot IA para la web: RAG', 'od 6 000 zł'),
           p('Bot w komunikatorze', 'Messenger bot', 'Bot en mensajería', 'od 4 000 zł'),
           p('Agent AI dedykowany', 'Custom AI agent', 'Agente IA a medida', 'od 15 000 zł'),
           p('System wieloagentowy', 'Multi-agent system', 'Sistema multiagente', 'od 35 000 zł'),
@@ -144,7 +144,7 @@ export const PRICING: Record<string, Pricing> = {
       {
         title: l('Automatyzacja i dane', 'Automation and data', 'Automatización y datos'),
         items: [
-          p('Audyt AI — gdzie realnie oszczędza', 'AI audit — where it really saves', 'Auditoría IA — dónde ahorra de verdad', l('4 000 – 8 000 zł', '4 000 – 8 000 PLN', '4 000 – 8 000 PLN')),
+          p('Audyt AI: gdzie realnie oszczędza', 'AI audit: where it really saves', 'Auditoría IA: dónde ahorra de verdad', l('4 000 – 8 000 zł', '4 000 – 8 000 PLN', '4 000 – 8 000 PLN')),
           p('Automatyzacja jednego procesu', 'Automation of one process', 'Automatización de un proceso', 'od 3 000 zł'),
           p('Obieg dokumentów z OCR', 'Document workflow with OCR', 'Flujo de documentos con OCR', 'od 10 000 zł'),
           p('System rekomendacji', 'Recommendation system', 'Sistema de recomendaciones', 'od 12 000 zł'),
@@ -158,7 +158,7 @@ export const PRICING: Record<string, Pricing> = {
     ],
   },
 
-  /* ===== 13 — Branding, design i identyfikacja ===== */
+  /* ===== 13 / Branding, design i identyfikacja ===== */
   'branding-design-i-identyfikacja': {
     note: NOTE,
     groups: [
@@ -180,7 +180,7 @@ export const PRICING: Record<string, Pricing> = {
           p('Projekt UI strony', 'Website UI design', 'Diseño UI de web', 'od 5 000 zł'),
           p('Prototyp klikalny', 'Clickable prototype', 'Prototipo clicable', 'od 3 000 zł'),
           p('System projektowy', 'Design system', 'Sistema de diseño', 'od 8 000 zł'),
-          p('Projekt aplikacji — UI / UX', 'App design — UI / UX', 'Diseño de aplicación — UI / UX', 'od 12 000 zł'),
+          p('Projekt aplikacji: UI / UX', 'App design: UI / UX', 'Diseño de aplicación: UI / UX', 'od 12 000 zł'),
           p('Zestaw ikon lub ilustracji', 'Icon or illustration set', 'Set de iconos o ilustraciones', 'od 1 500 zł'),
           p('Infografika', 'Infographic', 'Infografía', 'od 800 zł / sztuka'),
           p('Animowana grafika na stronę', 'Animated graphics for a website', 'Gráfica animada para la web', 'od 2 000 zł'),
@@ -202,7 +202,7 @@ export const PRICING: Record<string, Pricing> = {
     ],
   },
 
-  /* ===== 04 — Produkcja video, foto i creative ===== */
+  /* ===== 04 / Produkcja video, foto i creative ===== */
   'produkcja-video-foto-creative': {
     note: NOTE,
     groups: [
@@ -212,7 +212,7 @@ export const PRICING: Record<string, Pricing> = {
           p('Montaż Reels / TikTok', 'Reels / TikTok editing', 'Montaje de Reels / TikTok', 'od 400 zł / sztuka'),
           p('Pakiet 10 formatów pionowych', 'Pack of 10 vertical formats', 'Pack de 10 formatos verticales', 'od 3 000 zł'),
           p('Wideo wizerunkowe / promo', 'Brand / promo video', 'Vídeo de imagen / promo', 'od 4 000 zł'),
-          p('Reklama 30 s — pełny cykl', '30 s ad — full cycle', 'Anuncio de 30 s — ciclo completo', 'od 8 000 zł'),
+          p('Reklama 30 s: pełny cykl', '30 s ad: full cycle', 'Anuncio de 30 s: ciclo completo', 'od 8 000 zł'),
           p('Animacja logo / intro', 'Logo animation / intro', 'Animación de logo / intro', 'od 1 500 zł'),
           p('Animowana infografika', 'Animated infographic', 'Infografía animada', 'od 2 000 zł'),
           p('Grading koloru', 'Colour grading', 'Etalonaje de color', 'od 1 200 zł'),

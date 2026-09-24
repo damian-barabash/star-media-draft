@@ -100,19 +100,19 @@ export function PPStats({ dark = false, withSource = true, compact = false }: { 
 export function PPLockup({ big = false }: { big?: boolean }) {
   return (
     <div className="pp-lock" style={big ? { justifyContent: 'center', marginBottom: '3rem' } : undefined}>
+      <span className="pp-brand">
+        <img src="/logo/logo.png" alt="" style={big ? { width: 64, height: 64 } : undefined} loading="lazy" />
+        star media
+      </span>
+      <span className="x" style={big ? { fontSize: '3.5rem' } : undefined}>
+        ×
+      </span>
       <div className="pp-mark" style={big ? { padding: '1.2rem 2rem' } : undefined}>
         <span className="pp-mark-top" style={big ? { fontSize: '1.5rem' } : undefined}>
           POLSKA
         </span>
         <span className="pp-mark-bot">PRESS GRUPA</span>
       </div>
-      <span className="x" style={big ? { fontSize: '3.5rem' } : undefined}>
-        ×
-      </span>
-      <span className="pp-brand">
-        <img src="/logo/logo.png" alt="" style={big ? { width: 64, height: 64 } : undefined} loading="lazy" />
-        star media
-      </span>
     </div>
   )
 }

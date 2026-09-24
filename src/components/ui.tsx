@@ -122,7 +122,7 @@ export function Chapter({ dark = true, className = '', children, id, auto = fals
 export function Eyebrow({ text, dark = true, className = '' }: { text: L | string; dark?: boolean; className?: string }) {
   return (
     <div className={`mono eyebrow ${className}`.trim()} style={{ color: dark ? 'var(--white-muted)' : 'var(--black-muted)' }}>
-      — <T text={text} />
+      <T text={text} />
     </div>
   )
 }
@@ -269,7 +269,7 @@ export function ProcessStrip({ steps }: { steps: string[] }) {
 export function useDocumentTitle(title: L | string, description?: L | string) {
   const { t } = useLang()
   useEffect(() => {
-    const full = `${t(title)} — Star Media`
+    const full = `${t(title)} · Star Media`
     document.title = full
     const desc = description ? t(description) : ''
     const meta = document.querySelector('meta[name="description"]')

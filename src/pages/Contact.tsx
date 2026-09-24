@@ -149,7 +149,7 @@ export default function Contact() {
                       {t(F.budget)} <small>({t(F.optional)})</small>
                     </label>
                     <select id="f-budget" name="budget" defaultValue="">
-                      <option value="">—</option>
+                      <option value="">–</option>
                       {F.budgets.map((b) => (
                         <option key={b.value} value={b.value}>
                           {t(b.label)}

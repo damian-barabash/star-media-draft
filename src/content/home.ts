@@ -1,7 +1,7 @@
 import { l } from '../i18n/types'
 
 export const HOME = {
-  eyebrow: l('01 — Star Media × Polska Press', '01 — Star Media × Polska Press', '01 — Star Media × Polska Press'),
+  eyebrow: l('01 / Star Media × Polska Press', '01 / Star Media × Polska Press', '01 / Star Media × Polska Press'),
   meta: [l('Agencja', 'Agency', 'Agencia'), l('Warszawa, 2026', 'Warsaw, 2026', 'Varsovia, 2026')],
   title: l('Behind the names\n*you know.*', 'Behind the names\n*you know.*', 'Behind the names\n*you know.*'),
   tagline: l(
