@@ -101,7 +101,8 @@ export function PPLockup({ big = false }: { big?: boolean }) {
   return (
     <div className="pp-lock" style={big ? { justifyContent: 'center', marginBottom: '3rem' } : undefined}>
       <span className="pp-brand">
-        <img src="/logo/logo.png" alt="" style={big ? { width: 64, height: 64 } : undefined} loading="lazy" />
+        <img src="/logo/logo-black.png" alt="" className="logo-light-bg" style={big ? { width: 64, height: 64 } : undefined} loading="lazy" />
+        <img src="/logo/logo.png" alt="" className="logo-dark-bg" style={big ? { width: 64, height: 64 } : undefined} loading="lazy" />
         star media
       </span>
       <span className="x" style={big ? { fontSize: '3.5rem' } : undefined}>

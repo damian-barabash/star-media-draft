@@ -7,7 +7,7 @@ z backendem na **Supabase** (formularz kontaktowy, roster, portfolio) i deployem
 
 - React 19, react-router 7 (BrowserRouter, ładne URL-e `/uslugi/management-talentow`)
 - Vite 8, TypeScript 6
-- Three.js (lazy chunk) — gwiazda 3D w hero, `public/3d/star.glb` (meshopt + webp, **540 KB**; źródło 29 MB było w commicie V1)
+- Three.js (lazy chunk): złoty emblemat 3D w hero, `public/3d/star.glb` (meshopt + simplify 0.6, **154 KB**; źródło `raw-assets/star-media-gold-src.glb`, Draco). Materiał metaliczny → `RoomEnvironment` w `starScene.ts`
 - Fonty self-hosted (`@fontsource-variable/oswald`, `@fontsource-variable/inter`, `@fontsource/cormorant-garamond`)
 - Supabase (`@supabase/supabase-js`, lazy chunk) — projekt **Star Media Back** (`idlqmuvcfvgcblfykbxv`, eu-west-1)
 - 3 języki PL / EN / ES — cała treść w `src/content/*.ts` jako obiekty `{ pl, en, es }`
@@ -35,7 +35,7 @@ src/
   i18n/         ← LangContext (localStorage `sm_lang`), types
   styles/       ← base.css (tokeny, typografia), components.css, pages.css (responsywność)
   routes.json   ← lista route'ów dla postbuild/sitemap
-public/         ← CNAME, .nojekyll, 3d/star.glb, logo/logo.png, placeholder.svg
+public/         ← CNAME, .nojekyll, 3d/star.glb, logo/{logo.png (białe), logo-black.png, favicon.png}, placeholder.svg
 scripts/        ← postbuild.mjs, screenshots.mjs
 supabase/       ← 001_schema.sql (tabele + RLS), 002_seed.sql (roster + portfolio)
 .github/workflows/deploy.yml ← build + deploy na GitHub Pages

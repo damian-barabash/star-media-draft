@@ -1,7 +1,9 @@
 /**
- * Hero 3D star — Three.js scene, loaded lazily (dynamic import) so the
- * main bundle stays small. Model: /3d/star.glb (meshopt + webp, ~540 KB,
- * compressed from the 29 MB Tripo source with gltf-transform).
+ * Hero 3D star: Three.js scene, loaded lazily (dynamic import) so the
+ * main bundle stays small. Model: /3d/star.glb (gold logo extrusion,
+ * meshopt + simplify 0.6, ~150 KB; source star-media-gold.glb, Draco 137 KB).
+ * The material is metallic gold, so the scene needs an environment map:
+ * RoomEnvironment via PMREM (generated at runtime, no extra download).
  *
  * - slow auto-rotate on Y, eased tilt toward the pointer (desktop only)
  * - scroll velocity gives a short spin boost + subtle parallax
@@ -15,6 +17,7 @@ import {
   DirectionalLight,
   Group,
   PerspectiveCamera,
+  PMREMGenerator,
   Scene,
   SRGBColorSpace,
   Vector3,
@@ -22,6 +25,7 @@ import {
 } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js'
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
 
 const GLB_URL = '/3d/star.glb'
 
@@ -70,11 +74,17 @@ export async function mountStarScene(host: HTMLElement, opts: { compact: boolean
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, isSmall ? 1.25 : 1.5))
   renderer.outputColorSpace = SRGBColorSpace
   renderer.toneMapping = ACESFilmicToneMapping
-  renderer.toneMappingExposure = 1.1
+  renderer.toneMappingExposure = 1.05
   host.appendChild(renderer.domElement)
 
-  scene.add(new AmbientLight(0xffffff, 0.55))
-  const key = new DirectionalLight(0xffcb7a, 1.4)
+  // Environment for the metallic gold material (reflections), generated once per renderer
+  const pmrem = new PMREMGenerator(renderer)
+  const envTex = pmrem.fromScene(new RoomEnvironment(), 0.04).texture
+  scene.environment = envTex
+  pmrem.dispose()
+
+  scene.add(new AmbientLight(0xffffff, 0.3))
+  const key = new DirectionalLight(0xffcb7a, 1.6)
   key.position.set(3, 4, 3)
   scene.add(key)
   const rim = new DirectionalLight(0x9b7bff, 0.9)
@@ -173,6 +183,7 @@ export async function mountStarScene(host: HTMLElement, opts: { compact: boolean
       window.removeEventListener('mousemove', onMove)
       window.removeEventListener('scroll', onScroll)
       document.removeEventListener('visibilitychange', onVis)
+      envTex.dispose()
       renderer.dispose()
       renderer.domElement.remove()
       host.classList.remove('ready')

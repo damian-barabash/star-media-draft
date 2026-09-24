@@ -443,8 +443,10 @@
 .pp-lock { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
 .pp-lock .x { font-family: var(--font-display); font-style: italic; font-weight: 200; font-size: 2.5rem; color: var(--gold); }
 .pp-lock img { width: 56px; height: 56px; object-fit: contain; }
-/* logo.png is white — on light chapters render it black (client: „star media (czarne)”) */
-.chapter-light .pp-lock img { filter: invert(1); }
+/* two logo files: logo.png (white) on dark chapters, logo-black.png on light chapters */
+.pp-lock .logo-light-bg { display: none; }
+.chapter-light .pp-lock .logo-light-bg { display: block; }
+.chapter-light .pp-lock .logo-dark-bg { display: none; }
 .pp-lock .pp-brand { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; letter-spacing: 0.15em; text-transform: uppercase; display: flex; align-items: center; gap: 0.6rem; }
 .pp-title { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 4.2vw, 3.8rem); line-height: 1; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 2rem; }
 .pp-stats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line-light); border-left: 1px solid var(--line-light); }
