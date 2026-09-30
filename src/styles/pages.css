@@ -57,6 +57,7 @@
   .value-item:nth-child(odd) { border-right: 1px solid var(--line-dark); }
   .chapter-light .value-item { border-color: var(--line-light); }
   .cases-grid { grid-template-columns: 1fr; }
+  .cases-grid-vertical { grid-template-columns: repeat(3, 1fr); }
   .case-card:nth-child(even) { transform: none; }
   .case-card.wide { grid-column: auto; aspect-ratio: 4/3; }
   .service-row { grid-template-columns: 44px 1fr 28px; gap: 1rem 1.25rem; padding: 1.6rem 0; }
@@ -123,6 +124,9 @@
   .filters::-webkit-scrollbar { display: none; }
   .filter-btn { flex-shrink: 0; }
   .cases-grid { gap: 1rem; margin-top: 2.5rem; }
+  .cases-grid-vertical { grid-template-columns: 1fr 1fr; }
+  .cases-grid-vertical .case-card .card-body { padding: 1rem; }
+  .cases-grid-vertical .case-card .card-tag { font-size: 0.5rem; padding: 0.3rem 0.5rem; margin-bottom: 0.6rem; }
   .case-card .card-body { padding: 1.4rem; }
   .showreel-ui { padding: 5rem var(--gutter) 4rem; }
   .menu-overlay-inner { padding-top: 1rem; }

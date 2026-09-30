@@ -28,6 +28,8 @@ import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.j
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
 
 const GLB_URL = '/3d/star.glb'
+/** The emblem is a thin coin (depth ≈ 2 % of its diameter) · thicken it so it doesn't turn into a line edge-on (client, 2026-09-30). */
+const THICKNESS = 4
 
 let modelPromise: Promise<Group> | null = null
 
@@ -48,6 +50,7 @@ function loadModel(): Promise<Group> {
         model.position.sub(center)
         const maxDim = Math.max(size.x, size.y, size.z) || 1
         model.scale.setScalar(1 / maxDim) // normalized to 1 unit
+        model.scale.z *= THICKNESS
         resolve(model)
       },
       undefined,

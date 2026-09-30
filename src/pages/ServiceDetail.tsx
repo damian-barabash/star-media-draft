@@ -10,7 +10,7 @@ import { ProjectCard } from './Projects'
 import { PRICING, PRICING_UI } from '../content/pricing'
 
 const PORTFOLIO_CATEGORIES: Record<string, string[]> = {
-  video: ['video', 'youtube', 'podcasty', 'social'],
+  video: ['video', 'vlog', 'youtube', 'kampanie', 'social'],
   events: ['eventy'],
   live: ['eventy', 'video'],
   products: ['foto', 'creative'],

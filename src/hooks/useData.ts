@@ -19,7 +19,8 @@ export function useProjects(): Project[] {
         slug: r.slug,
         title: r.title,
         category: r.category as ProjectCategory,
-        kind: r.kind_label,
+        // DB keeps the PL label only · use the translated one from src/content when the slug is known
+        kind: PROJECTS.find((s) => s.slug === r.slug)?.kind ?? r.kind_label,
         image: r.image_url,
         video: r.video_url,
         featured: r.featured,

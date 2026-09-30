@@ -72,7 +72,7 @@ create table if not exists public.projects (
   id uuid primary key default gen_random_uuid(),
   slug text not null unique,
   title text not null,
-  category text not null check (category in ('video','youtube','podcasty','social','foto','eventy','creative')),
+  category text not null check (category in ('video','vlog','youtube','kampanie','podcasty','social','foto','eventy','creative')),
   kind_label text not null,
   image_url text,
   video_url text,

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { PROJECTS_PAGE, PROJECT_FILTERS, type Project, type ProjectCategory } from '../content/projects'
+import { PROJECTS_PAGE, PROJECT_FILTERS, isVertical, type Project, type ProjectCategory } from '../content/projects'
 import { Hero } from '../components/Hero'
 import { Chapter, Eyebrow, Ph, T, WordsReveal, useDocumentTitle } from '../components/ui'
 import { CTAChapter } from '../components/sections'
@@ -24,7 +24,7 @@ export function ProjectCard({ project, wide = false }: { project: Project; wide?
       </div>
     </>
   )
-  const cls = `case-card ${wide ? 'wide' : ''}`.trim()
+  const cls = ['case-card', wide && 'wide', isVertical(project) && 'vertical'].filter(Boolean).join(' ')
   return project.video ? (
     <a className={cls} href={project.video} target="_blank" rel="noopener" aria-label={project.title}>
       {body}
@@ -59,7 +59,7 @@ export default function Projects() {
           </div>
 
           {visible.length ? (
-            <div className="cases-grid" key={filter}>
+            <div className={`cases-grid ${filter === 'kampanie' ? 'cases-grid-vertical' : ''}`.trim()} key={filter}>
               {visible.map((p) => (
                 <ProjectCard key={p.slug} project={p} />
               ))}

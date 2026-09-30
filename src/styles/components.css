@@ -515,6 +515,14 @@
 .case-card:hover .card-play svg { fill: var(--black); }
 .case-card.wide { grid-column: span 2; aspect-ratio: 16/8; }
 .case-card.wide:nth-child(even) { transform: none; }
+/* Reels / TikTok covers (9:16): cropped to the upper part in 4:3 grids, full height in the Kampanie tab */
+.case-card.vertical .card-img img { object-position: center 22%; }
+.cases-grid-vertical { grid-template-columns: repeat(4, 1fr); }
+.cases-grid-vertical .case-card { aspect-ratio: 9/16; }
+.cases-grid-vertical .case-card .card-img img { object-position: center; }
+.cases-grid-vertical .case-card .card-body { padding: 1.4rem; }
+.cases-grid-vertical .case-card .card-title { font-size: clamp(1rem, 1.5vw, 1.35rem); }
+.cases-grid-vertical .case-card .card-play { top: 1rem; right: 1rem; }
 
 /* ===== TALENT GRID (service subpage feature) ===== */
 .talent-feature { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
