@@ -27,6 +27,7 @@ export type ContactRequest = {
   service: string
   message: string
   budget?: string | null
+  legal_topic?: string | null
   lang: string
   source_url?: string | null
   user_agent?: string | null
@@ -37,8 +38,15 @@ export type SubmitResult = { ok: true } | { ok: false; reason: 'no-backend' | 'f
 export async function submitContactRequest(payload: ContactRequest): Promise<SubmitResult> {
   const sb = await getSupabase()
   if (!sb) return { ok: false, reason: 'no-backend' }
-  const { error } = await sb.from('contact_requests').insert(payload)
+  let { error } = await sb.from('contact_requests').insert(payload)
   if (!error) return { ok: true }
+  // Database without migration 004 (no `legal_topic` column / service value): keep the enquiry, fold the details into the message
+  if (payload.service === 'legal-business-advisory' && (error.code === '23514' || error.code === 'PGRST204')) {
+    const { legal_topic, ...rest } = payload
+    const tag = `[Legal & Business Advisory${legal_topic ? ` · ${legal_topic}` : ''}]`
+    ;({ error } = await sb.from('contact_requests').insert({ ...rest, service: 'inne', message: `${tag}\n${payload.message}`.slice(0, 5000) }))
+    if (!error) return { ok: true }
+  }
   const msg = (error.message || '').toLowerCase()
   if (msg.includes('too many')) return { ok: false, reason: 'flood' }
   if (error.code === '23514' || msg.includes('check constraint')) return { ok: false, reason: 'invalid' }

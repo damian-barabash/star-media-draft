@@ -18,6 +18,9 @@ import './styles/pages.css'
 
 import App from './App'
 import { LangProvider } from './i18n/LangContext'
+import { initPerfMode } from './lib/perf'
+
+initPerfMode()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

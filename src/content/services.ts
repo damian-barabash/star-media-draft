@@ -10,12 +10,19 @@ export type Service = {
   /** one-liner under the name in the /uslugi list */
   short: L
   hero: { title: L; text: L }
-  scope: { title: L; items: L[] }
+  /** `cards` (title + description tiles) replace the plain `items` grid when present */
+  scope: { eyebrow?: L | string; title: L; items: L[]; cards?: { title: L; desc: L }[] }
   /** narrative sections (03 / 04 / 05) */
   sections: { title: L; text: L }[]
   portfolio?: { title: L; kind: ServicePortfolioKind; note: L; caption: L }
-  process: { title: L; steps: L[]; text: L }
-  final: { title: L; text: L; button: L; to?: string }
+  /** person behind the service: big photo + bio */
+  expert?: { eyebrow: L | string; name: string; role: L; bio: L; image: string }
+  process?: { title: L; steps: L[]; text: L }
+  /** 4-step layout from /uslugi, used instead of `process` */
+  howWeWork?: { title: L; steps: { title: L; desc: L }[] }
+  final: { eyebrow?: L; title: L; text: L; button: L; to?: string }
+  /** small print at the bottom of the subpage */
+  legalNote?: L
 }
 
 /** Home page list, 9 areas (client copy, "Co i jak 3", section 4). */
@@ -1212,6 +1219,133 @@ export const SERVICES: Service[] = [
       text: l('To dobry moment, żeby zacząć od strategii.', "It's a good moment to start with strategy.", 'Es un buen momento para empezar por la estrategia.'),
       button: l('Zacznijmy od pomysłu', "Let's start with an idea", 'Empecemos por la idea'),
     },
+  },
+  /* ============ 15 ============ */
+  {
+    slug: 'legal-business-advisory',
+    num: '15',
+    title: l('Legal & Business Advisory', 'Legal & Business Advisory', 'Legal & Business Advisory'),
+    short: l(
+      'Umowy, prawa, negocjacje i compliance. Wsparcie prawne dla twórców, marek, przedsiębiorców i projektów, od pierwszych ustaleń po rozwój biznesu.',
+      'Contracts, rights, negotiations and compliance. Legal support for creators, brands, entrepreneurs and projects, from the first arrangements to business growth.',
+      'Contratos, derechos, negociaciones y compliance. Apoyo legal para creadores, marcas, empresarios y proyectos, desde los primeros acuerdos hasta el desarrollo del negocio.',
+    ),
+    hero: {
+      title: l('Pomysł ma wartość.\n*Dobra umowa go chroni.*', 'An idea has value.\n*A good contract protects it.*', 'Una idea tiene valor.\n*Un buen contrato la protege.*'),
+      text: l(
+        'Wsparcie prawne dla twórców, talentów, marek, producentów i przedsiębiorców. Od pierwszych negocjacji i umów, przez prawa autorskie i wizerunek, po wdrożenie, rozwój i skalowanie projektu.',
+        'Legal support for creators, talents, brands, producers and entrepreneurs. From the first negotiations and contracts, through copyright and image rights, to implementing, growing and scaling the project.',
+        'Apoyo legal para creadores, talentos, marcas, productores y empresarios. Desde las primeras negociaciones y contratos, pasando por los derechos de autor y de imagen, hasta la puesta en marcha, el desarrollo y el escalado del proyecto.',
+      ),
+    },
+    scope: {
+      eyebrow: 'Legal 360°',
+      title: l('Prawo, które\n*nadąża za biznesem.*', 'Law that\n*keeps up with business.*', 'Derecho que\n*sigue el ritmo del negocio.*'),
+      items: [],
+      cards: [
+        {
+          title: l('Umowy & negocjacje', 'Contracts & negotiations', 'Contratos y negociaciones'),
+          desc: l(
+            'Przygotowanie, analiza i negocjowanie umów. Zakres świadczeń, wynagrodzenia, prawa, wyłączność, poufność, odpowiedzialność i zasady współpracy.',
+            'Drafting, reviewing and negotiating contracts. Scope of services, fees, rights, exclusivity, confidentiality, liability and terms of cooperation.',
+            'Preparación, análisis y negociación de contratos. Alcance de las prestaciones, remuneración, derechos, exclusividad, confidencialidad, responsabilidad y reglas de colaboración.',
+          ),
+        },
+        {
+          title: l('Talenty & marki osobiste', 'Talents & personal brands', 'Talentos y marcas personales'),
+          desc: l(
+            'Kontrakty managerskie, współprace reklamowe i sponsorskie, wykorzystanie wizerunku, pseudonimu oraz ochrona marki osobistej.',
+            'Management contracts, advertising and sponsorship deals, use of image and stage name, and personal brand protection.',
+            'Contratos de management, colaboraciones publicitarias y de patrocinio, uso de la imagen y del seudónimo, y protección de la marca personal.',
+          ),
+        },
+        {
+          title: l('Prawa autorskie & IP', 'Copyright & IP', 'Derechos de autor e IP'),
+          desc: l(
+            'Ochrona utworów, muzyki, formatów, scenariuszy, zdjęć, nagrań, znaków towarowych, nazw i identyfikacji. Licencje i przenoszenie praw.',
+            'Protection of works, music, formats, scripts, photos, recordings, trademarks, names and identity. Licences and transfers of rights.',
+            'Protección de obras, música, formatos, guiones, fotografías, grabaciones, marcas registradas, nombres e identidad. Licencias y cesión de derechos.',
+          ),
+        },
+        {
+          title: l('Reklama & influencer marketing', 'Advertising & influencer marketing', 'Publicidad e influencer marketing'),
+          desc: l(
+            'Prawne aspekty kampanii, oznaczanie treści komercyjnych, regulaminy konkursów i promocji oraz ochrona konsumentów.',
+            'Legal aspects of campaigns, labelling of commercial content, terms of contests and promotions, and consumer protection.',
+            'Aspectos legales de las campañas, señalización de contenido comercial, bases de concursos y promociones, y protección del consumidor.',
+          ),
+        },
+        {
+          title: l('Produkcja, muzyka & eventy', 'Production, music & events', 'Producción, música y eventos'),
+          desc: l(
+            'Umowy związane z produkcjami video i foto, muzyką, koncertami, wydarzeniami, sponsoringiem, licencjami, wykonawcami i podwykonawcami.',
+            'Contracts for video and photo productions, music, concerts, events, sponsorship, licences, performers and subcontractors.',
+            'Contratos relacionados con producciones de vídeo y foto, música, conciertos, eventos, patrocinio, licencias, artistas y subcontratistas.',
+          ),
+        },
+        {
+          title: l('Digital, e-commerce & AI', 'Digital, e-commerce & AI', 'Digital, e-commerce e IA'),
+          desc: l(
+            'Regulaminy, polityki prywatności, cookies, umowy IT i SaaS, dane osobowe oraz prawne aspekty AI, automatyzacji i nowych technologii.',
+            'Terms and conditions, privacy policies, cookies, IT and SaaS agreements, personal data and the legal aspects of AI, automation and new technologies.',
+            'Términos y condiciones, políticas de privacidad, cookies, contratos IT y SaaS, datos personales y aspectos legales de la IA, la automatización y las nuevas tecnologías.',
+          ),
+        },
+        {
+          title: l('Spółki, inwestycje & compliance', 'Companies, investments & compliance', 'Sociedades, inversiones y compliance'),
+          desc: l(
+            'Spółki i umowy wspólników, ład korporacyjny, inwestorzy, finansowanie, due diligence, M&A, AML, sankcje i procedury compliance.',
+            "Companies and shareholders' agreements, corporate governance, investors, financing, due diligence, M&A, AML, sanctions and compliance procedures.",
+            'Sociedades y pactos de socios, gobierno corporativo, inversores, financiación, due diligence, M&A, AML, sanciones y procedimientos de compliance.',
+          ),
+        },
+        {
+          title: l('Spory & sytuacje kryzysowe', 'Disputes & crisis situations', 'Litigios y situaciones de crisis'),
+          desc: l(
+            'Negocjacje przedsporne, ochrona reputacji i dóbr osobistych, naruszenia praw, strategie działania oraz reprezentacja przed sądami i organami.',
+            'Pre-litigation negotiations, protection of reputation and personal rights, infringements, action strategies and representation before courts and authorities.',
+            'Negociaciones previas al litigio, protección de la reputación y de los derechos de la personalidad, infracciones de derechos, estrategias de actuación y representación ante tribunales y organismos.',
+          ),
+        },
+      ],
+    },
+    sections: [],
+    expert: {
+      eyebrow: 'Legal expert',
+      name: 'Tomasz Walkiewicz, EMBA',
+      role: l('Radca prawny / Legal & Business Advisory', 'Attorney-at-law / Legal & Business Advisory', 'Asesor jurídico / Legal & Business Advisory'),
+      bio: l(
+        'Radca prawny i menedżer z blisko 20-letnim doświadczeniem w prawie gospodarczym i korporacyjnym, rynku kapitałowym, compliance oraz ładzie korporacyjnym.\n\nDoświadczenie zdobywał m.in. w Komisji Nadzoru Finansowego, Deloitte, międzynarodowej kancelarii prawnej, Giełdzie Papierów Wartościowych i BondSpot. Przez siedem lat zasiadał w Radzie Nadzorczej KDPW. Jest absolwentem Wydziału Prawa i Administracji Uniwersytetu Warszawskiego, Center for American Law Studies oraz Executive MBA SGH.\n\nŁączy perspektywę prawnika z doświadczeniem biznesowym i zarządczym, koncentrując się na rozwiązaniach, które chronią projekt bez blokowania jego rozwoju.',
+        'An attorney-at-law and manager with nearly 20 years of experience in commercial and corporate law, capital markets, compliance and corporate governance.\n\nHe gained his experience at, among others, the Polish Financial Supervision Authority (KNF), Deloitte, an international law firm, the Warsaw Stock Exchange and BondSpot. For seven years he sat on the Supervisory Board of KDPW. He is a graduate of the Faculty of Law and Administration of the University of Warsaw, the Center for American Law Studies and the Executive MBA programme at SGH.\n\nHe combines a lawyer\'s perspective with business and management experience, focusing on solutions that protect a project without holding back its growth.',
+        'Asesor jurídico y directivo con casi 20 años de experiencia en derecho mercantil y societario, mercado de capitales, compliance y gobierno corporativo.\n\nAdquirió su experiencia, entre otros, en la Autoridad de Supervisión Financiera de Polonia (KNF), Deloitte, un despacho de abogados internacional, la Bolsa de Varsovia y BondSpot. Durante siete años formó parte del Consejo de Supervisión de KDPW. Es graduado de la Facultad de Derecho y Administración de la Universidad de Varsovia, del Center for American Law Studies y del Executive MBA de SGH.\n\nUne la perspectiva del jurista con la experiencia empresarial y de gestión, centrándose en soluciones que protegen el proyecto sin frenar su desarrollo.',
+      ),
+      image: '/team/tomasz-walkiewicz.webp',
+    },
+    howWeWork: {
+      title: l('Od problemu do\n*rozwiązania.*', 'From problem to\n*solution.*', 'Del problema a la\n*solución.*'),
+      steps: [
+        { title: l('Rozumiemy', 'We understand', 'Entendemos'), desc: l('Poznajemy projekt, model biznesowy, uczestników i realne ryzyka.', 'We get to know the project, the business model, the parties involved and the real risks.', 'Conocemos el proyecto, el modelo de negocio, a los participantes y los riesgos reales.') },
+        { title: l('Projektujemy', 'We design', 'Diseñamos'), desc: l('Dobieramy strukturę prawną i dokumenty odpowiednie do projektu.', 'We choose the legal structure and the documents that fit the project.', 'Elegimos la estructura legal y los documentos adecuados para el proyecto.') },
+        { title: l('Negocjujemy', 'We negotiate', 'Negociamos'), desc: l('Chronimy interes klienta, nie blokując przy tym biznesu.', "We protect the client's interest without blocking the business.", 'Protegemos el interés del cliente sin bloquear el negocio.') },
+        { title: l('Prowadzimy', 'We guide', 'Acompañamos'), desc: l('Wspieramy wdrożenie, rozwój oraz sytuacje wymagające szybkiej reakcji.', 'We support implementation, growth and situations that call for a quick response.', 'Apoyamos la puesta en marcha, el desarrollo y las situaciones que exigen una reacción rápida.') },
+      ],
+    },
+    final: {
+      eyebrow: l('Porozmawiajmy', "Let's talk", 'Hablemos'),
+      title: l('Masz pomysł.\n*Zabezpieczmy go.*', "You have an idea.\n*Let's secure it.*", 'Tienes una idea.\n*Protejámosla.*'),
+      text: l(
+        'Porozmawiajmy o Twoim projekcie, zanim ustalenia staną się zobowiązaniem.',
+        "Let's talk about your project before arrangements become obligations.",
+        'Hablemos de tu proyecto antes de que los acuerdos se conviertan en obligaciones.',
+      ),
+      button: l('Porozmawiajmy', "Let's talk", 'Hablemos'),
+      to: '/kontakt?usluga=legal-business-advisory#formularz',
+    },
+    legalNote: l(
+      'Pomoc prawna jest świadczona przez Kancelarię Radcy Prawnego Tomasz Walkiewicz, współpracującą ze Star Media. Zakres i warunki świadczenia usług prawnych są każdorazowo uzgadniane bezpośrednio z klientem, z zachowaniem tajemnicy zawodowej i zasad wykonywania zawodu radcy prawnego.',
+      'Legal assistance is provided by Kancelaria Radcy Prawnego Tomasz Walkiewicz, a law firm cooperating with Star Media. The scope and terms of legal services are agreed directly with the client in each case, in keeping with professional secrecy and the rules of practice of the attorney-at-law (radca prawny) profession.',
+      'La asistencia jurídica la presta Kancelaria Radcy Prawnego Tomasz Walkiewicz, despacho que colabora con Star Media. El alcance y las condiciones de los servicios jurídicos se acuerdan en cada caso directamente con el cliente, respetando el secreto profesional y las normas de ejercicio de la profesión de asesor jurídico (radca prawny).',
+    ),
   },
 ]
 

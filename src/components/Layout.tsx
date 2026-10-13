@@ -192,7 +192,7 @@ function Footer() {
               <T text={UI.services} />
             </h4>
             <ul>
-              {SERVICES.slice(0, 7).map((s) => (
+              {[...SERVICES.slice(0, 7), ...SERVICES.filter((s) => s.slug === 'legal-business-advisory')].map((s) => (
                 <li key={s.slug}>
                   <Link to={`/uslugi/${s.slug}`}>{t(s.title)}</Link>
                 </li>
@@ -242,6 +242,7 @@ function StarCursor() {
       mx = e.clientX
       my = e.clientY
       cursor.classList.add('visible')
+      if (!raf) raf = requestAnimationFrame(tick)
     }
     const onLeave = () => cursor.classList.remove('visible')
     const onOver = (e: MouseEvent) => {
@@ -256,13 +257,18 @@ function StarCursor() {
     document.addEventListener('mouseleave', onLeave)
     document.addEventListener('mouseover', onOver)
     document.addEventListener('mouseout', onOut)
+    // the loop sleeps once the star has caught up with the pointer
     const tick = () => {
       cx += (mx - cx) * 0.18
       cy += (my - cy) * 0.18
+      const done = Math.abs(mx - cx) < 0.1 && Math.abs(my - cy) < 0.1
+      if (done) {
+        cx = mx
+        cy = my
+      }
       cursor.style.transform = `translate3d(${cx - 16}px, ${cy - 16}px, 0)`
-      raf = requestAnimationFrame(tick)
+      raf = done ? 0 : requestAnimationFrame(tick)
     }
-    tick()
     return () => {
       cancelAnimationFrame(raf)
       document.removeEventListener('mousemove', onMove)

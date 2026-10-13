@@ -240,7 +240,6 @@
   background:
     radial-gradient(circle at 60% 40%, rgba(198, 167, 94, 0.12) 0%, transparent 55%),
     radial-gradient(circle at 30% 70%, rgba(75, 46, 131, 0.08) 0%, transparent 55%);
-  filter: blur(40px);
   animation: heroHaloDrift 22s ease-in-out infinite alternate;
 }
 @keyframes heroHaloDrift { from { transform: translate(0, 0) scale(1); } to { transform: translate(-3%, 2%) scale(1.06); } }

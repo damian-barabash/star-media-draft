@@ -9,6 +9,8 @@
  * - scroll velocity gives a short spin boost + subtle parallax
  * - rendering pauses when the host is off-screen or the tab is hidden
  * - DPR capped (1.5 desktop / 1.25 mobile) for smooth frame times
+ * - weak machines: software-only WebGL keeps the SVG fallback; slow frames
+ *   first drop the DPR to 1, then halve the frame rate and switch the site to lite mode
  */
 import {
   ACESFilmicToneMapping,
@@ -26,6 +28,7 @@ import {
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js'
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
+import { isLite, setLite } from '../lib/perf'
 
 const GLB_URL = '/3d/star.glb'
 /** The emblem is a thin coin (depth ≈ 2 % of its diameter) · thicken it so it doesn't turn into a line edge-on (client, 2026-09-30). */
@@ -73,8 +76,16 @@ export async function mountStarScene(host: HTMLElement, opts: { compact: boolean
   const camera = new PerspectiveCamera(32, 1, 0.1, 100)
   camera.position.set(0, 0, 5)
 
-  const renderer = new WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' })
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isSmall ? 1.25 : 1.5))
+  let renderer: WebGLRenderer
+  try {
+    // no software rasterizer: without a GPU the CSS-animated SVG star stays instead
+    renderer = new WebGLRenderer({ alpha: true, antialias: !isLite(), failIfMajorPerformanceCaveat: true })
+  } catch {
+    host.classList.add('failed')
+    return { dispose: () => undefined }
+  }
+  let dpr = isLite() ? 1 : Math.min(window.devicePixelRatio, isSmall ? 1.25 : 1.5)
+  renderer.setPixelRatio(dpr)
   renderer.outputColorSpace = SRGBColorSpace
   renderer.toneMapping = ACESFilmicToneMapping
   renderer.toneMappingExposure = 1.05
@@ -162,20 +173,57 @@ export async function mountStarScene(host: HTMLElement, opts: { compact: boolean
 
   const AUTO = 0.003
   let raf = 0
-  const tick = () => {
+  // Adaptive quality: sample frame times, step down when the machine can't keep up
+  const SAMPLE = 45
+  const SLOW_MS = 26
+  let half = isLite() // render every other frame (~30 fps)
+  let skip = false
+  let last = 0
+  let frames = 0
+  let slow = 0
+  let settled = false
+  const measure = (now: number) => {
+    const dt = now - last
+    last = now
+    if (settled || !model || dt > 250) return // dt > 250: resumed after a pause
+    frames++
+    if (dt > SLOW_MS) slow++
+    if (frames < SAMPLE) return
+    if (slow > SAMPLE / 2) {
+      if (dpr > 1) {
+        dpr = 1
+        renderer.setPixelRatio(dpr)
+        sizeToHost()
+      } else {
+        half = true
+        setLite()
+        settled = true
+      }
+    } else settled = true
+    frames = 0
+    slow = 0
+  }
+  const tick = (now: number) => {
     raf = requestAnimationFrame(tick)
-    if (!visible || !pageVisible) return
-    current.rotX += (target.rotX - current.rotX) * 0.06
-    current.rotY += (target.rotY - current.rotY) * 0.06
+    if (!visible || !pageVisible) {
+      last = 0
+      return
+    }
+    if (last && !half) measure(now)
+    else last = now
+    if (half && (skip = !skip)) return
+    const k = half ? 2 : 1
+    current.rotX += (target.rotX - current.rotX) * 0.06 * k
+    current.rotY += (target.rotY - current.rotY) * 0.06 * k
     if (model) {
-      model.rotation.y += AUTO + scrollVelocity
+      model.rotation.y += (AUTO + scrollVelocity) * k
       model.rotation.x = current.rotX
       model.position.y = -parallaxY
     }
-    scrollVelocity *= 0.9
+    scrollVelocity *= half ? 0.81 : 0.9
     renderer.render(scene, camera)
   }
-  tick()
+  raf = requestAnimationFrame(tick)
 
   return {
     dispose() {

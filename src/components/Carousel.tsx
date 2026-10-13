@@ -18,6 +18,7 @@ export function Carousel({ items }: { items: CarouselItem[] }) {
   const [active, setActive] = useState(0)
   const stageRef = useRef<HTMLDivElement>(null)
   const timer = useRef<number>(0)
+  const onScreen = useRef(true)
   const total = items.length
 
   const go = useCallback(
@@ -29,13 +30,24 @@ export function Carousel({ items }: { items: CarouselItem[] }) {
 
   const restart = useCallback(() => {
     window.clearInterval(timer.current)
-    timer.current = window.setInterval(() => go(1), 5000)
+    // no autoplay while the carousel is off-screen or the tab is hidden
+    timer.current = window.setInterval(() => onScreen.current && !document.hidden && go(1), 5000)
   }, [go])
 
   useEffect(() => {
     restart()
     return () => window.clearInterval(timer.current)
   }, [restart])
+
+  useEffect(() => {
+    const stage = stageRef.current
+    if (!stage) return
+    const io = new IntersectionObserver((entries) => {
+      onScreen.current = entries[0]?.isIntersecting ?? true
+    })
+    io.observe(stage)
+    return () => io.disconnect()
+  }, [])
 
   // Pointer drag / swipe
   useEffect(() => {

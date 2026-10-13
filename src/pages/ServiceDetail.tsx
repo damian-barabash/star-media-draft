@@ -3,7 +3,7 @@ import { CTA_CONTACT_PATH, SERVICES, SERVICES_PAGE, type Service } from '../cont
 import { FEATURED_TALENT_SLUGS } from '../content/talents'
 import { Hero } from '../components/Hero'
 import { Btn, Chapter, Eyebrow, FadeIn, Ph, ProcessStrip, T, WordsReveal, useDocumentTitle } from '../components/ui'
-import { CTAChapter, PPLockup } from '../components/sections'
+import { CTAChapter, PPLockup, ProcessChapter } from '../components/sections'
 import { useLang } from '../i18n/LangContext'
 import { useProjects, useTalents } from '../hooks/useData'
 import { ProjectCard } from './Projects'
@@ -127,16 +127,28 @@ export default function ServiceDetail() {
       {/* 02 — SCOPE */}
       <Chapter dark={false} id="zakres">
         <div className="chapter-inner">
-          <Eyebrow text={`02 / ${t(SERVICES_PAGE.scopeEyebrow)}`} dark={false} />
+          <Eyebrow text={service.scope.eyebrow ?? `02 / ${t(SERVICES_PAGE.scopeEyebrow)}`} dark={false} />
           <WordsReveal text={service.scope.title} className="svc-section-title" />
-          <div className="scope-grid">
-            {service.scope.items.map((item, i) => (
-              <FadeIn className="scope-item" key={i} delay={Math.min(i * 30, 400)}>
-                <i>{String(i + 1).padStart(2, '0')}</i>
-                <span>{t(item)}</span>
-              </FadeIn>
-            ))}
-          </div>
+          {service.scope.cards ? (
+            <div className="scope-grid scope-cards">
+              {service.scope.cards.map((card, i) => (
+                <FadeIn className="scope-card" key={i} delay={Math.min(i * 40, 400)}>
+                  <i>{String(i + 1).padStart(2, '0')}</i>
+                  <h3>{t(card.title)}</h3>
+                  <p>{t(card.desc)}</p>
+                </FadeIn>
+              ))}
+            </div>
+          ) : (
+            <div className="scope-grid">
+              {service.scope.items.map((item, i) => (
+                <FadeIn className="scope-item" key={i} delay={Math.min(i * 30, 400)}>
+                  <i>{String(i + 1).padStart(2, '0')}</i>
+                  <span>{t(item)}</span>
+                </FadeIn>
+              ))}
+            </div>
+          )}
         </div>
       </Chapter>
 
@@ -160,6 +172,25 @@ export default function ServiceDetail() {
           </Chapter>
         )
       })}
+
+      {/* EXPERT */}
+      {service.expert && (
+        <Chapter dark id="ekspert">
+          <div className="chapter-inner split expert">
+            <FadeIn>
+              <Ph className="expert-photo" src={service.expert.image} alt={service.expert.name} />
+            </FadeIn>
+            <div>
+              <Eyebrow text={service.expert.eyebrow} />
+              <WordsReveal text={service.expert.name} className="svc-section-title expert-name" />
+              <p className="mono fade-in expert-role">{t(service.expert.role)}</p>
+              <div className="svc-text">
+                <Paragraphs text={t(service.expert.bio)} />
+              </div>
+            </div>
+          </div>
+        </Chapter>
+      )}
 
       {/* PORTFOLIO */}
       {service.portfolio && <Portfolio service={service} />}
@@ -199,22 +230,37 @@ export default function ServiceDetail() {
       )}
 
       {/* PROCESS */}
-      <Chapter dark={!!PRICING[service.slug] || (service.sections.length % 2 === 0 && !service.portfolio)}>
-        <div className="chapter-inner">
-          <Eyebrow text={SERVICES_PAGE.processEyebrowSub} dark={!!PRICING[service.slug] || (service.sections.length % 2 === 0 && !service.portfolio)} />
-          <WordsReveal text={service.process.title} className="svc-section-title" />
-          <ProcessStrip steps={service.process.steps.map((s) => t(s))} />
-          <p className="fade-in" style={{ marginTop: '2.5rem', maxWidth: '56ch' }}>
-            <T text={service.process.text} />
-          </p>
-        </div>
-      </Chapter>
+      {service.howWeWork && (
+        <ProcessChapter
+          dark={false}
+          eyebrow={SERVICES_PAGE.processEyebrow}
+          title={service.howWeWork.title}
+          steps={service.howWeWork.steps.map((s, i) => ({ num: String(i + 1).padStart(2, '0'), title: s.title, desc: s.desc }))}
+        />
+      )}
+      {service.process && (
+        <Chapter dark={!!PRICING[service.slug] || (service.sections.length % 2 === 0 && !service.portfolio)}>
+          <div className="chapter-inner">
+            <Eyebrow text={SERVICES_PAGE.processEyebrowSub} dark={!!PRICING[service.slug] || (service.sections.length % 2 === 0 && !service.portfolio)} />
+            <WordsReveal text={service.process.title} className="svc-section-title" />
+            <ProcessStrip steps={service.process.steps.map((s) => t(s))} />
+            <p className="fade-in" style={{ marginTop: '2.5rem', maxWidth: '56ch' }}>
+              <T text={service.process.text} />
+            </p>
+          </div>
+        </Chapter>
+      )}
 
       {/* FINAL */}
-      <CTAChapter dark eyebrow={service.num} title={service.final.title} lead={service.final.text} button={service.final.button} to={service.final.to ?? CTA_CONTACT_PATH} />
+      <CTAChapter dark eyebrow={service.final.eyebrow ?? service.num} title={service.final.title} lead={service.final.text} button={service.final.button} to={service.final.to ?? CTA_CONTACT_PATH} />
 
       {/* PREV / NEXT */}
       <div className="chapter-dark" style={{ padding: '0 var(--gutter) 4rem' }}>
+        {service.legalNote && (
+          <div className="chapter-inner svc-legal-note">
+            <p>{t(service.legalNote)}</p>
+          </div>
+        )}
         <div className="chapter-inner svc-nav">
           <Link to={`/uslugi/${prev.slug}`}>
             ← {prev.num} {t(prev.title)}

@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { CONTACT } from '../content/contact'
 import { SITE } from '../content/common'
 import { Hero } from '../components/Hero'
@@ -8,6 +9,8 @@ import { submitContactRequest } from '../lib/supabase'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
+const LEGAL = 'legal-business-advisory'
+
 export default function Contact() {
   const { t, lang } = useLang()
   useDocumentTitle({ pl: 'Kontakt', en: 'Contact', es: 'Contacto' }, CONTACT.tagline)
@@ -15,6 +18,10 @@ export default function Contact() {
   const [error, setError] = useState<string>('')
   const [invalid, setInvalid] = useState<string[]>([])
   const F = CONTACT.form
+  // service subpages can preselect the enquiry type: /kontakt?usluga=<value>#formularz
+  const [params] = useSearchParams()
+  const preset = params.get('usluga') ?? ''
+  const [service, setService] = useState(F.services.some((s) => s.value === preset) ? preset : '')
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -25,7 +32,7 @@ export default function Contact() {
     const company = String(fd.get('company') ?? '').trim()
     const email = String(fd.get('email') ?? '').trim()
     const phone = String(fd.get('phone') ?? '').trim()
-    const service = String(fd.get('service') ?? '')
+    const legalTopic = service === LEGAL ? String(fd.get('legal_topic') ?? '') : ''
     const message = String(fd.get('message') ?? '').trim()
     const budget = String(fd.get('budget') ?? '')
 
@@ -51,6 +58,7 @@ export default function Contact() {
       service,
       message,
       budget: budget || null,
+      ...(legalTopic ? { legal_topic: legalTopic } : {}),
       lang,
       source_url: window.location.href,
       user_agent: navigator.userAgent.slice(0, 500),
@@ -58,6 +66,7 @@ export default function Contact() {
     if (res.ok) {
       setStatus('sent')
       form.reset()
+      setService('')
       return
     }
     setStatus('error')
@@ -129,7 +138,7 @@ export default function Contact() {
                   </div>
                   <div className={cls('service')}>
                     <label htmlFor="f-service">{t(F.service)}</label>
-                    <select id="f-service" name="service" required defaultValue="">
+                    <select id="f-service" name="service" required value={service} onChange={(e) => setService(e.target.value)}>
                       <option value="" disabled>
                         {t(F.choose)}
                       </option>
@@ -140,6 +149,21 @@ export default function Contact() {
                       ))}
                     </select>
                   </div>
+                  {service === LEGAL && (
+                    <div className="field">
+                      <label htmlFor="f-legal-topic">
+                        {t(F.legalTopic)} <small>({t(F.optional)})</small>
+                      </label>
+                      <select id="f-legal-topic" name="legal_topic" defaultValue="">
+                        <option value="">–</option>
+                        {F.legalTopics.map((o) => (
+                          <option key={o.value} value={o.value}>
+                            {t(o.label)}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
                   <div className={cls('message')}>
                     <label htmlFor="f-message">{t(F.about)}</label>
                     <textarea id="f-message" name="message" placeholder={t(F.aboutPlaceholder)} required maxLength={5000} />
