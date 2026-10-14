@@ -31,8 +31,8 @@ import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment
 import { isLite, setLite } from '../lib/perf'
 
 const GLB_URL = '/3d/star.glb'
-/** The emblem is a thin coin (depth ≈ 2 % of its diameter) · thicken it so it doesn't turn into a line edge-on (client, 2026-09-30). */
-const THICKNESS = 4
+/** The emblem is a thin coin (depth ≈ 2 % of its diameter) · thicken it so it doesn't turn into a line edge-on (client, 2026-09-30; 4 → 7 on 2026-10-14, still read as a coin). */
+const THICKNESS = 7
 
 let modelPromise: Promise<Group> | null = null
 

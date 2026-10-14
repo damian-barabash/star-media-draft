@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import type { L } from '../i18n/types'
 import { Hero3D } from './Hero3D'
-import { HeroVideo, type HeroVideoSource } from './HeroVideo'
 import { ScrollDown, SplitLines, T } from './ui'
 import { useLang } from '../i18n/LangContext'
 
@@ -16,7 +15,6 @@ export function Hero({
   scrollTarget,
   compact = true,
   extra,
-  video,
 }: {
   eyebrow: L | string
   meta?: (L | string)[]
@@ -28,13 +26,11 @@ export function Hero({
   scrollTarget?: string
   compact?: boolean
   extra?: ReactNode
-  /** full-bleed background loop (home) — replaces the 3D star */
-  video?: { wide: HeroVideoSource; tall: HeroVideoSource }
 }) {
   const { t } = useLang()
   return (
-    <section className={`chapter chapter-dark hero-chapter${video ? ' hero-chapter--video' : ''}`}>
-      {video ? <HeroVideo wide={video.wide} tall={video.tall} /> : <Hero3D compact={compact} />}
+    <section className="chapter chapter-dark hero-chapter">
+      <Hero3D compact={compact} />
       <div className="chapter-inner">
         <div className="hero-top">
           <div className="hero-eyebrow">

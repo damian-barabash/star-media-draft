@@ -2,6 +2,7 @@ import { HOME } from '../content/home'
 import { HOME_SERVICES } from '../content/services'
 import { UI } from '../content/common'
 import { Hero } from '../components/Hero'
+import { HeroVideo } from '../components/HeroVideo'
 import { Btn, Chapter, Eyebrow, FadeIn, T, WordsReveal, useDocumentTitle } from '../components/ui'
 import { Carousel } from '../components/Carousel'
 import { CTAChapter, PPChapter, ServicesList } from '../components/sections'
@@ -14,10 +15,15 @@ export default function Home() {
 
   return (
     <>
-      <Hero eyebrow={HOME.eyebrow} meta={HOME.meta} title={HOME.title} tagline={HOME.tagline} scrollLabel={HOME.scroll} scrollTarget="#o-nas" video={HOME.heroVideo} />
+      <Hero eyebrow={HOME.eyebrow} meta={HOME.meta} title={HOME.title} tagline={HOME.tagline} scrollLabel={HOME.scroll} scrollTarget="#showreel" compact={false} />
+
+      {/* SHOWREEL — full-bleed loop (landscape / portrait cut) */}
+      <section id="showreel" className="chapter chapter-dark showreel-video">
+        <HeroVideo wide={HOME.heroVideo.wide} tall={HOME.heroVideo.tall} />
+      </section>
 
       {/* STATEMENT */}
-      <Chapter dark className="statement-chapter" id="o-nas">
+      <Chapter dark className="statement-chapter">
         <div className="chapter-inner">
           <Eyebrow text={HOME.statement.eyebrow} />
           <WordsReveal text={HOME.statement.title} className="statement-title" />
