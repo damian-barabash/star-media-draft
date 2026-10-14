@@ -9,12 +9,14 @@ export type Project = {
   /** short caption "Teledysk / Video / ..." */
   kind: L | string
   image?: string | null
+  /** portrait (7:10) crop of the cover for the home carousel */
+  poster?: string | null
   video?: string | null
   featured?: boolean
 }
 
 /** Vertical (9:16) covers: reels / TikToks. */
-export const isVertical = (p: Pick<Project, 'category'>) => p.category === 'kampanie'
+export const isVertical = (p: Pick<Project, 'category'>) => p.category === 'kampanie' || p.category === 'social'
 
 /* Client (Co i jak 3 · projekty, 2026-09-28): Podcasty tab removed (moved into YouTube), new Vlog and Kampanie tabs. */
 export const PROJECT_FILTERS: { key: 'all' | ProjectCategory; label: L }[] = [
@@ -29,11 +31,14 @@ export const PROJECT_FILTERS: { key: 'all' | ProjectCategory; label: L }[] = [
   { key: 'creative', label: l('Creative', 'Creative', 'Creative') },
 ]
 
-const yt = (id: string, shorts = false) => ({ image: `https://img.youtube.com/vi/${id}/maxresdefault.jpg`, video: shorts ? `https://www.youtube.com/shorts/${id}` : `https://www.youtube.com/watch?v=${id}` })
-/** YouTube link with the cover the client picked (public/projects/<file>.webp) */
-const ytCover = (id: string, file: string) => ({ image: `/projects/${file}.webp`, video: `https://www.youtube.com/watch?v=${id}` })
-const ig = (id: string) => ({ image: `/projects/kampania-${id.toLowerCase()}.webp`, video: `https://www.instagram.com/reel/${id}/` })
-const tt = (short: string, url: string) => ({ image: `/projects/kampania-${short.toLowerCase()}.webp`, video: url })
+/**
+ * Covers: graded stills taken from the videos themselves (no burned-in titles/subtitles),
+ * public/projects/covers/<slug>.webp (4:3, or 9:16 for reels) + <slug>-p.webp (7:10 for the carousel).
+ */
+const cover = (slug: string) => `/projects/covers/${slug}.webp`
+const yt = (slug: string, id: string, shorts = false) => ({ image: cover(slug), poster: `/projects/covers/${slug}-p.webp`, video: shorts ? `https://www.youtube.com/shorts/${id}` : `https://www.youtube.com/watch?v=${id}` })
+const ig = (slug: string, id: string) => ({ image: cover(slug), video: `https://www.instagram.com/reel/${id}/` })
+const tt = (slug: string, url: string) => ({ image: cover(slug), video: url })
 
 const MV = l('Teledysk', 'Music video', 'Videoclip')
 const VLOG = l('Vlog / Kulisy teledysku', 'Vlog / Behind the scenes', 'Vlog / Detrás de cámaras')
@@ -48,68 +53,65 @@ const SOCIAL = l('Reels / Social', 'Reels / Social', 'Reels / Social')
  */
 export const PROJECTS: Project[] = [
   /* VIDEO */
-  { slug: 'anna-jurksztowicz-varsovie', title: 'Anna Jurksztowicz feat. Chris Schittulli · Varsovie', category: 'video', kind: MV, ...yt('FB16i1Bzkbc') },
-  { slug: 'aria-martelle-rollercoaster', title: 'Aria Martelle · Rollercoaster', category: 'video', kind: MV, featured: true, ...yt('qxRerk_nlbU') },
-  { slug: 'aria-martelle-lewa-prawa', title: 'Aria Martelle · Lewa Prawa', category: 'video', kind: MV, ...yt('-kyeBeWX5os') },
-  { slug: 'aria-martelle-milosc-roztopi-snieg', title: 'Aria Martelle · Miłość roztopi śnieg', category: 'video', kind: MV, ...ytCover('BW0Sz2ROPKw', 'aria-martelle-milosc-roztopi-snieg') },
-  { slug: 'aria-martelle-chce-cie-miec', title: 'Aria Martelle · Chcę Cię mieć', category: 'video', kind: MV, ...ytCover('FyELq6xYVpw', 'aria-martelle-chce-cie-miec') },
-  { slug: 'aria-martelle-szkoda-aury', title: 'Aria Martelle x Wiktor Martelle · Szkoda Aury', category: 'video', kind: MV, ...ytCover('klEyvjtES2Y', 'aria-martelle-szkoda-aury') },
-  { slug: 'aria-martelle-you-decide', title: 'Aria Martelle · You Decide', category: 'video', kind: MV, ...ytCover('POjBtvIDITg', 'aria-martelle-you-decide') },
-  { slug: 'aria-martelle-alarm', title: 'Aria Martelle · Alarm', category: 'video', kind: MV, ...yt('mkiLlrsZXOY') },
-  { slug: 'aria-martelle-tancz', title: 'Aria Martelle · Tańcz', category: 'video', kind: MV, ...ytCover('Ee3UTK5oF-4', 'aria-martelle-tancz') },
-  { slug: 'aria-martelle-zabawa-z-ogniem', title: 'Aria Martelle · Zabawa z Ogniem', category: 'video', kind: l('Reżyseria', 'Direction', 'Dirección'), featured: true, ...yt('j9vdDPhEMUI') },
+  { slug: 'anna-jurksztowicz-varsovie', title: 'Anna Jurksztowicz feat. Chris Schittulli · Varsovie', category: 'video', kind: MV, ...yt('anna-jurksztowicz-varsovie', 'FB16i1Bzkbc') },
+  { slug: 'aria-martelle-rollercoaster', title: 'Aria Martelle · Rollercoaster', category: 'video', kind: MV, featured: true, ...yt('aria-martelle-rollercoaster', 'qxRerk_nlbU') },
+  { slug: 'aria-martelle-lewa-prawa', title: 'Aria Martelle · Lewa Prawa', category: 'video', kind: MV, ...yt('aria-martelle-lewa-prawa', '-kyeBeWX5os') },
+  { slug: 'aria-martelle-milosc-roztopi-snieg', title: 'Aria Martelle · Miłość roztopi śnieg', category: 'video', kind: MV, ...yt('aria-martelle-milosc-roztopi-snieg', 'BW0Sz2ROPKw') },
+  { slug: 'aria-martelle-chce-cie-miec', title: 'Aria Martelle · Chcę Cię mieć', category: 'video', kind: MV, ...yt('aria-martelle-chce-cie-miec', 'FyELq6xYVpw') },
+  { slug: 'aria-martelle-szkoda-aury', title: 'Aria Martelle x Wiktor Martelle · Szkoda Aury', category: 'video', kind: MV, ...yt('aria-martelle-szkoda-aury', 'klEyvjtES2Y') },
+  { slug: 'aria-martelle-you-decide', title: 'Aria Martelle · You Decide', category: 'video', kind: MV, ...yt('aria-martelle-you-decide', 'POjBtvIDITg') },
+  { slug: 'aria-martelle-alarm', title: 'Aria Martelle · Alarm', category: 'video', kind: MV, ...yt('aria-martelle-alarm', 'mkiLlrsZXOY') },
+  { slug: 'aria-martelle-tancz', title: 'Aria Martelle · Tańcz', category: 'video', kind: MV, ...yt('aria-martelle-tancz', 'Ee3UTK5oF-4') },
+  { slug: 'aria-martelle-zabawa-z-ogniem', title: 'Aria Martelle · Zabawa z Ogniem', category: 'video', kind: l('Reżyseria', 'Direction', 'Dirección'), featured: true, ...yt('aria-martelle-zabawa-z-ogniem', 'j9vdDPhEMUI') },
   /* VLOG */
-  { slug: 'vlog-szkoda-aury-backstage', title: 'Aria Martelle · Backstage teledysku Szkoda Aury', category: 'vlog', kind: VLOG, ...ytCover('ny59syBjXcA', 'vlog-szkoda-aury-backstage') },
-  { slug: 'vlog-chce-cie-miec-backstage', title: 'Aria Martelle · Backstage klipu Chcę Cię mieć', category: 'vlog', kind: VLOG, ...ytCover('hi_1KbLKbAw', 'vlog-chce-cie-miec-backstage') },
+  { slug: 'vlog-szkoda-aury-backstage', title: 'Aria Martelle · Backstage teledysku Szkoda Aury', category: 'vlog', kind: VLOG, ...yt('vlog-szkoda-aury-backstage', 'ny59syBjXcA') },
+  { slug: 'vlog-chce-cie-miec-backstage', title: 'Aria Martelle · Backstage klipu Chcę Cię mieć', category: 'vlog', kind: VLOG, ...yt('vlog-chce-cie-miec-backstage', 'hi_1KbLKbAw') },
   /* YOUTUBE (incl. former Podcasty tab) · "Daj się wyczaić" and "Gosia w Warszawie" go last */
-  { slug: 'face-off-2-randka-w-ciemno', title: 'Face Off 2 · Randka w ciemno', category: 'youtube', kind: OP, featured: true, ...yt('5F2Vwkzobq4') },
-  { slug: 'vlogmas-swiateczne-grzanie', title: 'Vlogmas · Świąteczne grzanie', category: 'youtube', kind: OP, ...yt('c5G9bB4sres') },
-  { slug: 'metamorfozy-przyszlosci-helena-deeds', title: 'Metamorfozy Przyszłości · Helena Deeds', category: 'youtube', kind: l('Program / SHOWNEWSPL', 'Show / SHOWNEWSPL', 'Programa / SHOWNEWSPL'), featured: true, ...yt('Ofu7MDWxnBA') },
-  { slug: 'majka-jezowska-vlog-kuba-wojewodzki', title: 'Majka Jeżowska Vlog · Kuba Wojewódzki', category: 'youtube', kind: l('Vlog / YouTube', 'Vlog / YouTube', 'Vlog / YouTube'), featured: true, ...yt('D6eYgPmuCRU') },
-  { slug: 'oliwia-puchacz-czyj-to-zawod', title: 'Oliwia Puchacz · Dopasuj zawód do osoby', category: 'youtube', kind: OP, ...ytCover('Vck4hHQs98k', 'oliwia-puchacz-czyj-to-zawod') },
-  { slug: 'oliwia-puchacz-5-klamcow', title: 'Oliwia Puchacz · 5 kłamców vs ja', category: 'youtube', kind: OP, ...ytCover('tvWxRsfMyPs', 'oliwia-puchacz-5-klamcow') },
-  { slug: 'oliwia-puchacz-6-klamcow', title: 'Oliwia Puchacz · 6 kłamców vs ja', category: 'youtube', kind: OP, ...ytCover('NThPC-I5ryM', 'oliwia-puchacz-6-klamcow') },
-  { slug: 'oliwia-puchacz-ranking-influencerek', title: 'Oliwia Puchacz · Która influencerka jest najlepsza?', category: 'youtube', kind: OP, ...ytCover('YRsRiboKDIg', 'oliwia-puchacz-ranking-influencerek') },
-  { slug: 'oliwia-puchacz-randka-w-ciemno-outfit', title: 'Oliwia Puchacz · Randka w ciemno na bazie outfitu', category: 'youtube', kind: OP, ...ytCover('gEoXXfJal8I', 'oliwia-puchacz-randka-w-ciemno-outfit') },
-  { slug: 'legendy-showbiznesu-katarzyna-zak', title: 'Legendy Showbiznesu · Katarzyna Żak', category: 'youtube', kind: l('Podcast / Złota Scena', 'Podcast / Złota Scena', 'Podcast / Złota Scena'), featured: true, ...yt('fuy62dsW8LU') },
-  { slug: 'rozmowy-na-plotnie-marzena-rogalska', title: 'Rozmowy na płótnie · Marzena Rogalska', category: 'youtube', kind: l('Podcast', 'Podcast', 'Podcast'), featured: true, ...yt('m7xa0BZkQnA') },
-  { slug: 'anna-puslecka-podcast-adam-ferency', title: 'Anna Puślecka Podcast · Adam Ferency', category: 'youtube', kind: l('Rolka / Podcast', 'Reel / Podcast', 'Reel / Podcast'), ...yt('E0DAIhiHDF0', true) },
-  { slug: 'anna-puslecka-podcast-dzieci', title: 'Anna Puślecka Podcast · Nie będę mogła mieć dzieci', category: 'youtube', kind: l('Rolka / Podcast', 'Reel / Podcast', 'Reel / Podcast'), ...yt('0PBhRGidvRA', true) },
-  { slug: 'swiat-gosi-daj-sie-wyczaic', title: 'Świat Gosi · Daj się wyczaić', category: 'youtube', kind: l('Produkcja YouTube', 'YouTube production', 'Producción de YouTube'), ...yt('oxgrf_u2O4Y') },
-  { slug: 'gosia-w-warszawie', title: 'Gosia w Warszawie', category: 'youtube', kind: l('Produkcja YouTube / Świat Gosi', 'YouTube production / Świat Gosi', 'Producción de YouTube / Świat Gosi'), ...yt('s92xjCalMEQ') },
+  { slug: 'face-off-2-randka-w-ciemno', title: 'Face Off 2 · Randka w ciemno', category: 'youtube', kind: OP, featured: true, ...yt('face-off-2-randka-w-ciemno', '5F2Vwkzobq4') },
+  { slug: 'vlogmas-swiateczne-grzanie', title: 'Vlogmas · Świąteczne grzanie', category: 'youtube', kind: OP, ...yt('vlogmas-swiateczne-grzanie', 'c5G9bB4sres') },
+  { slug: 'metamorfozy-przyszlosci-helena-deeds', title: 'Metamorfozy Przyszłości · Helena Deeds', category: 'youtube', kind: l('Program / SHOWNEWSPL', 'Show / SHOWNEWSPL', 'Programa / SHOWNEWSPL'), featured: true, ...yt('metamorfozy-przyszlosci-helena-deeds', 'Ofu7MDWxnBA') },
+  { slug: 'majka-jezowska-vlog-kuba-wojewodzki', title: 'Majka Jeżowska Vlog · Kuba Wojewódzki', category: 'youtube', kind: l('Vlog / YouTube', 'Vlog / YouTube', 'Vlog / YouTube'), featured: true, ...yt('majka-jezowska-vlog-kuba-wojewodzki', 'D6eYgPmuCRU') },
+  { slug: 'oliwia-puchacz-czyj-to-zawod', title: 'Oliwia Puchacz · Dopasuj zawód do osoby', category: 'youtube', kind: OP, ...yt('oliwia-puchacz-czyj-to-zawod', 'Vck4hHQs98k') },
+  { slug: 'oliwia-puchacz-5-klamcow', title: 'Oliwia Puchacz · 5 kłamców vs ja', category: 'youtube', kind: OP, ...yt('oliwia-puchacz-5-klamcow', 'tvWxRsfMyPs') },
+  { slug: 'oliwia-puchacz-6-klamcow', title: 'Oliwia Puchacz · 6 kłamców vs ja', category: 'youtube', kind: OP, ...yt('oliwia-puchacz-6-klamcow', 'NThPC-I5ryM') },
+  { slug: 'oliwia-puchacz-ranking-influencerek', title: 'Oliwia Puchacz · Która influencerka jest najlepsza?', category: 'youtube', kind: OP, ...yt('oliwia-puchacz-ranking-influencerek', 'YRsRiboKDIg') },
+  { slug: 'oliwia-puchacz-randka-w-ciemno-outfit', title: 'Oliwia Puchacz · Randka w ciemno na bazie outfitu', category: 'youtube', kind: OP, ...yt('oliwia-puchacz-randka-w-ciemno-outfit', 'gEoXXfJal8I') },
+  { slug: 'legendy-showbiznesu-katarzyna-zak', title: 'Legendy Showbiznesu · Katarzyna Żak', category: 'youtube', kind: l('Podcast / Złota Scena', 'Podcast / Złota Scena', 'Podcast / Złota Scena'), featured: true, ...yt('legendy-showbiznesu-katarzyna-zak', 'fuy62dsW8LU') },
+  { slug: 'rozmowy-na-plotnie-marzena-rogalska', title: 'Rozmowy na płótnie · Marzena Rogalska', category: 'youtube', kind: l('Podcast', 'Podcast', 'Podcast'), featured: true, ...yt('rozmowy-na-plotnie-marzena-rogalska', 'm7xa0BZkQnA') },
+  { slug: 'anna-puslecka-podcast-adam-ferency', title: 'Anna Puślecka Podcast · Adam Ferency', category: 'youtube', kind: l('Rolka / Podcast', 'Reel / Podcast', 'Reel / Podcast'), ...yt('anna-puslecka-podcast-adam-ferency', 'E0DAIhiHDF0', true) },
+  { slug: 'anna-puslecka-podcast-dzieci', title: 'Anna Puślecka Podcast · Nie będę mogła mieć dzieci', category: 'youtube', kind: l('Rolka / Podcast', 'Reel / Podcast', 'Reel / Podcast'), ...yt('anna-puslecka-podcast-dzieci', '0PBhRGidvRA', true) },
+  { slug: 'swiat-gosi-daj-sie-wyczaic', title: 'Świat Gosi · Daj się wyczaić', category: 'youtube', kind: l('Produkcja YouTube', 'YouTube production', 'Producción de YouTube'), ...yt('swiat-gosi-daj-sie-wyczaic', 'oxgrf_u2O4Y') },
+  { slug: 'gosia-w-warszawie', title: 'Gosia w Warszawie', category: 'youtube', kind: l('Produkcja YouTube / Świat Gosi', 'YouTube production / Świat Gosi', 'Producción de YouTube / Świat Gosi'), ...yt('gosia-w-warszawie', 's92xjCalMEQ') },
   /* KAMPANIE · client's order (covers: Instagram / TikTok stills, public/projects/kampania-*.webp) */
-  { slug: 'kampania-c0l_udxirlg', title: 'Pan Lektor', category: 'kampanie', kind: REEL, ...ig('C0L_UdxIrLG') },
-  { slug: 'kampania-dcqmdhxjsnv', title: 'CoolPack × Aria Martelle', category: 'kampanie', kind: REEL, ...ig('DcQmdhxjSnV') },
-  { slug: 'kampania-czevvsjolni', title: 'Pan Lektor', category: 'kampanie', kind: REEL, ...ig('CzEVVsjoLNI') },
-  { slug: 'kampania-ddi1luoikgi', title: 'Otodom', category: 'kampanie', kind: REEL, ...ig('Ddi1luOIKGI') },
-  { slug: 'kampania-ddjfjphoiyf', title: 'Otodom', category: 'kampanie', kind: REEL, ...ig('DdJfjphoiYf') },
-  { slug: 'kampania-dalmmsotpgv', title: 'Aria Martelle · Wakacyjny camp na Bali', category: 'kampanie', kind: REEL, ...ig('DaLMMSOtpgV') },
-  { slug: 'kampania-dwl4qojsgkx', title: 'Mandoria × Aria Martelle', category: 'kampanie', kind: REEL, ...ig('DWl4QOjsgkX') },
-  { slug: 'kampania-dscbzosjyhy', title: 'Aria Martelle', category: 'kampanie', kind: REEL, ...ig('DScbZoSjYhY') },
-  { slug: 'kampania-dkjbvpdi-b8', title: 'Mandoria', category: 'kampanie', kind: REEL, ...ig('DKjbVpdI-b8') },
-  { slug: 'kampania-zn8mx6vfx', title: 'Chupa Chups × Aria Martelle', category: 'kampanie', kind: TIKTOK, ...tt('ZN8MX6vFx', 'https://www.tiktok.com/@aria.martelle/video/7537310690424409366') },
-  { slug: 'kampania-zn8mxy5tv', title: 'Chupa Chups × Aria Martelle · Dzień Lizaka', category: 'kampanie', kind: TIKTOK, ...tt('ZN8MXY5TV', 'https://www.tiktok.com/@aria.martelle/video/7529928551349488918') },
-  { slug: 'kampania-zn8mxpbea', title: 'The Voice Comeback Stage × Orange', category: 'kampanie', kind: TIKTOK, ...tt('ZN8MXPBEA', 'https://www.tiktok.com/@aria.martelle/video/7555526943999905046') },
-  { slug: 'kampania-zn8mxdo8j', title: 'Chupa Chups × Aria Martelle · Back to School', category: 'kampanie', kind: TIKTOK, ...tt('ZN8MXdo8J', 'https://www.tiktok.com/@aria.martelle/video/7544014907902151958') },
-  { slug: 'kampania-zn8mx5taa', title: 'Netflix · XO, Kitty', category: 'kampanie', kind: TIKTOK, ...tt('ZN8MX5taA', 'https://www.tiktok.com/@netflixpl/video/7466883093870234902') },
-  { slug: 'kampania-dljrty3i4dx', title: 'Pan Lektor', category: 'kampanie', kind: REEL, ...ig('DLjrty3I4DX') },
-  { slug: 'kampania-ddqsjh6t4w0', title: 'Aria Martelle', category: 'kampanie', kind: REEL, ...ig('DdqSJh6t4W0') },
-  { slug: 'kampania-drzy01aju05', title: 'Empik · Klub Muzyki', category: 'kampanie', kind: REEL, ...ig('DRzy01AjU05') },
-  /* SOCIAL · Instagram reels from "Co i jak 3" (no stills yet) */
-  { slug: 'reel-c0egrdgoktv', title: 'Reels · Star Media', category: 'social', kind: SOCIAL, video: 'https://www.instagram.com/reel/C0EGRdGokTV/' },
-  { slug: 'reel-dux5rogjblj', title: 'Reels · Star Media', category: 'social', kind: SOCIAL, video: 'https://www.instagram.com/reel/DUX5roGjBLJ/' },
-  { slug: 'reel-ddj6vegogwf', title: 'Reels · Star Media', category: 'social', kind: SOCIAL, video: 'https://www.instagram.com/reel/DDJ6veGogWf/' },
-  { slug: 'reel-dk9yrwtn5jd', title: 'Reels · Star Media', category: 'social', kind: SOCIAL, video: 'https://www.instagram.com/reel/DK9yRWTN5jd/' },
-  { slug: 'reel-c5gncq5mtdn', title: 'Reels · Star Media', category: 'social', kind: SOCIAL, video: 'https://www.instagram.com/reel/C5GNcq5MTDn/' },
-  { slug: 'reel-c4nryuev9m', title: 'Reels · Star Media', category: 'social', kind: SOCIAL, video: 'https://www.instagram.com/reel/C4NRyuev9M_/' },
-  { slug: 'reel-dvqubOycb7q', title: 'Reels · Star Media', category: 'social', kind: SOCIAL, video: 'https://www.instagram.com/reel/DVqubOYCB7q/' },
-  { slug: 'reel-c-nc1izoclz', title: 'Reels · Star Media', category: 'social', kind: SOCIAL, video: 'https://www.instagram.com/reel/C_nC1IzocLz/' },
-  { slug: 'reel-c7gqs9ondgb', title: 'Reels · Star Media', category: 'social', kind: SOCIAL, video: 'https://www.instagram.com/reel/C7GqS9oNDgb/' },
-  { slug: 'reel-csvt-qwioi', title: 'Reels · Star Media', category: 'social', kind: SOCIAL, video: 'https://www.instagram.com/reel/CsVt-QwIOI_/' },
-  /* Placeholders for categories awaiting client materials (Foto: client is preparing subfolders) */
-  { slug: 'black-and-gold', title: 'Black & Gold', category: 'eventy', kind: l('Event / Fashion / Special Project', 'Event / Fashion / Special Project', 'Event / Fashion / Special Project') },
-  { slug: 'sesja-kampanijna', title: 'Sesja kampanijna', category: 'foto', kind: l('Foto / Kampania', 'Photo / Campaign', 'Foto / Campaña') },
-  { slug: 'key-visual', title: 'Key visual', category: 'creative', kind: l('Creative / Key visual', 'Creative / Key visual', 'Creative / Key visual') },
+  { slug: 'kampania-c0l_udxirlg', title: 'Pan Lektor', category: 'kampanie', kind: REEL, ...ig('kampania-c0l_udxirlg', 'C0L_UdxIrLG') },
+  { slug: 'kampania-dcqmdhxjsnv', title: 'CoolPack × Aria Martelle', category: 'kampanie', kind: REEL, ...ig('kampania-dcqmdhxjsnv', 'DcQmdhxjSnV') },
+  { slug: 'kampania-czevvsjolni', title: 'Pan Lektor', category: 'kampanie', kind: REEL, ...ig('kampania-czevvsjolni', 'CzEVVsjoLNI') },
+  { slug: 'kampania-ddi1luoikgi', title: 'Otodom', category: 'kampanie', kind: REEL, ...ig('kampania-ddi1luoikgi', 'Ddi1luOIKGI') },
+  { slug: 'kampania-ddjfjphoiyf', title: 'Otodom', category: 'kampanie', kind: REEL, ...ig('kampania-ddjfjphoiyf', 'DdJfjphoiYf') },
+  { slug: 'kampania-dalmmsotpgv', title: 'Aria Martelle · Wakacyjny camp na Bali', category: 'kampanie', kind: REEL, ...ig('kampania-dalmmsotpgv', 'DaLMMSOtpgV') },
+  { slug: 'kampania-dwl4qojsgkx', title: 'Mandoria × Aria Martelle', category: 'kampanie', kind: REEL, ...ig('kampania-dwl4qojsgkx', 'DWl4QOjsgkX') },
+  { slug: 'kampania-dscbzosjyhy', title: 'Aria Martelle', category: 'kampanie', kind: REEL, ...ig('kampania-dscbzosjyhy', 'DScbZoSjYhY') },
+  { slug: 'kampania-dkjbvpdi-b8', title: 'Mandoria', category: 'kampanie', kind: REEL, ...ig('kampania-dkjbvpdi-b8', 'DKjbVpdI-b8') },
+  { slug: 'kampania-zn8mx6vfx', title: 'Chupa Chups × Aria Martelle', category: 'kampanie', kind: TIKTOK, ...tt('kampania-zn8mx6vfx', 'https://www.tiktok.com/@aria.martelle/video/7537310690424409366') },
+  { slug: 'kampania-zn8mxy5tv', title: 'Chupa Chups × Aria Martelle · Dzień Lizaka', category: 'kampanie', kind: TIKTOK, ...tt('kampania-zn8mxy5tv', 'https://www.tiktok.com/@aria.martelle/video/7529928551349488918') },
+  { slug: 'kampania-zn8mxpbea', title: 'The Voice Comeback Stage × Orange', category: 'kampanie', kind: TIKTOK, ...tt('kampania-zn8mxpbea', 'https://www.tiktok.com/@aria.martelle/video/7555526943999905046') },
+  { slug: 'kampania-zn8mxdo8j', title: 'Chupa Chups × Aria Martelle · Back to School', category: 'kampanie', kind: TIKTOK, ...tt('kampania-zn8mxdo8j', 'https://www.tiktok.com/@aria.martelle/video/7544014907902151958') },
+  { slug: 'kampania-zn8mx5taa', title: 'Netflix · XO, Kitty', category: 'kampanie', kind: TIKTOK, ...tt('kampania-zn8mx5taa', 'https://www.tiktok.com/@netflixpl/video/7466883093870234902') },
+  { slug: 'kampania-dljrty3i4dx', title: 'Pan Lektor', category: 'kampanie', kind: REEL, ...ig('kampania-dljrty3i4dx', 'DLjrty3I4DX') },
+  { slug: 'kampania-ddqsjh6t4w0', title: 'Aria Martelle', category: 'kampanie', kind: REEL, ...ig('kampania-ddqsjh6t4w0', 'DdqSJh6t4W0') },
+  { slug: 'kampania-drzy01aju05', title: 'Empik · Klub Muzyki', category: 'kampanie', kind: REEL, ...ig('kampania-drzy01aju05', 'DRzy01AjU05') },
+  /* SOCIAL · Instagram reels from "Co i jak 3" (titles = brand / account of the reel) */
+  { slug: 'reel-c0egrdgoktv', title: 'Pan Lektor', category: 'social', kind: SOCIAL, ...ig('reel-c0egrdgoktv', 'C0EGRdGokTV') },
+  { slug: 'reel-dux5rogjblj', title: 'Havana Events Space', category: 'social', kind: SOCIAL, ...ig('reel-dux5rogjblj', 'DUX5roGjBLJ') },
+  { slug: 'reel-ddj6vegogwf', title: 'Pan Lektor', category: 'social', kind: SOCIAL, ...ig('reel-ddj6vegogwf', 'DDJ6veGogWf') },
+  { slug: 'reel-dk9yrwtn5jd', title: 'Aria Martelle · Rockstar Birthday Party', category: 'social', kind: SOCIAL, ...ig('reel-dk9yrwtn5jd', 'DK9yRWTN5jd') },
+  { slug: 'reel-c5gncq5mtdn', title: 'Colibra · Emirates Fashion Week Dubai', category: 'social', kind: SOCIAL, ...ig('reel-c5gncq5mtdn', 'C5GNcq5MTDn') },
+  { slug: 'reel-c4nryuev9m', title: 'Colibra · Dubai', category: 'social', kind: SOCIAL, ...ig('reel-c4nryuev9m', 'C4NRyuev9M_') },
+  { slug: 'reel-dvqubOycb7q', title: 'Rozmowy na płótnie', category: 'social', kind: SOCIAL, ...ig('reel-dvqubOycb7q', 'DVqubOYCB7q') },
+  { slug: 'reel-c-nc1izoclz', title: 'AGklinik · dr Adam Gumkowski', category: 'social', kind: SOCIAL, ...ig('reel-c-nc1izoclz', 'C_nC1IzocLz') },
+  { slug: 'reel-c7gqs9ondgb', title: 'AGklinik · Paweł Tyburski', category: 'social', kind: SOCIAL, ...ig('reel-c7gqs9ondgb', 'C7GqS9oNDgb') },
+  { slug: 'reel-csvt-qwioi', title: 'Magda Atkins · Bobbi Brown', category: 'social', kind: SOCIAL, ...ig('reel-csvt-qwioi', 'CsVt-QwIOI_') },
+  /* Foto / Eventy / Creative: client is preparing materials · tabs stay hidden until there is at least one project */
 ]
 
 export const PROJECTS_PAGE = {

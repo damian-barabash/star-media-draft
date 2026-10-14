@@ -22,6 +22,8 @@ export function useProjects(): Project[] {
         // DB keeps the PL label only · use the translated one from src/content when the slug is known
         kind: PROJECTS.find((s) => s.slug === r.slug)?.kind ?? r.kind_label,
         image: r.image_url,
+        // portrait crop for the home carousel lives only in src/content (no DB column)
+        poster: PROJECTS.find((s) => s.slug === r.slug)?.poster ?? null,
         video: r.video_url,
         featured: r.featured,
       }))

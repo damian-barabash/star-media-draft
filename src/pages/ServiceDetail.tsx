@@ -70,6 +70,8 @@ function Portfolio({ service }: { service: Service }) {
 
   const cats = PORTFOLIO_CATEGORIES[pf.kind] ?? []
   const items = projects.filter((p) => cats.includes(p.category) && p.image).slice(0, 6)
+  // no "materials coming soon" placeholders on a handed-over site: the section appears once there is work to show
+  if (!items.length) return null
   return (
     <Chapter dark>
       <div className="chapter-inner">
@@ -78,20 +80,11 @@ function Portfolio({ service }: { service: Service }) {
         <p className="fade-in svc-quiet" style={{ marginTop: '2rem', maxWidth: '60ch' }}>
           <T text={pf.note} />
         </p>
-        {items.length > 0 ? (
-          <div className="gallery">
-            {items.map((p) => (
-              <ProjectCard key={p.slug} project={p} />
-            ))}
-          </div>
-        ) : (
-          <div className="svc-portfolio-note fade-in">
-            <T text={SERVICES_PAGE.portfolioSoon} />
-            <div className="mono" style={{ marginTop: '1rem', fontStyle: 'normal', opacity: 0.7 }}>
-              <T text={pf.caption} />
-            </div>
-          </div>
-        )}
+        <div className="gallery">
+          {items.map((p) => (
+            <ProjectCard key={p.slug} project={p} />
+          ))}
+        </div>
       </div>
     </Chapter>
   )

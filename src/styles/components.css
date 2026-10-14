@@ -295,6 +295,29 @@
 }
 .hero-scroll:hover { color: var(--white); }
 
+/* Home: full-bleed background loop instead of the 3D star */
+.hero-chapter--video::before { display: none; }
+.hero-video { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: var(--black); pointer-events: none; }
+.hero-video img, .hero-video video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-video video { opacity: 0; transition: opacity 1.2s var(--ease); }
+.hero-video.playing video { opacity: 1; }
+/* legibility: darker on the left (title) and bottom (tagline), slight top band for the nav */
+.hero-video::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to top, rgba(11, 11, 13, 0.92) 0%, rgba(11, 11, 13, 0.35) 38%, rgba(11, 11, 13, 0) 62%),
+    linear-gradient(to right, rgba(11, 11, 13, 0.7) 0%, rgba(11, 11, 13, 0.25) 55%, rgba(11, 11, 13, 0.1) 100%),
+    linear-gradient(to bottom, rgba(11, 11, 13, 0.55) 0%, rgba(11, 11, 13, 0) 18%);
+}
+@media (orientation: portrait) {
+  .hero-video::after {
+    background:
+      linear-gradient(to top, rgba(11, 11, 13, 0.95) 0%, rgba(11, 11, 13, 0.55) 45%, rgba(11, 11, 13, 0.15) 70%),
+      linear-gradient(to bottom, rgba(11, 11, 13, 0.6) 0%, rgba(11, 11, 13, 0) 20%);
+  }
+}
+
 /* 3D host */
 .hero-3d {
   /* vertically centred on the title block, right half of the hero */
@@ -503,7 +526,8 @@
 .case-card:nth-child(even) { transform: translateY(40px); }
 .case-card .card-img { position: absolute; inset: 0; transition: transform 1.4s var(--ease); }
 .case-card:hover .card-img { transform: scale(1.06); }
-.case-card .card-img img { width: 100%; height: 100%; object-fit: cover; }
+/* keep the .ph overscan (inset -20% / height 140%) so the parallax never uncovers the card bottom */
+.case-card .card-img img { object-fit: cover; }
 .case-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.1) 55%, transparent 100%); pointer-events: none; }
 .case-card .card-body { position: absolute; left: 0; right: 0; bottom: 0; padding: 2rem; z-index: 2; }
 .case-card .card-tag { display: inline-block; padding: 0.35rem 0.8rem; border: 1px solid var(--gold); color: var(--gold); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 1rem; }

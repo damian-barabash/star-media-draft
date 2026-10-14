@@ -3,12 +3,6 @@
    ============================================ */
 
 /* Showreel placeholder (home) */
-.showreel { padding: 0; min-height: 100svh; }
-.showreel-frame { position: relative; width: 100%; height: 100svh; overflow: hidden; }
-.showreel-frame .ph { position: absolute; inset: 0; }
-.showreel-ui { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; padding: var(--chapter-pad) var(--gutter) 6rem; pointer-events: none; color: var(--black); }
-.showreel-ui .row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-.showreel-ui video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
 /* Manifesto lines */
 .manifesto { display: flex; flex-direction: column; gap: 0.2em; }
@@ -128,8 +122,7 @@
   .cases-grid-vertical .case-card .card-body { padding: 1rem; }
   .cases-grid-vertical .case-card .card-tag { font-size: 0.5rem; padding: 0.3rem 0.5rem; margin-bottom: 0.6rem; }
   .case-card .card-body { padding: 1.4rem; }
-  .showreel-ui { padding: 5rem var(--gutter) 4rem; }
-  .menu-overlay-inner { padding-top: 1rem; }
+    .menu-overlay-inner { padding-top: 1rem; }
   .menu-aside { flex-direction: column; gap: 1.25rem; }
   .menu-link-num { margin-right: 0.9rem; }
   .process-step { grid-template-columns: 44px 1fr; gap: 1rem; padding: 1.5rem 0; }

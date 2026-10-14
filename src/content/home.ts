@@ -9,13 +9,12 @@ export const HOME = {
     'We work with artists, creators, media and brands, creating projects that reach millions.',
     'Trabajamos con artistas, creadores, medios y marcas, creando proyectos que llegan a millones de personas.',
   ),
-  scroll: l('Zobacz showreel', 'Watch showreel', 'Ver showreel'),
+  scroll: l('Poznaj nas', 'Meet us', 'Conócenos'),
 
-  showreel: {
-    label: 'Showreel 2026',
-    note: l('Tu filmik', 'Video here', 'Vídeo aquí'),
-    big: l('*Showreel* wkrótce', '*Showreel* coming soon', '*Showreel* muy pronto'),
-    placeholder: 'Placeholder',
+  /** Hero background loop (Filmik_Hero: Aria Martelle · Rollercoaster + Colibra runway, 30 s, no sound) */
+  heroVideo: {
+    wide: { webm: '/video/hero-wide.webm', mp4: '/video/hero-wide.mp4', poster: '/video/hero-wide.webp' },
+    tall: { webm: '/video/hero-tall.webm', mp4: '/video/hero-tall.mp4', poster: '/video/hero-tall.webp' },
   },
 
   statement: {

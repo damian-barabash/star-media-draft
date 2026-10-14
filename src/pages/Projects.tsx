@@ -40,6 +40,8 @@ export default function Projects() {
   const projects = useProjects()
   const [filter, setFilter] = useState<'all' | ProjectCategory>('all')
   const visible = projects.filter((p) => filter === 'all' || p.category === filter)
+  // tabs without any published work (Foto / Eventy / Creative until the client sends materials) are hidden
+  const filters = PROJECT_FILTERS.filter((f) => f.key === 'all' || projects.some((p) => p.category === f.key))
 
   return (
     <>
@@ -51,7 +53,7 @@ export default function Projects() {
           <WordsReveal text={PROJECTS_PAGE.gridTitle} className="large" style={{ maxWidth: '20ch' }} />
 
           <div className="filters fade-in" role="tablist" aria-label="Filter">
-            {PROJECT_FILTERS.map((f) => (
+            {filters.map((f) => (
               <button key={f.key} role="tab" aria-selected={filter === f.key} className={`filter-btn ${filter === f.key ? 'active' : ''}`} onClick={() => setFilter(f.key)}>
                 {t(f.label)}
               </button>
@@ -59,7 +61,7 @@ export default function Projects() {
           </div>
 
           {visible.length ? (
-            <div className={`cases-grid ${filter === 'kampanie' ? 'cases-grid-vertical' : ''}`.trim()} key={filter}>
+            <div className={`cases-grid ${filter === 'kampanie' || filter === 'social' ? 'cases-grid-vertical' : ''}`.trim()} key={filter}>
               {visible.map((p) => (
                 <ProjectCard key={p.slug} project={p} />
               ))}

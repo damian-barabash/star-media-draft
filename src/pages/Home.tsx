@@ -2,46 +2,22 @@ import { HOME } from '../content/home'
 import { HOME_SERVICES } from '../content/services'
 import { UI } from '../content/common'
 import { Hero } from '../components/Hero'
-import { Btn, Chapter, Eyebrow, FadeIn, Ph, T, WordsReveal, useDocumentTitle } from '../components/ui'
+import { Btn, Chapter, Eyebrow, FadeIn, T, WordsReveal, useDocumentTitle } from '../components/ui'
 import { Carousel } from '../components/Carousel'
 import { CTAChapter, PPChapter, ServicesList } from '../components/sections'
 import { useProjects } from '../hooks/useData'
-import { useLang } from '../i18n/LangContext'
 
 export default function Home() {
-  const { t } = useLang()
   useDocumentTitle(HOME.title.pl.replace(/\*/g, '').replace('\n', ' '), HOME.tagline)
   const projects = useProjects()
   const featured = projects.filter((p) => p.featured).slice(0, 7)
 
   return (
     <>
-      <Hero eyebrow={HOME.eyebrow} meta={HOME.meta} title={HOME.title} tagline={HOME.tagline} scrollLabel={HOME.scroll} scrollTarget="#showreel" compact={false} />
-
-      {/* SHOWREEL (placeholder until the client delivers the video) */}
-      <section id="showreel" className="chapter chapter-light showreel">
-        <div className="showreel-frame">
-          <Ph />
-          <div className="showreel-ui">
-            <div className="row mono">
-              <span>{HOME.showreel.label}</span>
-              <span>{t(HOME.showreel.note)}</span>
-            </div>
-            <div className="big-statement">
-              <span className="line">
-                <T text={HOME.showreel.big} />
-              </span>
-            </div>
-            <div className="row mono">
-              <span>00:00 / 02:30</span>
-              <span>{HOME.showreel.placeholder}</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero eyebrow={HOME.eyebrow} meta={HOME.meta} title={HOME.title} tagline={HOME.tagline} scrollLabel={HOME.scroll} scrollTarget="#o-nas" video={HOME.heroVideo} />
 
       {/* STATEMENT */}
-      <Chapter dark className="statement-chapter">
+      <Chapter dark className="statement-chapter" id="o-nas">
         <div className="chapter-inner">
           <Eyebrow text={HOME.statement.eyebrow} />
           <WordsReveal text={HOME.statement.title} className="statement-title" />
@@ -78,7 +54,7 @@ export default function Home() {
             key: p.slug,
             name: p.title,
             category: p.kind,
-            image: p.image,
+            image: p.poster ?? p.image,
             href: p.video ?? undefined,
           }))}
         />
