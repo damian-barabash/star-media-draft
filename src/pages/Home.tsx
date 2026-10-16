@@ -11,7 +11,7 @@ import { useProjects } from '../hooks/useData'
 export default function Home() {
   useDocumentTitle(HOME.title.pl.replace(/\*/g, '').replace('\n', ' '), HOME.tagline)
   const projects = useProjects()
-  const featured = projects.filter((p) => p.featured).slice(0, 7)
+  const featured = projects.filter((p) => p.featured).slice(0, 8)
 
   return (
     <>

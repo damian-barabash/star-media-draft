@@ -11,10 +11,10 @@ export const HOME = {
   ),
   scroll: l('Zobacz showreel', 'Watch showreel', 'Ver showreel'),
 
-  /** Showreel loop under the hero (Filmik_Hero: Aria Martelle · Rollercoaster + Colibra runway, 30 s, no sound) */
+  /** Showreel loop under the hero (Filmik_Hero v2, 2026-10-16: Colibra runway + Varsovie + Majka Jeżowska backstage + Metamorfozy · no Aria Martelle per client, 30 s, no sound) */
   heroVideo: {
-    wide: { webm: '/video/hero-wide.webm', mp4: '/video/hero-wide.mp4', poster: '/video/hero-wide.webp' },
-    tall: { webm: '/video/hero-tall.webm', mp4: '/video/hero-tall.mp4', poster: '/video/hero-tall.webp' },
+    wide: { webm: '/video/hero-wide-v2.webm', mp4: '/video/hero-wide-v2.mp4', poster: '/video/hero-wide-v2.webp' },
+    tall: { webm: '/video/hero-tall-v2.webm', mp4: '/video/hero-tall-v2.mp4', poster: '/video/hero-tall-v2.webp' },
   },
 
   statement: {
