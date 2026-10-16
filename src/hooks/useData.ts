@@ -49,7 +49,8 @@ export function useTalents(): Talent[] {
         name: r.name,
         role: l(r.role_pl, r.role_en, r.role_es),
         handle: r.handle ?? '',
-        image: r.image_url,
+        // DB photo first, else the still from src/content (public/photos/talent-*.webp)
+        image: r.image_url ?? TALENTS.find((x) => x.slug === r.slug)?.image ?? null,
         instagram: r.instagram_url ?? undefined,
       }))
       talentsCache = mapped

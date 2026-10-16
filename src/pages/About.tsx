@@ -1,6 +1,7 @@
 import { ABOUT } from '../content/about'
 import { UI } from '../content/common'
 import { Hero } from '../components/Hero'
+import { ABOUT_PHOTO } from '../content/photos'
 import { Chapter, Eyebrow, FadeIn, Ph, T, WordsReveal, useDocumentTitle } from '../components/ui'
 import { CTAChapter } from '../components/sections'
 import { useLang } from '../i18n/LangContext'
@@ -27,7 +28,7 @@ export default function About() {
             </p>
           </div>
           <FadeIn delay={150}>
-            <Ph style={{ aspectRatio: '4/5' }} />
+            <Ph className="about-photo" style={{ aspectRatio: '4/5' }} src={ABOUT_PHOTO.image} alt={ABOUT_PHOTO.alt} />
           </FadeIn>
         </div>
       </Chapter>

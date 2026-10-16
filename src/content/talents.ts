@@ -2,13 +2,13 @@ import { l, type L } from '../i18n/types'
 
 export type Talent = { slug: string; name: string; role: L; handle: string; image?: string | null; instagram?: string }
 
-/** Static fallback roster (Supabase `talents` table overrides when available). Photos: pending from client. */
+/** Static fallback roster (Supabase `talents` table overrides when available). Photos (2026-10-16): stills from their own videos in public/photos/talent-*.webp; Przebudzenie Joanny + Majeczka still pending from client. */
 export const TALENTS: Talent[] = [
-  { slug: 'katarzyna-zdanowicz', name: 'Katarzyna Zdanowicz', role: l('Dziennikarka / Prezenterka', 'Journalist / Presenter', 'Periodista / Presentadora'), handle: '@katarzyna_zdanowicz' },
-  { slug: 'aria-martelle', name: 'Aria Martelle', role: l('Artystka / Creator', 'Artist / Creator', 'Artista / Creadora'), handle: '@ariamartelle' },
+  { slug: 'katarzyna-zdanowicz', name: 'Katarzyna Zdanowicz', role: l('Dziennikarka / Prezenterka', 'Journalist / Presenter', 'Periodista / Presentadora'), handle: '@katarzyna_zdanowicz', image: '/photos/talent-zdanowicz.webp' },
+  { slug: 'aria-martelle', name: 'Aria Martelle', role: l('Artystka / Creator', 'Artist / Creator', 'Artista / Creadora'), handle: '@ariamartelle', image: '/photos/talent-aria.webp' },
   { slug: 'przebudzenie-joanny', name: 'Przebudzenie Joanny', role: l('Podcast · Lifestyle', 'Podcast · Lifestyle', 'Podcast · Lifestyle'), handle: '@przebudzenie_joanny' },
-  { slug: 'rozmowy-na-plotnie', name: 'Rozmowy na płótnie', role: l('Podcast · Sztuka', 'Podcast · Art', 'Podcast · Arte'), handle: '@rozmowy_na_plotnie' },
-  { slug: 'pan-lektor', name: 'Pan Lektor', role: l('Creator / Entertainment', 'Creator / Entertainment', 'Creador / Entretenimiento'), handle: '@pan_lektor_hotelparadise' },
+  { slug: 'rozmowy-na-plotnie', name: 'Rozmowy na płótnie', role: l('Podcast · Sztuka', 'Podcast · Art', 'Podcast · Arte'), handle: '@rozmowy_na_plotnie', image: '/photos/talent-rozmowy.webp' },
+  { slug: 'pan-lektor', name: 'Pan Lektor', role: l('Creator / Entertainment', 'Creator / Entertainment', 'Creador / Entretenimiento'), handle: '@pan_lektor_hotelparadise', image: '/photos/talent-pan-lektor.webp' },
   { slug: 'majeczka', name: 'Majeczka', role: l('Influencerka · Fashion', 'Influencer · Fashion', 'Influencer · Moda'), handle: '@majeczka' },
 ]
 

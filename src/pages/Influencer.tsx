@@ -1,6 +1,7 @@
 import { INFLUENCER } from '../content/influencer'
 import { Hero } from '../components/Hero'
-import { Chapter, Eyebrow, FadeIn, T, WordsReveal, useDocumentTitle } from '../components/ui'
+import { Chapter, Eyebrow, FadeIn, PhotoBand, T, WordsReveal, useDocumentTitle } from '../components/ui'
+import { PAGE_PHOTOS } from '../content/photos'
 import { CTAChapter, PPLockup, PPStats, ProcessChapter } from '../components/sections'
 import { useLang } from '../i18n/LangContext'
 
@@ -13,6 +14,8 @@ export default function Influencer() {
       <Hero eyebrow={INFLUENCER.eyebrow} meta={INFLUENCER.meta} title={INFLUENCER.title} tagline={INFLUENCER.tagline} tagline2={INFLUENCER.tagline2} scrollLabel={{ pl: 'Dalej', en: 'Next', es: 'Siguiente' }} scrollTarget="#partnerstwo" />
 
       {/* 02 — PARTNERSHIP */}
+      <PhotoBand photo={PAGE_PHOTOS.influencer} />
+
       <Chapter dark={false} id="partnerstwo">
         <div className="chapter-inner" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
           <Eyebrow text={INFLUENCER.partnership.eyebrow} dark={false} />

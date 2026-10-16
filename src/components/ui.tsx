@@ -203,6 +203,24 @@ export function Ph({ src, alt = '', className = '', style, children }: { src?: s
   )
 }
 
+/* ---------- Photo band (full-bleed still from our productions) ---------- */
+
+export function PhotoBand({ photo }: { photo: { image: string; mobile: string; caption: L; alt: string } }) {
+  return (
+    <figure className="photo-band">
+      <div className="ph has-img photo-band-img">
+        <picture className="ph-img">
+          <source media="(max-width: 700px)" srcSet={photo.mobile} />
+          <img src={photo.image} alt={photo.alt} loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <figcaption className="photo-band-cap">
+        <T text={photo.caption} />
+      </figcaption>
+    </figure>
+  )
+}
+
 /* ---------- Counter ---------- */
 
 export function Counter({ value, suffix = '', decimals = 0, prefix = '' }: { value: number; suffix?: string; decimals?: number; prefix?: string }) {

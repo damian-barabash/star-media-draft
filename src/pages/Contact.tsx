@@ -3,7 +3,8 @@ import { useSearchParams } from 'react-router-dom'
 import { CONTACT } from '../content/contact'
 import { SITE } from '../content/common'
 import { Hero } from '../components/Hero'
-import { Btn, Chapter, Eyebrow, T, useDocumentTitle } from '../components/ui'
+import { Btn, Chapter, Eyebrow, PhotoBand, T, useDocumentTitle } from '../components/ui'
+import { PAGE_PHOTOS } from '../content/photos'
 import { useLang } from '../i18n/LangContext'
 import { submitContactRequest } from '../lib/supabase'
 
@@ -80,6 +81,8 @@ export default function Contact() {
   return (
     <>
       <Hero eyebrow={CONTACT.eyebrow} meta={CONTACT.meta} title={CONTACT.title} tagline={CONTACT.tagline} scrollLabel={CONTACT.scroll} scrollTarget="#formularz" />
+
+      <PhotoBand photo={PAGE_PHOTOS.contact} />
 
       <Chapter dark={false} id="formularz" className="contact-chapter">
         <div className="chapter-inner">

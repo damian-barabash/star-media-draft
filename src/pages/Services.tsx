@@ -1,6 +1,7 @@
 import { SERVICES, SERVICES_PAGE } from '../content/services'
 import { Hero } from '../components/Hero'
-import { Chapter, Eyebrow, WordsReveal, useDocumentTitle } from '../components/ui'
+import { Chapter, Eyebrow, PhotoBand, WordsReveal, useDocumentTitle } from '../components/ui'
+import { PAGE_PHOTOS } from '../content/photos'
 import { CTAChapter, PPChapter, ProcessChapter, ServicesList } from '../components/sections'
 
 export default function Services() {
@@ -9,6 +10,8 @@ export default function Services() {
   return (
     <>
       <Hero eyebrow={SERVICES_PAGE.eyebrow} meta={SERVICES_PAGE.meta} title={SERVICES_PAGE.title} tagline={SERVICES_PAGE.tagline} scrollLabel={{ pl: 'Dalej', en: 'Next', es: 'Siguiente' }} scrollTarget="#zakres" />
+
+      <PhotoBand photo={PAGE_PHOTOS.services} />
 
       <Chapter dark={false} id="zakres">
         <div className="chapter-inner">

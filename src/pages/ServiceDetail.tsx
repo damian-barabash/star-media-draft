@@ -2,7 +2,8 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import { CTA_CONTACT_PATH, SERVICES, SERVICES_PAGE, type Service } from '../content/services'
 import { FEATURED_TALENT_SLUGS } from '../content/talents'
 import { Hero } from '../components/Hero'
-import { Btn, Chapter, Eyebrow, FadeIn, Ph, ProcessStrip, T, WordsReveal, useDocumentTitle } from '../components/ui'
+import { Btn, Chapter, Eyebrow, FadeIn, Ph, PhotoBand, ProcessStrip, T, WordsReveal, useDocumentTitle } from '../components/ui'
+import { SERVICE_PHOTOS } from '../content/photos'
 import { CTAChapter, PPLockup, ProcessChapter } from '../components/sections'
 import { useLang } from '../i18n/LangContext'
 import { useProjects, useTalents } from '../hooks/useData'
@@ -116,6 +117,8 @@ export default function ServiceDetail() {
         scrollTarget="#zakres"
         extra={heroText[2] ? <p className="hero-tagline fade-in" style={{ ['--d' as string]: '300ms', color: 'var(--gold)' }}><T text={heroText[2]} /></p> : undefined}
       />
+
+      {SERVICE_PHOTOS[service.slug] && <PhotoBand photo={SERVICE_PHOTOS[service.slug]} />}
 
       {/* 02 — SCOPE */}
       <Chapter dark={false} id="zakres">
