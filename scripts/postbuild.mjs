@@ -14,14 +14,19 @@ for (const route of STATIC_ROUTES) {
   if (route === '/') continue
   const dir = join(dist, route.replace(/^\//, ''))
   mkdirSync(dir, { recursive: true })
-  writeFileSync(join(dir, 'index.html'), html)
+  // own canonical + og:url per route (the shell is shared, so it would otherwise point every page at the home page)
+  const url = `${SITE_URL}${route}/`
+  writeFileSync(
+    join(dir, 'index.html'),
+    html.replace(/(<link rel="canonical" href=")[^"]*/, `$1${url}`).replace(/(<meta property="og:url" content=")[^"]*/, `$1${url}`),
+  )
 }
 cpSync(join(dist, 'index.html'), join(dist, '404.html'))
 
 const today = new Date().toISOString().slice(0, 10)
 const sitemap =
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-  STATIC_ROUTES.map((r) => `  <url><loc>${SITE_URL}${r === '/' ? '/' : r}</loc><lastmod>${today}</lastmod></url>`).join('\n') +
+  STATIC_ROUTES.map((r) => `  <url><loc>${SITE_URL}${r === '/' ? '/' : r + '/'}</loc><lastmod>${today}</lastmod></url>`).join('\n') +
   `\n</urlset>\n`
 writeFileSync(join(dist, 'sitemap.xml'), sitemap)
 writeFileSync(join(dist, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`)

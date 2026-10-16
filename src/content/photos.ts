@@ -21,7 +21,7 @@ export const PAGE_PHOTOS = {
 }
 
 /** Story photo on /o-nas (4:5). */
-export const ABOUT_PHOTO = { image: '/photos/about.webp', alt: 'Majka Jeżowska z zespołem, sesja wizerunkowa' }
+export const ABOUT_PHOTO = { image: '/photos/about.webp', alt: 'Scena pokazu z logo star-media.pl i miejscami Star Media VIP' }
 
 export const SERVICE_PHOTOS: Record<string, Photo> = {
   'management-talentow': band('uslugi/management-talentow', 'Majka Jeżowska · sesja wizerunkowa', 'Majka Jeżowska z zespołem, sesja wizerunkowa'),
@@ -36,6 +36,6 @@ export const SERVICE_PHOTOS: Record<string, Photo> = {
   'budowa-marek-i-projekty-specjalne': band('uslugi/budowa-marek-i-projekty-specjalne', 'Colibra · Black & Gold', 'Pokaz Colibra Black & Gold'),
   'www-e-commerce-i-aplikacje': band('uslugi/www-e-commerce-i-aplikacje', METAMORFOZY, 'Helena Deeds z telefonem'),
   'ai-i-automatyzacje': band('uslugi/ai-i-automatyzacje', METAMORFOZY, 'Skan twarzy na tablecie'),
-  'branding-design-i-identyfikacja': band('uslugi/branding-design-i-identyfikacja', 'Chanel Parfumeur Masterclass', 'Stoisko Chanel Parfumeur Masterclass'),
+  'branding-design-i-identyfikacja': band('uslugi/branding-design-i-identyfikacja', 'Spidersys · Brand book', 'Wizytówki i identyfikacja Spidersys'),
   'strategia-i-kreacja': band('uslugi/strategia-i-kreacja', METAMORFOZY, 'Konsultacja w programie Metamorfozy Przyszłości'),
 }
