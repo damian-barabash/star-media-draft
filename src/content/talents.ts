@@ -36,6 +36,20 @@ export const TALENTS_PAGE = {
     ),
   },
 
+  /** Client 2026-10-16: "Poznaj naszych" removed (roster not up to date) → "w budowie" block until the new roster is ready. */
+  building: {
+    eyebrow: l('Roster 2026', 'Roster 2026', 'Roster 2026'),
+    status: l('W budowie', 'Under construction', 'En construcción'),
+    title: l('Roster *w budowie.*', 'Roster *in the making.*', 'Roster *en construcción.*'),
+    lead: l(
+      'Aktualizujemy listę osobowości, z którymi pracujemy. Nowy roster pokażemy tu już wkrótce.',
+      'We are updating the list of personalities we work with. The new roster will be here soon.',
+      'Estamos actualizando la lista de personalidades con las que trabajamos. El nuevo roster estará aquí muy pronto.',
+    ),
+    note: l('Aktualny roster wyślemy na zapytanie.', 'We will send the current roster on request.', 'Enviamos el roster actual bajo petición.'),
+    button: l('Zapytaj o roster', 'Ask about the roster', 'Pregunta por el roster'),
+  },
+
   cta: {
     eyebrow: l('Dla talentów', 'For talents', 'Para talentos'),
     title: l('Masz to coś?\nMy wiemy, co z tym *zrobić.*', 'Got that something?\nWe know what to *do with it.*', '¿Tienes ese algo?\nSabemos qué *hacer con ello.*'),
