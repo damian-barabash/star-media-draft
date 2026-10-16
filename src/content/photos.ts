@@ -1,7 +1,8 @@
 import { l, type L } from '../i18n/types'
 
 /**
- * Photo bands (2026-10-16): graded stills from Star Media's own productions (no stock, no AI).
+ * Photo bands (2026-10-16): the client's own photos (Foto_od_klienta/client_bands.py) or graded stills from our videos
+ * (Zdjecia_strony/make_photos.py) — no stock, no AI.
  * Wide 2400x1030 + mobile 4:5 864x1080 in public/photos (source: PROJEKTY/Star-Media/Zdjecia_strony/make_photos.py).
  */
 export type Photo = { image: string; mobile: string; caption: L; alt: string }
@@ -11,7 +12,6 @@ const band = (path: string, work: string, alt: string): Photo => ({ image: `/pho
 
 const COLIBRA = 'Colibra · Black & Gold Fashion Runway'
 const VARSOVIE = 'Anna Jurksztowicz feat. Chris Schittulli · Varsovie'
-const MAJKA = 'Majka Jeżowska Vlog · Kuba Wojewódzki'
 const METAMORFOZY = 'Metamorfozy Przyszłości · Helena Deeds'
 
 export const PAGE_PHOTOS = {
@@ -21,21 +21,21 @@ export const PAGE_PHOTOS = {
 }
 
 /** Story photo on /o-nas (4:5). */
-export const ABOUT_PHOTO = { image: '/photos/about.webp', alt: 'Studio podcastu Legendy Showbiznesu · Złota Scena' }
+export const ABOUT_PHOTO = { image: '/photos/about.webp', alt: 'Majka Jeżowska z zespołem, sesja wizerunkowa' }
 
 export const SERVICE_PHOTOS: Record<string, Photo> = {
-  'management-talentow': band('uslugi/management-talentow', MAJKA, 'Majka Jeżowska w studiu programu Kuby Wojewódzkiego'),
+  'management-talentow': band('uslugi/management-talentow', 'Majka Jeżowska · sesja wizerunkowa', 'Majka Jeżowska z zespołem, sesja wizerunkowa'),
   'influencer-marketing': band('uslugi/influencer-marketing', 'Face Off 2 · Randka w ciemno', 'Nagranie formatu Face Off 2'),
   'digital-social-media': band('uslugi/digital-social-media', 'Vlogmas · Świąteczne grzanie', 'Nagranie odcinka Vlogmas'),
   'produkcja-video-foto-creative': band('uslugi/produkcja-video-foto-creative', VARSOVIE, 'Kadr z teledysku Varsovie'),
   'formaty-i-zasieg-organiczny': band('uslugi/formaty-i-zasieg-organiczny', 'Legendy Showbiznesu · Katarzyna Żak', 'Studio podcastu Legendy Showbiznesu'),
-  'pr-i-media': band('uslugi/pr-i-media', MAJKA, 'Studio programu Kuby Wojewódzkiego'),
-  'eventy-i-wydarzenia-specjalne': band('uslugi/eventy-i-wydarzenia-specjalne', COLIBRA, 'Publiczność pokazu Colibra'),
-  'koncerty-i-live-entertainment': band('uslugi/koncerty-i-live-entertainment', COLIBRA, 'Scena i światło na pokazie Colibra'),
-  'merch-i-produkty': band('uslugi/merch-i-produkty', COLIBRA, 'Biżuteria Colibra na manekinie'),
-  'budowa-marek-i-projekty-specjalne': band('uslugi/budowa-marek-i-projekty-specjalne', COLIBRA, 'Kolekcja Colibra na wybiegu'),
+  'pr-i-media': band('uslugi/pr-i-media', 'Pokojowa Nagroda Nobla · Oslo', 'Konferencja prasowa laureatów Pokojowej Nagrody Nobla'),
+  'eventy-i-wydarzenia-specjalne': band('uslugi/eventy-i-wydarzenia-specjalne', 'Chanel Chance Event', 'Goście eventu Chanel Chance'),
+  'koncerty-i-live-entertainment': band('uslugi/koncerty-i-live-entertainment', 'Rock&Roll · Progresja', 'Publiczność koncertu w Progresji'),
+  'merch-i-produkty': band('uslugi/merch-i-produkty', 'Byoli Store', 'Bluzy Byoli Store'),
+  'budowa-marek-i-projekty-specjalne': band('uslugi/budowa-marek-i-projekty-specjalne', 'Colibra · Black & Gold', 'Pokaz Colibra Black & Gold'),
   'www-e-commerce-i-aplikacje': band('uslugi/www-e-commerce-i-aplikacje', METAMORFOZY, 'Helena Deeds z telefonem'),
   'ai-i-automatyzacje': band('uslugi/ai-i-automatyzacje', METAMORFOZY, 'Skan twarzy na tablecie'),
-  'branding-design-i-identyfikacja': band('uslugi/branding-design-i-identyfikacja', COLIBRA, 'Torebka z pereł na pokazie Colibra'),
+  'branding-design-i-identyfikacja': band('uslugi/branding-design-i-identyfikacja', 'Chanel Parfumeur Masterclass', 'Stoisko Chanel Parfumeur Masterclass'),
   'strategia-i-kreacja': band('uslugi/strategia-i-kreacja', METAMORFOZY, 'Konsultacja w programie Metamorfozy Przyszłości'),
 }

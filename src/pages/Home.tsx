@@ -7,15 +7,18 @@ import { Btn, Chapter, Eyebrow, FadeIn, T, WordsReveal, useDocumentTitle } from 
 import { Carousel } from '../components/Carousel'
 import { CTAChapter, PPChapter, ServicesList } from '../components/sections'
 import { useProjects } from '../hooks/useData'
+import { HOME_FEATURED, type Project } from '../content/projects'
+import { opensInViewer, useMediaViewer } from '../components/MediaViewer'
 
 export default function Home() {
   useDocumentTitle(HOME.title.pl.replace(/\*/g, '').replace('\n', ' '), HOME.tagline)
   const projects = useProjects()
-  const featured = projects.filter((p) => p.featured).slice(0, 8)
+  const view = useMediaViewer()
+  const featured = HOME_FEATURED.map((slug) => projects.find((p) => p.slug === slug)).filter((p): p is Project => Boolean(p))
 
   return (
     <>
-      <Hero eyebrow={HOME.eyebrow} meta={HOME.meta} title={HOME.title} tagline={HOME.tagline} scrollLabel={HOME.scroll} scrollTarget="#showreel" compact={false} />
+      <Hero meta={HOME.meta} title={HOME.title} tagline={HOME.tagline} scrollLabel={HOME.scroll} scrollTarget="#showreel" compact={false} />
 
       {/* SHOWREEL — full-bleed loop (landscape / portrait cut) */}
       <section id="showreel" className="chapter chapter-dark showreel-video">
@@ -62,6 +65,7 @@ export default function Home() {
             category: p.kind,
             image: p.poster ?? p.image,
             href: p.video ?? undefined,
+            onOpen: opensInViewer(p) ? () => view({ project: p }) : undefined,
           }))}
         />
         <div style={{ textAlign: 'center', marginTop: '3rem', padding: '0 var(--gutter)' }}>

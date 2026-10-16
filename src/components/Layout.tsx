@@ -7,6 +7,7 @@ import { SERVICES } from '../content/services'
 import { T } from './ui'
 import { useRevealOnScroll } from '../hooks/useReveal'
 import { usePlaceholderParallax } from '../hooks/usePlaceholderParallax'
+import { MediaViewerProvider } from './MediaViewer'
 
 const LOGO = '/logo/logo.png'
 
@@ -307,7 +308,7 @@ export function Layout({ children }: { children: ReactNode }) {
   }, [pathname, hash])
 
   return (
-    <>
+    <MediaViewerProvider>
       <Nav onOpen={() => setMenuOpen(true)} />
       <MenuOverlay open={menuOpen} onClose={() => setMenuOpen(false)} />
       <Ticker />
@@ -317,6 +318,6 @@ export function Layout({ children }: { children: ReactNode }) {
       </main>
       <Footer />
       <StarCursor />
-    </>
+    </MediaViewerProvider>
   )
 }

@@ -5,13 +5,22 @@ import { Chapter, Eyebrow, Ph, T, WordsReveal, useDocumentTitle } from '../compo
 import { CTAChapter } from '../components/sections'
 import { useLang } from '../i18n/LangContext'
 import { useProjects } from '../hooks/useData'
+import { opensInViewer, useMediaViewer } from '../components/MediaViewer'
 
 export function ProjectCard({ project, wide = false }: { project: Project; wide?: boolean }) {
   const { t } = useLang()
+  const view = useMediaViewer()
   const body = (
     <>
       <Ph className="card-img" src={project.image} alt={project.title} />
-      {project.video && (
+      {project.album && (
+        <span className="card-play card-album" aria-hidden="true">
+          <svg viewBox="0 0 16 14">
+            <path d="M1 3h3l1.5-2h5L12 3h3v10H1zM8 5.2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
+          </svg>
+        </span>
+      )}
+      {project.video && !project.album && (
         <span className="card-play" aria-hidden="true">
           <svg viewBox="0 0 12 14">
             <path d="M0 0l12 7-12 7z" />
@@ -25,6 +34,13 @@ export function ProjectCard({ project, wide = false }: { project: Project; wide?
     </>
   )
   const cls = ['case-card', wide && 'wide', isVertical(project) && 'vertical'].filter(Boolean).join(' ')
+  if (opensInViewer(project)) {
+    return (
+      <a className={cls} href={project.video ?? `#${project.slug}`} aria-label={project.title} onClick={(e) => (e.preventDefault(), view({ project }))}>
+        {body}
+      </a>
+    )
+  }
   return project.video ? (
     <a className={cls} href={project.video} target="_blank" rel="noopener" aria-label={project.title}>
       {body}

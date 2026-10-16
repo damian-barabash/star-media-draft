@@ -1,4 +1,5 @@
 import { l, type L } from '../i18n/types'
+import { albumCover } from './albums'
 
 export type ProjectCategory = 'video' | 'vlog' | 'youtube' | 'kampanie' | 'podcasty' | 'social' | 'foto' | 'eventy' | 'creative'
 
@@ -13,6 +14,10 @@ export type Project = {
   poster?: string | null
   video?: string | null
   featured?: boolean
+  /** photo album in public/foto/<album> (opens in our viewer) */
+  album?: string
+  /** self-hosted WebM (low-view originals, 2026-10-16) — plays in our viewer, `video` stays as the original link */
+  local?: string
 }
 
 /** Vertical (9:16) covers: reels / TikToks. */
@@ -36,8 +41,11 @@ export const PROJECT_FILTERS: { key: 'all' | ProjectCategory; label: L }[] = [
  * public/projects/covers/<slug>.webp (4:3, or 9:16 for reels) + <slug>-p.webp (7:10 for the carousel).
  */
 const cover = (slug: string) => `/projects/covers/${slug}.webp`
-const yt = (slug: string, id: string, shorts = false) => ({ image: cover(slug), poster: `/projects/covers/${slug}-p.webp`, video: shorts ? `https://www.youtube.com/shorts/${id}` : `https://www.youtube.com/watch?v=${id}` })
-const ig = (slug: string, id: string) => ({ image: cover(slug), video: `https://www.instagram.com/reel/${id}/` })
+const yt = (slug: string, id: string, shorts = false) => ({ ...local(slug), image: cover(slug), poster: `/projects/covers/${slug}-p.webp`, video: shorts ? `https://www.youtube.com/shorts/${id}` : `https://www.youtube.com/watch?v=${id}` })
+const ig = (slug: string, id: string) => ({ ...local(slug), image: cover(slug), video: `https://www.instagram.com/reel/${id}/` })
+/** low-view originals we host ourselves (WebM VP9 + Opus in public/video/projects, 2026-10-16); >20 min stays a link (Rozmowy na płótnie, Empik) — GitHub 100 MB file limit */
+const LOCAL = new Set(['metamorfozy-przyszlosci-helena-deeds', 'vlog-chce-cie-miec-backstage', 'vlog-szkoda-aury-backstage', 'kampania-dalmmsotpgv', 'kampania-dcqmdhxjsnv', 'kampania-ddi1luoikgi', 'kampania-ddjfjphoiyf', 'kampania-ddqsjh6t4w0', 'kampania-dljrty3i4dx', 'kampania-dscbzosjyhy', 'kampania-dwl4qojsgkx', 'reel-c4nryuev9m', 'reel-c5gncq5mtdn', 'reel-csvt-qwioi', 'reel-dux5rogjblj', 'reel-dvqubOycb7q'])
+const local = (slug: string) => (LOCAL.has(slug) ? { local: `/video/projects/${slug}.webm` } : {})
 const tt = (slug: string, url: string) => ({ image: cover(slug), video: url })
 
 const MV = l('Teledysk', 'Music video', 'Videoclip')
@@ -52,38 +60,51 @@ const SOCIAL = l('Reels / Social', 'Reels / Social', 'Reels / Social')
  * see supabase/003_projects_2026-09-30.sql). Order = client's order within each tab.
  */
 export const PROJECTS: Project[] = [
-  /* Client 2026-10-16: no Aria Martelle up front — "Wszystkie" mixes the other work (YouTube ↔ campaigns / reels),
-     everything with Aria goes to the very end of every list (sort order = this order). */
-  { slug: 'anna-jurksztowicz-varsovie', title: 'Anna Jurksztowicz feat. Chris Schittulli · Varsovie', category: 'video', kind: MV, featured: true, ...yt('anna-jurksztowicz-varsovie', 'FB16i1Bzkbc') },
-  { slug: 'face-off-2-randka-w-ciemno', title: 'Face Off 2 · Randka w ciemno', category: 'youtube', kind: OP, featured: true, ...yt('face-off-2-randka-w-ciemno', '5F2Vwkzobq4') },
-  { slug: 'kampania-ddi1luoikgi', title: 'Otodom', category: 'kampanie', kind: REEL, featured: true, ...ig('kampania-ddi1luoikgi', 'Ddi1luOIKGI') },
+  /* Client 2026-10-16 (voice note): premium first — Colibra black jewellery, Chanel, Kasia Zdanowicz; photo albums from the client
+     (public/foto) mixed between videos; Aria Martelle still at the very end of every list. */
+  { slug: 'foto-colibra', title: 'Colibra · Black & Gold', category: 'foto', kind: l('Sesja / Biżuteria', 'Shoot / Jewellery', 'Sesión / Joyería'), ...albumCover('colibra') },
+  { slug: 'foto-chanel', title: 'Chanel · Eventy i warsztaty', category: 'eventy', kind: l('Fotografia eventowa', 'Event photography', 'Fotografía de eventos'), ...albumCover('chanel') },
+  { slug: 'foto-kasia-zdanowicz', title: 'Kasia Zdanowicz · Sesja wizerunkowa', category: 'foto', kind: l('Sesja wizerunkowa', 'Image shoot', 'Sesión de imagen'), ...albumCover('kasia-zdanowicz') },
+  { slug: 'anna-jurksztowicz-varsovie', title: 'Anna Jurksztowicz feat. Chris Schittulli · Varsovie', category: 'video', kind: MV, ...yt('anna-jurksztowicz-varsovie', 'FB16i1Bzkbc') },
+  { slug: 'face-off-2-randka-w-ciemno', title: 'Face Off 2 · Randka w ciemno', category: 'youtube', kind: OP, ...yt('face-off-2-randka-w-ciemno', '5F2Vwkzobq4') },
+  { slug: 'kampania-ddi1luoikgi', title: 'Otodom', category: 'kampanie', kind: REEL, ...ig('kampania-ddi1luoikgi', 'Ddi1luOIKGI') },
   { slug: 'vlogmas-swiateczne-grzanie', title: 'Vlogmas · Świąteczne grzanie', category: 'youtube', kind: OP, ...yt('vlogmas-swiateczne-grzanie', 'c5G9bB4sres') },
-  { slug: 'kampania-czevvsjolni', title: 'Pan Lektor', category: 'kampanie', kind: REEL, featured: true, ...ig('kampania-czevvsjolni', 'CzEVVsjoLNI') },
-  { slug: 'metamorfozy-przyszlosci-helena-deeds', title: 'Metamorfozy Przyszłości · Helena Deeds', category: 'youtube', kind: l('Program / SHOWNEWSPL', 'Show / SHOWNEWSPL', 'Programa / SHOWNEWSPL'), featured: true, ...yt('metamorfozy-przyszlosci-helena-deeds', 'Ofu7MDWxnBA') },
+  { slug: 'foto-koncerty', title: 'Majka Jeżowska i Rock&Roll · Progresja', category: 'eventy', kind: l('Fotografia koncertowa', 'Concert photography', 'Fotografía de conciertos'), ...albumCover('koncerty') },
+  { slug: 'kampania-czevvsjolni', title: 'Pan Lektor', category: 'kampanie', kind: REEL, ...ig('kampania-czevvsjolni', 'CzEVVsjoLNI') },
+  { slug: 'metamorfozy-przyszlosci-helena-deeds', title: 'Metamorfozy Przyszłości · Helena Deeds', category: 'youtube', kind: l('Program / SHOWNEWSPL', 'Show / SHOWNEWSPL', 'Programa / SHOWNEWSPL'), ...yt('metamorfozy-przyszlosci-helena-deeds', 'Ofu7MDWxnBA') },
   { slug: 'kampania-ddjfjphoiyf', title: 'Otodom', category: 'kampanie', kind: REEL, ...ig('kampania-ddjfjphoiyf', 'DdJfjphoiYf') },
-  { slug: 'majka-jezowska-vlog-kuba-wojewodzki', title: 'Majka Jeżowska Vlog · Kuba Wojewódzki', category: 'youtube', kind: l('Vlog / YouTube', 'Vlog / YouTube', 'Vlog / YouTube'), featured: true, ...yt('majka-jezowska-vlog-kuba-wojewodzki', 'D6eYgPmuCRU') },
+  { slug: 'foto-beauty', title: 'Magda Atkins · Beauty Day', category: 'foto', kind: l('Sesja beauty', 'Beauty shoot', 'Sesión beauty'), ...albumCover('beauty') },
+  { slug: 'majka-jezowska-vlog-kuba-wojewodzki', title: 'Majka Jeżowska Vlog · Kuba Wojewódzki', category: 'youtube', kind: l('Vlog / YouTube', 'Vlog / YouTube', 'Vlog / YouTube'), ...yt('majka-jezowska-vlog-kuba-wojewodzki', 'D6eYgPmuCRU') },
   { slug: 'kampania-dljrty3i4dx', title: 'Pan Lektor', category: 'kampanie', kind: REEL, ...ig('kampania-dljrty3i4dx', 'DLjrty3I4DX') },
   { slug: 'oliwia-puchacz-czyj-to-zawod', title: 'Oliwia Puchacz · Dopasuj zawód do osoby', category: 'youtube', kind: OP, ...yt('oliwia-puchacz-czyj-to-zawod', 'Vck4hHQs98k') },
+  { slug: 'foto-eventy', title: 'Chanel Chance, EIT Health, pokaz Colibra', category: 'eventy', kind: l('Fotografia eventowa', 'Event photography', 'Fotografía de eventos'), ...albumCover('eventy') },
   { slug: 'kampania-c0l_udxirlg', title: 'Pan Lektor', category: 'kampanie', kind: REEL, ...ig('kampania-c0l_udxirlg', 'C0L_UdxIrLG') },
   { slug: 'oliwia-puchacz-5-klamcow', title: 'Oliwia Puchacz · 5 kłamców vs ja', category: 'youtube', kind: OP, ...yt('oliwia-puchacz-5-klamcow', 'tvWxRsfMyPs') },
   { slug: 'reel-c0egrdgoktv', title: 'Pan Lektor', category: 'social', kind: SOCIAL, ...ig('reel-c0egrdgoktv', 'C0EGRdGokTV') },
+  { slug: 'foto-wizerunek', title: 'Majka Jeżowska, Sober Polish Girl, Oh Blair', category: 'foto', kind: l('Sesje wizerunkowe', 'Image shoots', 'Sesiones de imagen'), ...albumCover('wizerunek') },
   { slug: 'oliwia-puchacz-6-klamcow', title: 'Oliwia Puchacz · 6 kłamców vs ja', category: 'youtube', kind: OP, ...yt('oliwia-puchacz-6-klamcow', 'NThPC-I5ryM') },
   { slug: 'reel-dux5rogjblj', title: 'Havana Events Space', category: 'social', kind: SOCIAL, ...ig('reel-dux5rogjblj', 'DUX5roGjBLJ') },
   { slug: 'oliwia-puchacz-ranking-influencerek', title: 'Oliwia Puchacz · Która influencerka jest najlepsza?', category: 'youtube', kind: OP, ...yt('oliwia-puchacz-ranking-influencerek', 'YRsRiboKDIg') },
+  { slug: 'foto-produktowe', title: 'Colibra, Oh Blair, Byoli · Produkty', category: 'foto', kind: l('Fotografia produktowa', 'Product photography', 'Fotografía de producto'), ...albumCover('produktowe') },
   { slug: 'reel-ddj6vegogwf', title: 'Pan Lektor', category: 'social', kind: SOCIAL, ...ig('reel-ddj6vegogwf', 'DDJ6veGogWf') },
   { slug: 'oliwia-puchacz-randka-w-ciemno-outfit', title: 'Oliwia Puchacz · Randka w ciemno na bazie outfitu', category: 'youtube', kind: OP, ...yt('oliwia-puchacz-randka-w-ciemno-outfit', 'gEoXXfJal8I') },
   { slug: 'reel-c5gncq5mtdn', title: 'Colibra · Emirates Fashion Week Dubai', category: 'social', kind: SOCIAL, ...ig('reel-c5gncq5mtdn', 'C5GNcq5MTDn') },
-  { slug: 'legendy-showbiznesu-katarzyna-zak', title: 'Legendy Showbiznesu · Katarzyna Żak', category: 'youtube', kind: l('Podcast / Złota Scena', 'Podcast / Złota Scena', 'Podcast / Złota Scena'), featured: true, ...yt('legendy-showbiznesu-katarzyna-zak', 'fuy62dsW8LU') },
+  { slug: 'foto-social-media', title: 'Majka & Malik, Pan Lektor, Stifler', category: 'foto', kind: l('Sesje do social media', 'Social media shoots', 'Sesiones para redes sociales'), ...albumCover('social-media') },
+  { slug: 'legendy-showbiznesu-katarzyna-zak', title: 'Legendy Showbiznesu · Katarzyna Żak', category: 'youtube', kind: l('Podcast / Złota Scena', 'Podcast / Złota Scena', 'Podcast / Złota Scena'), ...yt('legendy-showbiznesu-katarzyna-zak', 'fuy62dsW8LU') },
   { slug: 'reel-c4nryuev9m', title: 'Colibra · Dubai', category: 'social', kind: SOCIAL, ...ig('reel-c4nryuev9m', 'C4NRyuev9M_') },
-  { slug: 'rozmowy-na-plotnie-marzena-rogalska', title: 'Rozmowy na płótnie · Marzena Rogalska', category: 'youtube', kind: l('Podcast', 'Podcast', 'Podcast'), featured: true, ...yt('rozmowy-na-plotnie-marzena-rogalska', 'm7xa0BZkQnA') },
+  { slug: 'rozmowy-na-plotnie-marzena-rogalska', title: 'Rozmowy na płótnie · Marzena Rogalska', category: 'youtube', kind: l('Podcast', 'Podcast', 'Podcast'), ...yt('rozmowy-na-plotnie-marzena-rogalska', 'm7xa0BZkQnA') },
+  { slug: 'foto-portrety', title: 'Portrety · Majka Jeżowska, Helena Deeds', category: 'foto', kind: l('Portret', 'Portrait', 'Retrato'), ...albumCover('portrety') },
   { slug: 'reel-dvqubOycb7q', title: 'Rozmowy na płótnie', category: 'social', kind: SOCIAL, ...ig('reel-dvqubOycb7q', 'DVqubOYCB7q') },
   { slug: 'anna-puslecka-podcast-adam-ferency', title: 'Anna Puślecka Podcast · Adam Ferency', category: 'youtube', kind: l('Rolka / Podcast', 'Reel / Podcast', 'Reel / Podcast'), ...yt('anna-puslecka-podcast-adam-ferency', 'E0DAIhiHDF0', true) },
   { slug: 'reel-c-nc1izoclz', title: 'AGklinik · dr Adam Gumkowski', category: 'social', kind: SOCIAL, ...ig('reel-c-nc1izoclz', 'C_nC1IzocLz') },
+  { slug: 'foto-reportaze', title: 'Pokojowa Nagroda Nobla · Oslo', category: 'foto', kind: l('Reportaż', 'Reportage', 'Reportaje'), ...albumCover('reportaze') },
   { slug: 'anna-puslecka-podcast-dzieci', title: 'Anna Puślecka Podcast · Nie będę mogła mieć dzieci', category: 'youtube', kind: l('Rolka / Podcast', 'Reel / Podcast', 'Reel / Podcast'), ...yt('anna-puslecka-podcast-dzieci', '0PBhRGidvRA', true) },
   { slug: 'reel-c7gqs9ondgb', title: 'AGklinik · Paweł Tyburski', category: 'social', kind: SOCIAL, ...ig('reel-c7gqs9ondgb', 'C7GqS9oNDgb') },
   { slug: 'swiat-gosi-daj-sie-wyczaic', title: 'Świat Gosi · Daj się wyczaić', category: 'youtube', kind: l('Produkcja YouTube', 'YouTube production', 'Producción de YouTube'), ...yt('swiat-gosi-daj-sie-wyczaic', 'oxgrf_u2O4Y') },
+  { slug: 'foto-wnetrza', title: 'Sesje wnętrz · Lauda, Soho Praga, Nugat Studio', category: 'foto', kind: l('Fotografia wnętrz', 'Interior photography', 'Fotografía de interiores'), ...albumCover('wnetrza') },
   { slug: 'reel-csvt-qwioi', title: 'Magda Atkins · Bobbi Brown', category: 'social', kind: SOCIAL, ...ig('reel-csvt-qwioi', 'CsVt-QwIOI_') },
   { slug: 'gosia-w-warszawie', title: 'Gosia w Warszawie', category: 'youtube', kind: l('Produkcja YouTube / Świat Gosi', 'YouTube production / Świat Gosi', 'Producción de YouTube / Świat Gosi'), ...yt('gosia-w-warszawie', 's92xjCalMEQ') },
+  { slug: 'foto-nieruchomosci', title: 'Ipanema · Nieruchomości', category: 'foto', kind: l('Fotografia nieruchomości', 'Real estate photography', 'Fotografía inmobiliaria'), ...albumCover('nieruchomosci') },
   /* ARIA MARTELLE · always last (music videos, backstage vlogs, her campaigns and reels) */
   { slug: 'aria-martelle-rollercoaster', title: 'Aria Martelle · Rollercoaster', category: 'video', kind: MV, ...yt('aria-martelle-rollercoaster', 'qxRerk_nlbU') },
   { slug: 'aria-martelle-lewa-prawa', title: 'Aria Martelle · Lewa Prawa', category: 'video', kind: MV, ...yt('aria-martelle-lewa-prawa', '-kyeBeWX5os') },
@@ -135,3 +156,23 @@ export const PROJECTS_PAGE = {
     button: l('Porozmawiajmy', "Let's talk", 'Hablemos'),
   },
 }
+
+/**
+ * Home carousel "Ludzie. Marki. Historie." — explicit order from the client's voice note (2026-10-16):
+ * premium first (Colibra black jewellery, Chanel), Kasia Zdanowicz, Pan Lektor, one Aria, one Oliwia (Face Off),
+ * Rozmowy na płótnie only as a reel. Supabase `featured` mirrors this list.
+ */
+export const HOME_FEATURED = [
+  'foto-colibra',
+  'foto-chanel',
+  'foto-kasia-zdanowicz',
+  'kampania-czevvsjolni',
+  'anna-jurksztowicz-varsovie',
+  'aria-martelle-zabawa-z-ogniem',
+  'face-off-2-randka-w-ciemno',
+  'metamorfozy-przyszlosci-helena-deeds',
+  'majka-jezowska-vlog-kuba-wojewodzki',
+  'legendy-showbiznesu-katarzyna-zak',
+  'kampania-ddi1luoikgi',
+  'reel-dvqubOycb7q',
+]

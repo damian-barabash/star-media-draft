@@ -26,6 +26,9 @@ export function useProjects(): Project[] {
         poster: PROJECTS.find((s) => s.slug === r.slug)?.poster ?? null,
         video: r.video_url,
         featured: r.featured,
+        // album / self-hosted video live only in src/content (no DB column)
+        album: PROJECTS.find((s) => s.slug === r.slug)?.album,
+        local: PROJECTS.find((s) => s.slug === r.slug)?.local,
       }))
       projectsCache = mapped
       setProjects(mapped)

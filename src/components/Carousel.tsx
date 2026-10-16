@@ -12,6 +12,8 @@ export type CarouselItem = {
   image?: string | null
   to?: string
   href?: string
+  /** opens our media viewer (photo album / self-hosted video) */
+  onOpen?: () => void
 }
 
 export function Carousel({ items }: { items: CarouselItem[] }) {
@@ -123,6 +125,13 @@ export function Carousel({ items }: { items: CarouselItem[] }) {
               setActive(i)
               restart()
             }
+          }
+          if (isActive && item.onOpen) {
+            return (
+              <div key={item.key} className={cls} style={style} onClick={item.onOpen} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && item.onOpen!()}>
+                {body}
+              </div>
+            )
           }
           if (isActive && item.to) {
             return (

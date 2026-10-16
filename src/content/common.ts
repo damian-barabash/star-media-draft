@@ -54,6 +54,7 @@ export const UI = {
   backHome: l('Wróć na stronę główną', 'Back to home', 'Volver al inicio'),
   loading: l('Wczytywanie', 'Loading', 'Cargando'),
   agency: l('Agencja', 'Agency', 'Agencia'),
+  viewOriginal: l('Zobacz oryginał', 'View original', 'Ver original'),
   year: '2026',
   copyright: '© 2026 Star Media',
   footerBlurb: l(

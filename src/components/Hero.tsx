@@ -16,7 +16,7 @@ export function Hero({
   compact = true,
   extra,
 }: {
-  eyebrow: L | string
+  eyebrow?: L | string
   meta?: (L | string)[]
   title: L | string
   titleSize?: 'big' | 'small'
@@ -33,9 +33,13 @@ export function Hero({
       <Hero3D compact={compact} />
       <div className="chapter-inner">
         <div className="hero-top">
-          <div className="hero-eyebrow">
-            <T text={eyebrow} />
-          </div>
+          {eyebrow ? (
+            <div className="hero-eyebrow">
+              <T text={eyebrow} />
+            </div>
+          ) : (
+            <span />
+          )}
           {meta && (
             <div className="hero-meta">
               {meta.map((m, i) => (
