@@ -63,7 +63,7 @@ export const PROJECTS: Project[] = [
   /* Client 2026-10-16 (voice note): premium first — Colibra black jewellery, Chanel, Kasia Zdanowicz; photo albums from the client
      (public/foto) mixed between videos; Aria Martelle still at the very end of every list. */
   { slug: 'foto-colibra', title: 'Colibra · Black & Gold', category: 'foto', kind: l('Sesja / Biżuteria', 'Shoot / Jewellery', 'Sesión / Joyería'), ...albumCover('colibra') },
-  { slug: 'foto-chanel', title: 'Chanel · Eventy i warsztaty', category: 'eventy', kind: l('Fotografia eventowa', 'Event photography', 'Fotografía de eventos'), ...albumCover('chanel') },
+  { slug: 'foto-chanel', title: 'Chanel Beauty · Eventy i warsztaty', category: 'eventy', kind: l('Fotografia eventowa', 'Event photography', 'Fotografía de eventos'), ...albumCover('chanel') },
   { slug: 'foto-kasia-zdanowicz', title: 'Kasia Zdanowicz · Sesja wizerunkowa', category: 'foto', kind: l('Sesja wizerunkowa', 'Image shoot', 'Sesión de imagen'), ...albumCover('kasia-zdanowicz') },
   { slug: 'anna-jurksztowicz-varsovie', title: 'Anna Jurksztowicz feat. Chris Schittulli · Varsovie', category: 'video', kind: MV, ...yt('anna-jurksztowicz-varsovie', 'FB16i1Bzkbc') },
   { slug: 'face-off-2-randka-w-ciemno', title: 'Face Off 2 · Randka w ciemno', category: 'youtube', kind: OP, ...yt('face-off-2-randka-w-ciemno', '5F2Vwkzobq4') },
