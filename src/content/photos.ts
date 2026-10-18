@@ -30,7 +30,7 @@ export const SERVICE_PHOTOS: Record<string, Photo> = {
   'produkcja-video-foto-creative': band('uslugi/produkcja-video-foto-creative', VARSOVIE, 'Kadr z teledysku Varsovie'),
   'formaty-i-zasieg-organiczny': band('uslugi/formaty-i-zasieg-organiczny', 'Legendy Showbiznesu · Katarzyna Żak', 'Studio podcastu Legendy Showbiznesu'),
   'pr-i-media': band('uslugi/pr-i-media', 'Pokojowa Nagroda Nobla · Oslo', 'Konferencja prasowa laureatów Pokojowej Nagrody Nobla'),
-  'eventy-i-wydarzenia-specjalne': band('uslugi/eventy-i-wydarzenia-specjalne', 'Chanel Chance Event', 'Goście eventu Chanel Chance'),
+  'eventy-i-wydarzenia-specjalne': band('uslugi/eventy-i-wydarzenia-specjalne', 'Chanel Academy Event', 'Goście eventu Chanel Academy'),
   'koncerty-i-live-entertainment': band('uslugi/koncerty-i-live-entertainment', 'Rock&Roll · Progresja', 'Publiczność koncertu w Progresji'),
   'merch-i-produkty': band('uslugi/merch-i-produkty', 'Byoli Store', 'Bluzy Byoli Store'),
   'budowa-marek-i-projekty-specjalne': band('uslugi/budowa-marek-i-projekty-specjalne', 'Colibra · Black & Gold', 'Pokaz Colibra Black & Gold'),

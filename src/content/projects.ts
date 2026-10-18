@@ -79,7 +79,7 @@ export const PROJECTS: Project[] = [
   { slug: 'majka-jezowska-vlog-kuba-wojewodzki', title: 'Majka Jeżowska Vlog · Kuba Wojewódzki', category: 'youtube', kind: l('Vlog / YouTube', 'Vlog / YouTube', 'Vlog / YouTube'), ...yt('majka-jezowska-vlog-kuba-wojewodzki', 'D6eYgPmuCRU') },
   { slug: 'kampania-dljrty3i4dx', title: 'Pan Lektor', category: 'kampanie', kind: REEL, ...ig('kampania-dljrty3i4dx', 'DLjrty3I4DX') },
   { slug: 'oliwia-puchacz-czyj-to-zawod', title: 'Oliwia Puchacz · Dopasuj zawód do osoby', category: 'youtube', kind: OP, ...yt('oliwia-puchacz-czyj-to-zawod', 'Vck4hHQs98k') },
-  { slug: 'foto-eventy', title: 'Chanel Chance, EIT Health, pokaz Colibra', category: 'eventy', kind: l('Fotografia eventowa', 'Event photography', 'Fotografía de eventos'), ...albumCover('eventy') },
+  { slug: 'foto-eventy', title: 'Chanel Academy, EIT Health, pokaz Colibra', category: 'eventy', kind: l('Fotografia eventowa', 'Event photography', 'Fotografía de eventos'), ...albumCover('eventy') },
   { slug: 'creative-nask', title: 'NASK · Kampania edukacyjna i Bezpieczne Wybory', category: 'creative', kind: l('Kampania / Grafika', 'Campaign / Design', 'Campaña / Diseño'), ...albumCover('nask') },
   { slug: 'kampania-c0l_udxirlg', title: 'Pan Lektor', category: 'kampanie', kind: REEL, ...ig('kampania-c0l_udxirlg', 'C0L_UdxIrLG') },
   { slug: 'oliwia-puchacz-5-klamcow', title: 'Oliwia Puchacz · 5 kłamców vs ja', category: 'youtube', kind: OP, ...yt('oliwia-puchacz-5-klamcow', 'tvWxRsfMyPs') },
@@ -140,7 +140,7 @@ export const PROJECTS: Project[] = [
   { slug: 'kampania-ddqsjh6t4w0', title: 'Aria Martelle', category: 'kampanie', kind: REEL, ...ig('kampania-ddqsjh6t4w0', 'DdqSJh6t4W0') },
   { slug: 'kampania-drzy01aju05', title: 'Empik · Klub Muzyki', category: 'kampanie', kind: REEL, ...ig('kampania-drzy01aju05', 'DRzy01AjU05') },
   { slug: 'reel-dk9yrwtn5jd', title: 'Aria Martelle · Rockstar Birthday Party', category: 'social', kind: SOCIAL, ...ig('reel-dk9yrwtn5jd', 'DK9yRWTN5jd') },
-  { slug: 'creative-aria-merch', title: 'Aria Martelle · Merch, plakaty trasy i okładki', category: 'creative', kind: l('Merch / Plakaty', 'Merch / Posters', 'Merch / Pósters'), ...albumCover('aria-merch') },
+  { slug: 'creative-aria-merch', title: 'Aria Martelle · Grafiki do merchu, plakaty trasy i okładki', category: 'creative', kind: l('Grafiki do merchu / Plakaty', 'Merch graphics / Posters', 'Gráficos para merch / Pósters'), ...albumCover('aria-merch') },
 ]
 
 export const PROJECTS_PAGE = {
